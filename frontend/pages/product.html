@@ -3,700 +3,246 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Premium fashion e-commerce product details page with gallery, sizing, delivery checker, reviews, FAQs, and related products.">
-  <title>Moda Studio | Tailored Overshirt Jacket</title>
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Premium fashion product module with categories, subcategories, listing, and detailed product view.">
+  <title>Luxury Fashion Product Module</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/product.css">
 </head>
 <body>
-  <header class="topbar border-bottom">
-    <div class="container-xxl py-3">
-      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
-        <div class="d-flex align-items-center gap-3">
-          <a class="brand-mark text-decoration-none" href="#" aria-label="Moda Studio home">Moda Studio</a>
-          <span class="topbar-badge d-none d-md-inline-flex">Premium Fashion Edit</span>
-        </div>
-        <div class="d-flex flex-wrap align-items-center gap-2 gap-lg-3 small fw-medium text-uppercase tracking-wide">
-          <a class="topbar-link" href="#description" data-scroll>Details</a>
-          <a class="topbar-link" href="#reviews" data-scroll>Reviews</a>
-          <a class="topbar-link" href="#related" data-scroll>Related</a>
-          <a class="topbar-link" href="#faq" data-scroll>FAQ</a>
-          <span class="service-pill">Free shipping over &#8377;2,999</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="container-xxl py-4 py-lg-5">
-      <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb fashion-breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item"><a href="#">Women</a></li>
-          <li class="breadcrumb-item"><a href="#">Outerwear</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Tailored Overshirt Jacket</li>
-        </ol>
-      </nav>
-
-      <div class="row align-items-start g-4 g-xl-5">
-        <div class="col-12 col-lg-7">
-          <div class="gallery-shell card border-0 shadow-sm">
-            <div class="card-body p-3 p-md-4">
-              <div class="gallery-stage">
-                <img
-                  id="mainProductImage"
-                  src="../assets/image/product-1.svg"
-                  alt="Tailored Overshirt Jacket in black"
-                  class="img-fluid gallery-image"
-                >
-                <div class="gallery-overlay">
-                  <span class="gallery-tag">New Season</span>
-                  <span class="gallery-hint">Hover to zoom</span>
-                </div>
-              </div>
-
-              <div class="thumbnail-grid mt-3">
-                <button type="button" class="thumb-btn active" data-image="../assets/image/product-1.svg" data-alt="Tailored Overshirt Jacket front view">
-                  <img src="../assets/image/product-1.svg" alt="" class="img-fluid">
-                </button>
-                <button type="button" class="thumb-btn" data-image="../assets/image/product-2.svg" data-alt="Tailored Overshirt Jacket back view">
-                  <img src="../assets/image/product-2.svg" alt="" class="img-fluid">
-                </button>
-                <button type="button" class="thumb-btn" data-image="../assets/image/product-3.svg" data-alt="Tailored Overshirt Jacket detail shot">
-                  <img src="../assets/image/product-3.svg" alt="" class="img-fluid">
-                </button>
-                <button type="button" class="thumb-btn" data-image="../assets/image/product-4.svg" data-alt="Tailored Overshirt Jacket lifestyle shot">
-                  <img src="../assets/image/product-4.svg" alt="" class="img-fluid">
-                </button>
-              </div>
-
-              <div class="gallery-benefits mt-4">
-                <div class="benefit-item">
-                  <span class="benefit-icon">&#10003;</span>
-                  <span>7-day easy returns</span>
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">&#10003;</span>
-                  <span>Cashless and secure payment</span>
-                </div>
-                <div class="benefit-item">
-                  <span class="benefit-icon">&#10003;</span>
-                  <span>Free exchange on size issues</span>
-                </div>
-              </div>
-            </div>
+  <div class="product-module">
+    <main class="container-xxl py-4 py-lg-5">
+      <section class="module-intro mb-4">
+        <p class="eyebrow mb-2">Product Module</p>
+        <div class="module-intro-panel">
+          <div>
+            <h1>Browse premium fashion by category, subcategory, and product.</h1>
+            <p class="section-copy mb-0">A focused shopping experience with modern luxury styling, responsive cards, and a polished product detail view.</p>
+          </div>
+          <div class="module-chips d-flex flex-wrap gap-2">
+            <span class="module-chip">Categories</span>
+            <span class="module-chip">Subcategories</span>
+            <span class="module-chip">Products</span>
+            <span class="module-chip">Details</span>
           </div>
         </div>
+      </section>
 
-        <div class="col-12 col-lg-5">
-          <div class="summary-shell card border-0 shadow-sm sticky-summary">
-            <div class="card-body p-3 p-md-4 p-xl-4">
-              <div class="d-flex flex-wrap align-items-start justify-content-between gap-3">
-                <div>
-                  <p class="text-uppercase text-muted small fw-semibold mb-2 tracking-wide">Tailored Overshirt Jacket</p>
-                  <h1 class="product-title mb-2">Tailored Overshirt Jacket</h1>
-                  <div class="d-flex flex-wrap align-items-center gap-2 text-muted small mb-3">
-                    <span><strong class="text-dark">Brand:</strong> Aureline</span>
-                    <span class="dot-separator"></span>
-                    <span><strong class="text-dark">Category:</strong> Outerwear</span>
-                  </div>
-                </div>
-                <span class="stock-pill">In Stock</span>
-              </div>
+      <section id="categorySection" class="section-space">
+        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <p class="eyebrow mb-2">Step 1</p>
+            <h2 class="mb-2">Shop Categories</h2>
+            <p class="section-copy mb-0">Choose a category to reveal curated subcategories.</p>
+          </div>
+          <button class="btn btn-outline-dark btn-sm" type="button" id="resetFlowBtn">Reset flow</button>
+        </div>
+        <div class="row g-3 g-lg-4" id="categoryGrid"></div>
+      </section>
 
-              <div class="product-meta-grid mb-4">
-                <div>
-                  <span class="meta-label">SKU</span>
-                  <span class="meta-value">AU-TSJ-2487-BLK</span>
-                </div>
-                <div>
-                  <span class="meta-label">Availability</span>
-                  <span class="meta-value text-success">Ships today</span>
-                </div>
-                <div>
-                  <span class="meta-label">Fit</span>
-                  <span class="meta-value">Relaxed Tailored</span>
-                </div>
-                <div>
-                  <span class="meta-label">Fabric</span>
-                  <span class="meta-value">Wool Blend</span>
-                </div>
-              </div>
+      <section id="subcategorySection" class="section-space d-none">
+        <div class="section-heading mb-4">
+          <p class="eyebrow mb-2">Step 2</p>
+          <h2 class="mb-2" id="subcategoryHeading">Subcategories</h2>
+          <p class="section-copy mb-0" id="subcategoryCopy"></p>
+        </div>
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb luxury-breadcrumb mb-0" id="breadcrumbTrail"></ol>
+        </nav>
+        <div class="row g-3 g-lg-4" id="subcategoryGrid"></div>
+      </section>
 
-              <div class="rating-row mb-3">
-                <div class="stars" aria-label="Rated 4.6 out of 5">
-                  <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span class="star-muted">&#9733;</span>
-                </div>
-                <span class="rating-score">4.6</span>
-                <span class="text-muted small">(3,248 reviews)</span>
-              </div>
-
-              <div class="price-block mb-4">
-                <div class="d-flex flex-wrap align-items-end gap-2">
-                  <span class="current-price">&#8377;1,299</span>
-                  <span class="original-price">&#8377;1,799</span>
-                  <span class="discount-badge">28% OFF</span>
-                </div>
-                <p class="text-muted small mb-0 mt-2">Inclusive of all taxes. Limited offer for this season.</p>
-              </div>
-
-              <p class="product-summary mb-4">
-                A structured oversized overshirt designed to move effortlessly from weekday layering to weekend styling. Clean seams, matte hardware, and a softened wool-blend finish create a refined, modern silhouette.
-              </p>
-
-              <div class="selection-block mb-4">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="section-label mb-0">Color</h2>
-                  <span class="text-muted small">Selected: <strong id="selectedColorText">Midnight Black</strong></span>
-                </div>
-                <div class="color-grid" role="radiogroup" aria-label="Product colors">
-                  <button type="button" class="color-chip color-black active" data-color="Midnight Black" data-image="../assets/image/product-1.svg" aria-pressed="true" aria-label="Midnight Black color"></button>
-                  <button type="button" class="color-chip color-charcoal" data-color="Charcoal Gray" data-image="../assets/image/product-2.svg" aria-pressed="false" aria-label="Charcoal Gray color"></button>
-                  <button type="button" class="color-chip color-olive" data-color="Olive Green" data-image="../assets/image/product-4.svg" aria-pressed="false" aria-label="Olive Green color"></button>
-                  <button type="button" class="color-chip color-ivory" data-color="Ivory Sand" data-image="../assets/image/product-3.svg" aria-pressed="false" aria-label="Ivory Sand color"></button>
-                </div>
-              </div>
-
-              <div class="selection-block mb-4">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="section-label mb-0">Size</h2>
-                  <span class="text-muted small">Selected: <strong id="selectedSizeText">M</strong></span>
-                </div>
-                <div class="size-grid" role="radiogroup" aria-label="Product sizes">
-                  <button type="button" class="size-chip" data-size="XS" aria-pressed="false">XS</button>
-                  <button type="button" class="size-chip" data-size="S" aria-pressed="false">S</button>
-                  <button type="button" class="size-chip active" data-size="M" aria-pressed="true">M</button>
-                  <button type="button" class="size-chip" data-size="L" aria-pressed="false">L</button>
-                  <button type="button" class="size-chip" data-size="XL" aria-pressed="false">XL</button>
-                </div>
-              </div>
-
-              <div class="selection-block mb-4">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                  <h2 class="section-label mb-0">Quantity</h2>
-                  <span class="text-muted small">Only a few left at this price</span>
-                </div>
-                <div class="quantity-control">
-                  <button type="button" class="qty-btn" id="decreaseQty" aria-label="Decrease quantity">&minus;</button>
-                  <input type="text" id="quantityInput" class="qty-input" value="1" readonly aria-label="Selected quantity">
-                  <button type="button" class="qty-btn" id="increaseQty" aria-label="Increase quantity">+</button>
-                </div>
-              </div>
-
-              <div class="action-row mb-3">
-                <button type="button" class="btn btn-dark action-btn-primary" id="addToCartBtn">Add to Cart</button>
-                <button type="button" class="btn btn-danger action-btn-primary" id="buyNowBtn">Buy Now</button>
-                <button type="button" class="btn btn-outline-dark action-btn-icon" id="wishlistBtn" aria-pressed="false">
-                  <span class="wishlist-heart">&#9825;</span>
-                  <span>Add to Wishlist</span>
-                </button>
-              </div>
-
-              <div class="selection-summary mb-4" id="selectionSummary">
-                Selected: Midnight Black | Size M | Qty 1
-              </div>
-
-              <div class="delivery-card card border-0 bg-soft">
-                <div class="card-body p-3 p-md-4">
-                  <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
-                    <h2 class="section-label mb-0">Delivery Checker</h2>
-                    <span class="text-muted small">Enter your pincode</span>
-                  </div>
-                  <form id="deliveryForm" class="delivery-form">
-                    <div class="input-group">
-                      <input type="text" id="pincodeInput" class="form-control" placeholder="Enter 6-digit pincode" inputmode="numeric" maxlength="6" aria-label="Enter delivery pincode">
-                      <button type="submit" class="btn btn-outline-danger">Check</button>
-                    </div>
-                  </form>
-                  <div id="deliveryStatus" class="delivery-status mt-3" aria-live="polite">
-                    Delivery available across most metro and tier-1 cities.
-                  </div>
-                </div>
-              </div>
-
-              <div class="offers-card card border-0 mt-4">
-                <div class="card-body p-3 p-md-4">
-                  <h2 class="section-label mb-3">Offers</h2>
-                  <ul class="offer-list mb-0">
-                    <li><span class="offer-dot"></span> Free shipping on orders above &#8377;2,999</li>
-                    <li><span class="offer-dot"></span> Easy returns within 7 days</li>
-                    <li><span class="offer-dot"></span> Secure payment with multiple options</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+      <section id="listingSection" class="section-space d-none">
+        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <p class="eyebrow mb-2">Step 3</p>
+            <h2 class="mb-2" id="listingHeading">Product Listing</h2>
+            <p class="section-copy mb-0" id="listingCopy"></p>
+          </div>
+          <div class="listing-tools">
+            <select class="form-select form-select-sm" id="sortSelect" aria-label="Sort products">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="row g-3 g-lg-4" id="productGrid"></div>
+      </section>
 
-    <section class="container-xxl py-4">
-      <div class="section-nav card border-0 shadow-sm">
-        <div class="card-body p-3 p-md-4 d-flex flex-wrap gap-2">
-          <a href="#description" data-scroll class="section-nav-link">Description</a>
-          <a href="#reviews" data-scroll class="section-nav-link">Customer Reviews</a>
-          <a href="#related" data-scroll class="section-nav-link">Related Products</a>
-          <a href="#recently-viewed" data-scroll class="section-nav-link">Recently Viewed</a>
-          <a href="#bundle" data-scroll class="section-nav-link">Frequently Bought Together</a>
-          <a href="#faq" data-scroll class="section-nav-link">FAQ</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="container-xxl py-4" id="description">
-      <div class="row g-4">
-        <div class="col-12 col-xl-7">
-          <div class="content-card card border-0 shadow-sm h-100">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              <div class="section-header mb-4">
-                <p class="section-kicker">Product Description</p>
-                <h2 class="section-title mb-0">Refined tailoring for modern layering</h2>
-              </div>
-              <p class="text-secondary mb-3">
-                Designed for a clean, elevated silhouette, this overshirt jacket pairs a structured shoulder with a softly brushed finish. It works over tees, shirts, and lightweight knits, making it a versatile layer for workdays, travel, and relaxed evenings.
-              </p>
-              <p class="text-secondary mb-4">
-                The matte finish keeps the look understated, while the sharp seam placement and minimal hardware give it the premium feel expected from a modern fashion wardrobe. Pair it with wide-leg trousers, denim, or tailored joggers for effortless styling.
-              </p>
-              <div class="highlights-grid">
-                <div class="highlight-card">
-                  <span class="highlight-number">01</span>
-                  <h3>Soft structure</h3>
-                  <p>Tailored drape with enough room for comfortable layering.</p>
-                </div>
-                <div class="highlight-card">
-                  <span class="highlight-number">02</span>
-                  <h3>Seasonless tone</h3>
-                  <p>Neutral palette that complements capsule wardrobes.</p>
-                </div>
-                <div class="highlight-card">
-                  <span class="highlight-number">03</span>
-                  <h3>Premium touch</h3>
-                  <p>Clean finishing and subtle detailing for an elevated finish.</p>
-                </div>
-              </div>
-            </div>
+      <section id="detailSection" class="section-space d-none">
+        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+          <div>
+            <p class="eyebrow mb-2">Step 4</p>
+            <h2 class="mb-2">Product Details</h2>
+            <p class="section-copy mb-0">A premium view with gallery, selections, trust cues, and discovery content.</p>
           </div>
+          <button class="btn btn-outline-dark btn-sm" type="button" id="backToListingBtn">Back to listing</button>
         </div>
 
-        <div class="col-12 col-xl-5">
-          <div class="content-card card border-0 shadow-sm h-100">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              <div class="section-header mb-4">
-                <p class="section-kicker">Specifications</p>
-                <h2 class="section-title mb-0">Product Specs</h2>
-              </div>
-              <div class="table-responsive">
-                <table class="table specs-table align-middle mb-0">
-                  <tbody>
-                    <tr><th scope="row">Material</th><td>Wool blend with recycled lining</td></tr>
-                    <tr><th scope="row">Fit</th><td>Relaxed tailored fit</td></tr>
-                    <tr><th scope="row">Closure</th><td>Button front</td></tr>
-                    <tr><th scope="row">Sleeves</th><td>Long sleeve</td></tr>
-                    <tr><th scope="row">Care</th><td>Dry clean recommended</td></tr>
-                    <tr><th scope="row">Origin</th><td>Designed in India</td></tr>
-                    <tr><th scope="row">Available Sizes</th><td>XS, S, M, L, XL</td></tr>
-                    <tr><th scope="row">Model Height</th><td>6'1" wearing size M</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        <nav aria-label="breadcrumb" class="mb-4">
+          <ol class="breadcrumb luxury-breadcrumb mb-0" id="detailBreadcrumb"></ol>
+        </nav>
 
-    <section class="container-xxl py-4" id="reviews">
-      <div class="section-header mb-4">
-        <p class="section-kicker">Customer Reviews</p>
-        <h2 class="section-title mb-0">Loved for fit, fabric, and finish</h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-xl-8">
+        <div class="detail-card">
           <div class="row g-4">
-            <div class="col-12">
-              <div class="review-card card border-0 shadow-sm">
-                <div class="card-body p-3 p-md-4">
-                  <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-3">
-                    <div>
-                      <h3 class="review-title mb-1">Excellent cut and very premium finish</h3>
-                      <div class="stars small"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-                    </div>
-                    <span class="review-badge">Verified Purchase</span>
-                  </div>
-                  <p class="text-secondary mb-3">
-                    The jacket feels far more expensive than the price suggests. The shoulders sit perfectly, the fabric has a rich texture, and it layers beautifully over a tee or knit.
-                  </p>
-                  <div class="review-meta">Aarav M. &middot; 2 days ago</div>
+            <div class="col-lg-6">
+              <div class="gallery-shell">
+                <button class="icon-fab gallery-wishlist" type="button" id="galleryWishlistBtn" aria-label="Toggle wishlist">
+                  <i class="bi bi-heart"></i>
+                </button>
+                <div class="gallery-image-wrap">
+                  <img id="mainImage" src="../assets/image/product-1.svg" alt="Product image">
                 </div>
               </div>
+              <div class="thumb-grid mt-3" id="thumbGrid"></div>
             </div>
-            <div class="col-12 col-md-6">
-              <div class="review-card card border-0 shadow-sm h-100">
-                <div class="card-body p-3 p-md-4">
-                  <div class="stars small mb-2"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span class="star-muted">&#9733;</span></div>
-                  <h3 class="review-title mb-2">Great everyday outer layer</h3>
-                  <p class="text-secondary mb-3">
-                    I wore it for a dinner outing and the styling worked with both denim and trousers. Sized true to the chart.
-                  </p>
-                  <div class="review-meta">Naina S. &middot; 1 week ago</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="review-card card border-0 shadow-sm h-100">
-                <div class="card-body p-3 p-md-4">
-                  <div class="stars small mb-2"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
-                  <h3 class="review-title mb-2">Sharp silhouette, easy to style</h3>
-                  <p class="text-secondary mb-3">
-                    Soft inside, structured outside. This is exactly the kind of piece that finishes an outfit cleanly.
-                  </p>
-                  <div class="review-meta">Dev P. &middot; 2 weeks ago</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-12 col-xl-4">
-          <div class="content-card card border-0 shadow-sm h-100">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              <div class="section-header mb-4">
-                <p class="section-kicker">Rating Breakdown</p>
-                <h2 class="section-title mb-0">What shoppers say</h2>
+            <div class="col-lg-6">
+              <p class="eyebrow mb-2">Premium Edit</p>
+              <h3 class="detail-title mb-2" id="detailName">Product name</h3>
+              <div class="detail-meta d-flex flex-wrap align-items-center gap-2 mb-3">
+                <span class="brand-pill" id="detailBrand">Brand</span>
+                <span class="rating-pill" id="detailRating">★★★★☆ 4.8</span>
+                <span class="muted-pill" id="detailReviews">120 reviews</span>
+                <span class="muted-pill" id="detailStock">In stock</span>
               </div>
-              <div class="score-overview mb-4">
-                <div class="score-number">4.6</div>
+
+              <div class="price-wrap mb-3">
+                <strong class="price-current" id="detailPrice">₹0</strong>
+                <span class="price-old" id="detailOldPrice">₹0</span>
+                <span class="discount-pill" id="detailDiscount">-0%</span>
+              </div>
+
+              <div class="info-grid mb-4">
+                <div><span>SKU</span><strong id="detailSku">SKU</strong></div>
+                <div><span>Fabric</span><strong id="detailFabric">Fabric</strong></div>
+                <div><span>Pattern</span><strong id="detailPattern">Pattern</strong></div>
+                <div><span>Fit</span><strong id="detailFit">Fit</strong></div>
+                <div><span>Occasion</span><strong id="detailOccasion">Occasion</strong></div>
+                <div><span>Availability</span><strong id="detailAvailability">Availability</strong></div>
+              </div>
+
+              <div class="selection-block mb-4">
+                <div class="selection-label">Size</div>
+                <div class="chip-group" id="sizeGroup"></div>
+              </div>
+
+              <div class="selection-block mb-4">
+                <div class="selection-label">Color</div>
+                <div class="chip-group" id="colorGroup"></div>
+              </div>
+
+              <div class="quantity-row mb-4">
                 <div>
-                  <div class="stars mb-1"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span class="star-muted">&#9733;</span></div>
-                  <p class="text-muted small mb-0">Based on 3,248 reviews</p>
+                  <div class="selection-label">Quantity</div>
+                  <div class="quantity-control">
+                    <button type="button" class="qty-btn" id="qtyDecrease" aria-label="Decrease quantity">-</button>
+                    <input type="text" id="quantityInput" value="1" readonly>
+                    <button type="button" class="qty-btn" id="qtyIncrease" aria-label="Increase quantity">+</button>
+                  </div>
+                </div>
+                <div class="trust-stack">
+                  <span><i class="bi bi-truck"></i> Fast delivery</span>
+                  <span><i class="bi bi-shield-check"></i> Secure payment</span>
+                  <span><i class="bi bi-arrow-counterclockwise"></i> Easy returns</span>
                 </div>
               </div>
-              <div class="rating-bars">
-                <div class="rating-bar-row">
-                  <span>5</span>
-                  <div class="rating-track"><span class="bar-72"></span></div>
-                  <strong>72%</strong>
-                </div>
-                <div class="rating-bar-row">
-                  <span>4</span>
-                  <div class="rating-track"><span class="bar-18"></span></div>
-                  <strong>18%</strong>
-                </div>
-                <div class="rating-bar-row">
-                  <span>3</span>
-                  <div class="rating-track"><span class="bar-6"></span></div>
-                  <strong>6%</strong>
-                </div>
-                <div class="rating-bar-row">
-                  <span>2</span>
-                  <div class="rating-track"><span class="bar-3"></span></div>
-                  <strong>3%</strong>
-                </div>
-                <div class="rating-bar-row">
-                  <span>1</span>
-                  <div class="rating-track"><span class="bar-1"></span></div>
-                  <strong>1%</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="container-xxl py-4" id="related">
-      <div class="section-header mb-4">
-        <p class="section-kicker">Related Products</p>
-        <h2 class="section-title mb-0">Complete the look</h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="product-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-2.svg" class="card-img-top product-card-img" alt="Wool Blend Shacket">
-            <div class="card-body">
-              <p class="card-eyebrow mb-1">Aureline</p>
-              <h3 class="card-title h6 mb-2">Wool Blend Shacket</h3>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="price-text">&#8377;1,499</span>
-                <span class="text-muted small text-decoration-line-through">&#8377;1,999</span>
+              <div class="action-row mb-4">
+                <button type="button" class="btn btn-accent flex-fill" id="addToCartBtn"><i class="bi bi-bag me-2"></i>Add to Cart</button>
+                <button type="button" class="btn btn-dark flex-fill" id="buyNowBtn"><i class="bi bi-lightning-charge me-2"></i>Buy Now</button>
+                <button type="button" class="btn btn-outline-dark" id="wishlistBtn"><i class="bi bi-heart me-2"></i>Wishlist</button>
+                <button type="button" class="btn btn-outline-dark" id="compareBtn"><i class="bi bi-shuffle me-2"></i>Compare</button>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="product-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-3.svg" class="card-img-top product-card-img" alt="Relaxed Tailored Blazer">
-            <div class="card-body">
-              <p class="card-eyebrow mb-1">Aureline</p>
-              <h3 class="card-title h6 mb-2">Relaxed Tailored Blazer</h3>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="price-text">&#8377;2,299</span>
-                <span class="text-muted small text-decoration-line-through">&#8377;2,999</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="product-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-4.svg" class="card-img-top product-card-img" alt="Layered Utility Jacket">
-            <div class="card-body">
-              <p class="card-eyebrow mb-1">Aureline</p>
-              <h3 class="card-title h6 mb-2">Layered Utility Jacket</h3>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="price-text">&#8377;1,799</span>
-                <span class="text-muted small text-decoration-line-through">&#8377;2,399</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="product-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-5.svg" class="card-img-top product-card-img" alt="Minimalist Overshirt">
-            <div class="card-body">
-              <p class="card-eyebrow mb-1">Aureline</p>
-              <h3 class="card-title h6 mb-2">Minimalist Overshirt</h3>
-              <div class="d-flex justify-content-between align-items-center">
-                <span class="price-text">&#8377;1,199</span>
-                <span class="text-muted small text-decoration-line-through">&#8377;1,699</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="container-xxl py-4" id="recently-viewed">
-      <div class="section-header mb-4">
-        <p class="section-kicker">Recently Viewed</p>
-        <h2 class="section-title mb-0">Your recent fashion picks</h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="recent-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-1.svg" class="card-img-top product-card-img" alt="Recently viewed jacket">
-            <div class="card-body">
-              <h3 class="card-title h6 mb-1">Slim Fit Shirt Jacket</h3>
-              <p class="text-muted small mb-2">&#8377;1,299</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="recent-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-2.svg" class="card-img-top product-card-img" alt="Recently viewed blazer">
-            <div class="card-body">
-              <h3 class="card-title h6 mb-1">Structured Blazer</h3>
-              <p class="text-muted small mb-2">&#8377;2,499</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="recent-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-3.svg" class="card-img-top product-card-img" alt="Recently viewed coat">
-            <div class="card-body">
-              <h3 class="card-title h6 mb-1">Relaxed Coat</h3>
-              <p class="text-muted small mb-2">&#8377;2,799</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <div class="recent-card card border-0 shadow-sm h-100">
-            <img src="../assets/image/product-4.svg" class="card-img-top product-card-img" alt="Recently viewed overshirt">
-            <div class="card-body">
-              <h3 class="card-title h6 mb-1">Textured Overshirt</h3>
-              <p class="text-muted small mb-2">&#8377;1,699</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container-xxl py-4" id="bundle">
-      <div class="section-header mb-4">
-        <p class="section-kicker">Frequently Bought Together</p>
-        <h2 class="section-title mb-0">Build the full outfit</h2>
-      </div>
-      <div class="row g-4 align-items-stretch">
-        <div class="col-12 col-xl-8">
-          <div class="bundle-panel card border-0 shadow-sm h-100">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              <div class="row g-3">
-                <div class="col-12 col-md-4">
-                  <label class="bundle-item card border-0 shadow-sm h-100">
-                    <div class="card-body">
-                      <input class="form-check-input bundle-check" type="checkbox" checked data-bundle-item data-price="1299">
-                      <img src="../assets/image/product-1.svg" class="bundle-image mt-3" alt="Tailored Overshirt Jacket">
-                      <h3 class="h6 mt-3 mb-1">Tailored Overshirt Jacket</h3>
-                      <p class="text-muted small mb-0">Core layer</p>
-                    </div>
-                  </label>
+              <form class="delivery-checker" id="deliveryForm">
+                <label for="pincodeInput" class="selection-label mb-2">Delivery checker</label>
+                <div class="delivery-form-row">
+                  <input type="text" class="form-control" id="pincodeInput" placeholder="Enter 6-digit pincode">
+                  <button type="submit" class="btn btn-outline-dark">Check</button>
                 </div>
-                <div class="col-12 col-md-4">
-                  <label class="bundle-item card border-0 shadow-sm h-100">
-                    <div class="card-body">
-                      <input class="form-check-input bundle-check" type="checkbox" checked data-bundle-item data-price="899">
-                      <img src="../assets/image/product-5.svg" class="bundle-image mt-3" alt="Premium Cotton Tee">
-                      <h3 class="h6 mt-3 mb-1">Premium Cotton Tee</h3>
-                      <p class="text-muted small mb-0">Base layer</p>
-                    </div>
-                  </label>
-                </div>
-                <div class="col-12 col-md-4">
-                  <label class="bundle-item card border-0 shadow-sm h-100">
-                    <div class="card-body">
-                      <input class="form-check-input bundle-check" type="checkbox" checked data-bundle-item data-price="1699">
-                      <img src="../assets/image/product-4.svg" class="bundle-image mt-3" alt="Tailored Trousers">
-                      <h3 class="h6 mt-3 mb-1">Tailored Trousers</h3>
-                      <p class="text-muted small mb-0">Bottom wear</p>
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xl-4">
-          <div class="bundle-summary card border-0 shadow-sm h-100">
-            <div class="card-body p-3 p-md-4 p-xl-5">
-              <p class="section-kicker mb-2">Bundle Summary</p>
-              <h3 class="h4 mb-3">Save more when you buy together</h3>
-              <div class="bundle-total-row">
-                <span>Selected bundle total</span>
-                <strong id="bundleTotal">&#8377;3,897</strong>
-              </div>
-              <div class="bundle-total-row text-muted">
-                <span>Bundle saving</span>
-                <strong id="bundleSavings">&#8377;300</strong>
-              </div>
-              <button type="button" class="btn btn-dark w-100 mt-4" id="addBundleBtn">Add Bundle to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="container-xxl py-4" id="faq">
-      <div class="section-header mb-4">
-        <p class="section-kicker">FAQ</p>
-        <h2 class="section-title mb-0">Frequently asked questions</h2>
-      </div>
-      <div class="faq-list">
-        <article class="faq-item card border-0 shadow-sm is-open">
-          <button type="button" class="faq-question" data-faq-toggle aria-expanded="true">
-            <span>How do I choose the right size?</span>
-            <span class="faq-toggle-mark">+</span>
-          </button>
-          <div class="faq-answer">
-            Check the size guide and compare the measurements against a jacket you already own. The fit is relaxed, so if you prefer a closer silhouette, size down.
-          </div>
-        </article>
-        <article class="faq-item card border-0 shadow-sm">
-          <button type="button" class="faq-question" data-faq-toggle aria-expanded="false">
-            <span>What is the return policy?</span>
-            <span class="faq-toggle-mark">+</span>
-          </button>
-          <div class="faq-answer" hidden>
-            Returns are accepted within 7 days of delivery, provided the item is unworn, unwashed, and has the original tags attached.
-          </div>
-        </article>
-        <article class="faq-item card border-0 shadow-sm">
-          <button type="button" class="faq-question" data-faq-toggle aria-expanded="false">
-            <span>Is cash on delivery available?</span>
-            <span class="faq-toggle-mark">+</span>
-          </button>
-          <div class="faq-answer" hidden>
-            COD availability depends on your pincode. Use the delivery checker above to confirm serviceability for your location.
-          </div>
-        </article>
-        <article class="faq-item card border-0 shadow-sm">
-          <button type="button" class="faq-question" data-faq-toggle aria-expanded="false">
-            <span>How should I care for this piece?</span>
-            <span class="faq-toggle-mark">+</span>
-          </button>
-          <div class="faq-answer" hidden>
-            We recommend dry cleaning to preserve shape and texture. Store on a broad hanger and avoid prolonged direct sunlight.
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="container-xxl py-4" id="newsletter">
-      <div class="newsletter-shell card border-0 shadow-sm overflow-hidden">
-        <div class="card-body p-4 p-xl-5">
-          <div class="row align-items-center g-4">
-            <div class="col-12 col-xl-7">
-              <p class="section-kicker mb-2">Newsletter</p>
-              <h2 class="section-title mb-3">Get style drops, private offers, and early access</h2>
-              <p class="text-secondary mb-0">
-                Join the list for new season arrivals, limited offers, and curated style edits built for everyday dressing.
-              </p>
-            </div>
-            <div class="col-12 col-xl-5">
-              <form id="newsletterForm" class="newsletter-form">
-                <div class="input-group">
-                  <input type="email" class="form-control" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address for newsletter subscription" required>
-                  <button type="submit" class="btn btn-danger">Subscribe</button>
-                </div>
+                <p class="delivery-status mb-0" id="deliveryStatus">Enter your pincode to check delivery availability.</p>
               </form>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="site-footer border-top mt-4">
-    <div class="container-xxl py-4 py-md-5">
-      <div class="row g-4">
-        <div class="col-12 col-md-4">
-          <a class="brand-mark text-decoration-none" href="#">Moda Studio</a>
-          <p class="text-secondary mt-3 mb-0">
-            A refined fashion storefront experience with premium styling, trustworthy delivery, and modern essentials.
-          </p>
-        </div>
-        <div class="col-6 col-md-2">
-          <h3 class="footer-title">Shop</h3>
-          <ul class="footer-list">
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="#">Outerwear</a></li>
-            <li><a href="#">Basics</a></li>
-            <li><a href="#">Accessories</a></li>
-          </ul>
-        </div>
-        <div class="col-6 col-md-2">
-          <h3 class="footer-title">Support</h3>
-          <ul class="footer-list">
-            <li><a href="#">Shipping</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Size Guide</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-md-4">
-          <h3 class="footer-title">Payments</h3>
-          <p class="text-secondary mb-3">Visa, Mastercard, UPI, Net Banking, and Wallets supported.</p>
-          <div class="payment-chips">
-            <span class="payment-chip">Visa</span>
-            <span class="payment-chip">Mastercard</span>
-            <span class="payment-chip">UPI</span>
-            <span class="payment-chip">COD</span>
+        <div class="detail-tabs mt-4">
+          <div class="tab-button-row mb-3" role="tablist" aria-label="Product information tabs">
+            <button class="tab-btn active" type="button" data-tab-target="description">Description</button>
+            <button class="tab-btn" type="button" data-tab-target="specifications">Specifications</button>
+            <button class="tab-btn" type="button" data-tab-target="reviews">Reviews</button>
+            <button class="tab-btn" type="button" data-tab-target="faqs">FAQs</button>
+          </div>
+
+          <div class="tab-panels">
+            <div class="tab-panel active" data-tab-panel="description">
+              <p class="mb-3" id="detailDescription"></p>
+              <ul class="detail-bullets" id="detailHighlights"></ul>
+            </div>
+
+            <div class="tab-panel" data-tab-panel="specifications">
+              <div class="table-responsive">
+                <table class="table table-bordered align-middle detail-table mb-0">
+                  <tbody id="specTableBody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="tab-panel" data-tab-panel="reviews">
+              <div class="review-summary mb-3">
+                <div class="review-score" id="ratingBreakdown">4.8</div>
+                <div>
+                  <div class="stars" id="ratingBreakdownStars"></div>
+                  <p class="section-copy mb-0">Verified customer feedback from recent orders.</p>
+                </div>
+              </div>
+              <div class="review-list" id="reviewCards"></div>
+            </div>
+
+            <div class="tab-panel" data-tab-panel="faqs">
+              <div class="accordion luxury-accordion" id="faqAccordion"></div>
+            </div>
           </div>
         </div>
+
+        <div class="related-section mt-5">
+          <div class="section-heading mb-4">
+            <p class="eyebrow mb-2">Discover More</p>
+            <h2 class="mb-0">Related Products</h2>
+          </div>
+          <div class="row g-3 g-lg-4" id="relatedGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <button class="back-to-top" type="button" id="backToTop" aria-label="Back to top">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <div class="mobile-cart-bar d-lg-none d-none" id="mobileCartBar">
+      <div>
+        <span class="mobile-label">Total</span>
+        <strong id="mobilePrice">₹0</strong>
       </div>
-      <div class="footer-bottom mt-4 pt-3 border-top d-flex flex-column flex-md-row justify-content-between gap-2">
-        <span class="text-secondary small">&copy; 2026 Moda Studio. All rights reserved.</span>
-        <span class="text-secondary small">Fashion e-commerce product details page built with HTML, CSS, Bootstrap 5, and vanilla JavaScript.</span>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-dark btn-sm" type="button" id="mobileWishlistBtn" aria-label="Wishlist">
+          <i class="bi bi-heart"></i>
+        </button>
+        <button class="btn btn-accent btn-sm" type="button" id="mobileAddBtn">Add to Cart</button>
       </div>
     </div>
-  </footer>
 
-  <div class="toast-message" id="toastMessage" role="status" aria-live="polite" aria-atomic="true">
-    <span id="toastText">Added to cart successfully.</span>
+    <div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/product.js"></script>
 </body>
 </html>
