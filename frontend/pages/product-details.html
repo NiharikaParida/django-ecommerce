@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details | Fashion Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet" href="../assets/css/product-details.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+FASHION<span>.</span>
+</div>
+
+<nav>
+
+<ul class="nav-links">
+
+<li><a href="../index.html">Home</a></li>
+
+<li><a href="product.html">Products</a></li>
+
+<li><a href="#">Women</a></li>
+
+<li><a href="#">Men</a></li>
+
+<li><a href="#">Kids</a></li>
+
+<li><a href="#">Accessories</a></li>
+
+<li><a href="#">Sale</a></li>
+
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="nav-icons">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<i class="fa-regular fa-heart"></i>
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<i class="fa-regular fa-user"></i>
+
+</div>
+
+</header>
+
+<section class="breadcrumb-section">
+
+<div class="container">
+
+<nav>
+
+<a href="../index.html">Home</a>
+
+<span>/</span>
+
+<a href="product.html">Products</a>
+
+<span>/</span>
+
+<a href="#">Women</a>
+
+<span>/</span>
+
+<span class="active">
+Party Wear Dress
+</span>
+
+</nav>
+
+</div>
+
+</section>
+
+<section class="product-details">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<div class="gallery">
+
+<div class="main-image">
+
+<img id="mainImage"
+src="../assets/image/product2.jpg"
+alt="Product">
+
+</div>
+
+<div class="thumb-images">
+
+<img class="thumb active"
+src="../assets/image/product2.jpg">
+
+<img class="thumb"
+src="../assets/image/product3.jpg">
+
+<img class="thumb"
+src="../assets/image/product4.jpg">
+
+<img class="thumb"
+src="../assets/image/product1.jpg">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="product-info">
+
+<span class="brand">
+
+ZARA
+
+</span>
+
+<h1>
+
+Women's Luxury Party Wear Dress
+
+</h1>
+
+<div class="rating">
+
+<i class="fas fa-star"></i>
+
+<i class="fas fa-star"></i>
+
+<i class="fas fa-star"></i>
+
+<i class="fas fa-star"></i>
+
+<i class="fas fa-star-half-alt"></i>
+
+<span>
+
+4.8 (326 Reviews)
+
+</span>
+
+</div>
+
+<div class="price">
+
+<h2>
+
+₹2,499
+
+</h2>
+
+<del>
+
+₹3,999
+
+</del>
+
+<span class="discount">
+
+38% OFF
+
+</span>
+
+</div>
+
+<p class="description">
+
+Designed with premium fabric,
+beautiful embroidery and modern
+luxury styling.
+
+Perfect for weddings,
+parties and festive occasions.
+
+</p>
+
+<div class="availability">
+
+<i class="fa-solid fa-circle-check"></i>
+
+In Stock
+
+</div>
+
+<div class="size-section">
+
+<h5>
+
+Select Size
+
+</h5>
+
+<div class="sizes">
+
+<button>XS</button>
+
+<button>S</button>
+
+<button class="active">
+
+M
+
+</button>
+
+<button>L</button>
+
+<button>XL</button>
+
+</div>
+
+</div>
+
+<div class="color-section">
+
+<h5>
+
+Select Color
+
+</h5>
+
+<div class="colors">
+
+<span class="black active"></span>
+
+<span class="red"></span>
+
+<span class="blue"></span>
+
+<span class="green"></span>
+
+</div>
+
+</div>
+<div class="quantity-section">
+
+    <h5>Quantity</h5>
+
+    <div class="quantity-box">
+
+        <button id="minus">-</button>
+
+        <input type="text" id="quantity" value="1" readonly>
+
+        <button id="plus">+</button>
+
+    </div>
+
+</div>
+
+<div class="action-buttons">
+
+    <button class="cart-btn">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        Add to Cart
+
+    </button>
+
+    <button class="buy-btn">
+
+        <i class="fa-solid fa-bolt"></i>
+
+        Buy Now
+
+    </button>
+
+</div>
+
+<div class="extra-buttons">
+
+    <button class="wishlist-btn">
+
+        <i class="fa-regular fa-heart"></i>
+
+        Add to Wishlist
+
+    </button>
+
+    <button class="share-btn">
+
+        <i class="fa-solid fa-share-nodes"></i>
+
+        Share Product
+
+    </button>
+
+</div>
+
+<div class="delivery-box">
+
+    <h5>
+
+        <i class="fa-solid fa-truck-fast"></i>
+
+        Delivery Information
+
+    </h5>
+
+    <ul>
+
+        <li>Free Delivery on orders above ₹999</li>
+
+        <li>Estimated Delivery: 3–5 Business Days</li>
+
+        <li>Cash on Delivery Available</li>
+
+        <li>Express Shipping Available</li>
+
+    </ul>
+
+</div>
+
+<div class="return-box">
+
+    <h5>
+
+        <i class="fa-solid fa-rotate-left"></i>
+
+        Return Policy
+
+    </h5>
+
+    <ul>
+
+        <li>7 Days Easy Return</li>
+
+        <li>100% Original Products</li>
+
+        <li>Secure Online Payments</li>
+
+        <li>Refund within 5 Working Days</li>
+
+    </ul>
+
+</div>
+
+<div class="specifications">
+
+    <h4>
+
+        Product Specifications
+
+    </h4>
+
+    <table class="table">
+
+        <tr>
+
+            <th>Brand</th>
+
+            <td>ZARA</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Category</th>
+
+            <td>Women's Party Wear</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Material</th>
+
+            <td>Premium Cotton Blend</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Fit</th>
+
+            <td>Regular Fit</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Sleeves</th>
+
+            <td>Full Sleeve</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Neck</th>
+
+            <td>Round Neck</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Pattern</th>
+
+            <td>Printed</td>
+
+        </tr>
+
+        <tr>
+
+            <th>Occasion</th>
+
+            <td>Party / Wedding / Festive</td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="reviews-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Customer Reviews
+
+</h2>
+
+<div class="review-card">
+
+<div class="review-header">
+
+<h5>Priya Sharma</h5>
+
+<span>⭐⭐⭐⭐⭐</span>
+
+</div>
+
+<p>
+
+Absolutely loved this dress. The quality is premium,
+the fitting is perfect and the fabric feels luxurious.
+
+</p>
+
+</div>
+
+<div class="review-card">
+
+<div class="review-header">
+
+<h5>Ananya Das</h5>
+
+<span>⭐⭐⭐⭐☆</span>
+
+</div>
+
+<p>
+
+Beautiful design and worth the price.
+Delivery was very fast and packaging was excellent.
+
+</p>
+
+</div>
+
+<div class="review-card">
+
+<div class="review-header">
+
+<h5>Riya Mohanty</h5>
+
+<span>⭐⭐⭐⭐⭐</span>
+
+</div>
+
+<p>
+
+Perfect for weddings and festive occasions.
+Highly recommended.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bought-section">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Frequently Bought Together
+
+</h2>
+
+<div class="row g-4">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/bag.png" alt="Bag">
+
+<h5>Leather Hand Bag</h5>
+
+<p>₹1,999</p>
+
+<button class="small-btn">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/heels.png" alt="Heels">
+
+<h5>High Heels</h5>
+
+<p>₹2,299</p>
+
+<button class="small-btn">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/jewellery.png" alt="Jewellery">
+
+<h5>Diamond Necklace</h5>
+
+<p>₹3,499</p>
+
+<button class="small-btn">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/watch.png" alt="Watch">
+
+<h5>Luxury Watch</h5>
+
+<p>₹4,999</p>
+
+<button class="small-btn">
+
+Add to Cart
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="related-products">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Related Products
+
+</h2>
+
+<div class="row g-4">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/product1.jpg">
+
+<h5>Elegant Dress</h5>
+
+<p>₹2,199</p>
+
+<a href="product-details.html" class="small-btn">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/product2.jpg">
+
+<h5>Party Collection</h5>
+
+<p>₹2,699</p>
+
+<a href="product-details.html" class="small-btn">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/product3.jpg">
+
+<h5>Classic Wear</h5>
+
+<p>₹1,999</p>
+
+<a href="product-details.html" class="small-btn">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="product-card">
+
+<img src="../assets/image/product4.jpg">
+
+<h5>Luxury Outfit</h5>
+
+<p>₹3,299</p>
+
+<a href="product-details.html" class="small-btn">
+
+View Details
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section class="recent-products">
+<div class="container">
+<h2 class="section-title">
+Recently Viewed
+</h2>
+<div class="row g-4">
+<div class="col-lg-3 col-md-6">
+<div class="product-card">
+<img src="../assets/image/product5.jpg">
+<h5>Summer Dress</h5>
+<p>₹1,799</p>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="product-card">
+<img src="../assets/image/product6.jpg">
+<h5>Casual Outfit</h5>
+<p>₹2,099</p>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="product-card">
+<img src="../assets/image/product7.jpg">
+<h5>Premium Jacket</h5>
+<p>₹3,899</p>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<div class="product-card">
+<img src="../assets/image/product8.jpg">
+<h5>Luxury Fashion</h5>
+<p>₹2,899</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container text-center">
+<h3>FASHION.</h3>
+<p>
+Premium Fashion Store for Men, Women & Kids.
+</p>
+<div class="social-icons">
+<i class="fab fa-facebook-f"></i>
+<i class="fab fa-instagram"></i>
+<i class="fab fa-x-twitter"></i>
+<i class="fab fa-youtube"></i>
+</div>
+<p class="copyright">
+© 2026 Fashion Store. All Rights Reserved.
+</p>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/product-details.js"></script>
+</body>
+</html>
