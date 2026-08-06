@@ -1,248 +1,595 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="Premium fashion product module with categories, subcategories, listing, and detailed product view.">
-  <title>Luxury Fashion Product Module</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/product.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | Fashion Store</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/product.css">
+
 </head>
+
 <body>
-  <div class="product-module">
-    <main class="container-xxl py-4 py-lg-5">
-      <section class="module-intro mb-4">
-        <p class="eyebrow mb-2">Product Module</p>
-        <div class="module-intro-panel">
-          <div>
-            <h1>Browse premium fashion by category, subcategory, and product.</h1>
-            <p class="section-copy mb-0">A focused shopping experience with modern luxury styling, responsive cards, and a polished product detail view.</p>
-          </div>
-          <div class="module-chips d-flex flex-wrap gap-2">
-            <span class="module-chip">Categories</span>
-            <span class="module-chip">Subcategories</span>
-            <span class="module-chip">Products</span>
-            <span class="module-chip">Details</span>
-          </div>
-        </div>
-      </section>
 
-      <section id="categorySection" class="section-space">
-        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
-          <div>
-            <p class="eyebrow mb-2">Step 1</p>
-            <h2 class="mb-2">Shop Categories</h2>
-            <p class="section-copy mb-0">Choose a category to reveal curated subcategories.</p>
-          </div>
-          <button class="btn btn-outline-dark btn-sm" type="button" id="resetFlowBtn">Reset flow</button>
-        </div>
-        <div class="row g-3 g-lg-4" id="categoryGrid"></div>
-      </section>
+<header class="navbar">
 
-      <section id="subcategorySection" class="section-space d-none">
-        <div class="section-heading mb-4">
-          <p class="eyebrow mb-2">Step 2</p>
-          <h2 class="mb-2" id="subcategoryHeading">Subcategories</h2>
-          <p class="section-copy mb-0" id="subcategoryCopy"></p>
-        </div>
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb luxury-breadcrumb mb-0" id="breadcrumbTrail"></ol>
-        </nav>
-        <div class="row g-3 g-lg-4" id="subcategoryGrid"></div>
-      </section>
+    <div class="logo">
 
-      <section id="listingSection" class="section-space d-none">
-        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
-          <div>
-            <p class="eyebrow mb-2">Step 3</p>
-            <h2 class="mb-2" id="listingHeading">Product Listing</h2>
-            <p class="section-copy mb-0" id="listingCopy"></p>
-          </div>
-          <div class="listing-tools">
-            <select class="form-select form-select-sm" id="sortSelect" aria-label="Sort products">
-              <option value="featured">Featured</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="rating">Top Rated</option>
-            </select>
-          </div>
-        </div>
-        <div class="row g-3 g-lg-4" id="productGrid"></div>
-      </section>
+        FASHION<span>.</span>
 
-      <section id="detailSection" class="section-space d-none">
-        <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
-          <div>
-            <p class="eyebrow mb-2">Step 4</p>
-            <h2 class="mb-2">Product Details</h2>
-            <p class="section-copy mb-0">A premium view with gallery, selections, trust cues, and discovery content.</p>
-          </div>
-          <button class="btn btn-outline-dark btn-sm" type="button" id="backToListingBtn">Back to listing</button>
-        </div>
-
-        <nav aria-label="breadcrumb" class="mb-4">
-          <ol class="breadcrumb luxury-breadcrumb mb-0" id="detailBreadcrumb"></ol>
-        </nav>
-
-        <div class="detail-card">
-          <div class="row g-4">
-            <div class="col-lg-6">
-              <div class="gallery-shell">
-                <button class="icon-fab gallery-wishlist" type="button" id="galleryWishlistBtn" aria-label="Toggle wishlist">
-                  <i class="bi bi-heart"></i>
-                </button>
-                <div class="gallery-image-wrap">
-                  <img id="mainImage" src="../assets/image/product-1.svg" alt="Product image">
-                </div>
-              </div>
-              <div class="thumb-grid mt-3" id="thumbGrid"></div>
-            </div>
-
-            <div class="col-lg-6">
-              <p class="eyebrow mb-2">Premium Edit</p>
-              <h3 class="detail-title mb-2" id="detailName">Product name</h3>
-              <div class="detail-meta d-flex flex-wrap align-items-center gap-2 mb-3">
-                <span class="brand-pill" id="detailBrand">Brand</span>
-                <span class="rating-pill" id="detailRating">★★★★☆ 4.8</span>
-                <span class="muted-pill" id="detailReviews">120 reviews</span>
-                <span class="muted-pill" id="detailStock">In stock</span>
-              </div>
-
-              <div class="price-wrap mb-3">
-                <strong class="price-current" id="detailPrice">₹0</strong>
-                <span class="price-old" id="detailOldPrice">₹0</span>
-                <span class="discount-pill" id="detailDiscount">-0%</span>
-              </div>
-
-              <div class="info-grid mb-4">
-                <div><span>SKU</span><strong id="detailSku">SKU</strong></div>
-                <div><span>Fabric</span><strong id="detailFabric">Fabric</strong></div>
-                <div><span>Pattern</span><strong id="detailPattern">Pattern</strong></div>
-                <div><span>Fit</span><strong id="detailFit">Fit</strong></div>
-                <div><span>Occasion</span><strong id="detailOccasion">Occasion</strong></div>
-                <div><span>Availability</span><strong id="detailAvailability">Availability</strong></div>
-              </div>
-
-              <div class="selection-block mb-4">
-                <div class="selection-label">Size</div>
-                <div class="chip-group" id="sizeGroup"></div>
-              </div>
-
-              <div class="selection-block mb-4">
-                <div class="selection-label">Color</div>
-                <div class="chip-group" id="colorGroup"></div>
-              </div>
-
-              <div class="quantity-row mb-4">
-                <div>
-                  <div class="selection-label">Quantity</div>
-                  <div class="quantity-control">
-                    <button type="button" class="qty-btn" id="qtyDecrease" aria-label="Decrease quantity">-</button>
-                    <input type="text" id="quantityInput" value="1" readonly>
-                    <button type="button" class="qty-btn" id="qtyIncrease" aria-label="Increase quantity">+</button>
-                  </div>
-                </div>
-                <div class="trust-stack">
-                  <span><i class="bi bi-truck"></i> Fast delivery</span>
-                  <span><i class="bi bi-shield-check"></i> Secure payment</span>
-                  <span><i class="bi bi-arrow-counterclockwise"></i> Easy returns</span>
-                </div>
-              </div>
-
-              <div class="action-row mb-4">
-                <button type="button" class="btn btn-accent flex-fill" id="addToCartBtn"><i class="bi bi-bag me-2"></i>Add to Cart</button>
-                <button type="button" class="btn btn-dark flex-fill" id="buyNowBtn"><i class="bi bi-lightning-charge me-2"></i>Buy Now</button>
-                <button type="button" class="btn btn-outline-dark" id="wishlistBtn"><i class="bi bi-heart me-2"></i>Wishlist</button>
-                <button type="button" class="btn btn-outline-dark" id="compareBtn"><i class="bi bi-shuffle me-2"></i>Compare</button>
-              </div>
-
-              <form class="delivery-checker" id="deliveryForm">
-                <label for="pincodeInput" class="selection-label mb-2">Delivery checker</label>
-                <div class="delivery-form-row">
-                  <input type="text" class="form-control" id="pincodeInput" placeholder="Enter 6-digit pincode">
-                  <button type="submit" class="btn btn-outline-dark">Check</button>
-                </div>
-                <p class="delivery-status mb-0" id="deliveryStatus">Enter your pincode to check delivery availability.</p>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <div class="detail-tabs mt-4">
-          <div class="tab-button-row mb-3" role="tablist" aria-label="Product information tabs">
-            <button class="tab-btn active" type="button" data-tab-target="description">Description</button>
-            <button class="tab-btn" type="button" data-tab-target="specifications">Specifications</button>
-            <button class="tab-btn" type="button" data-tab-target="reviews">Reviews</button>
-            <button class="tab-btn" type="button" data-tab-target="faqs">FAQs</button>
-          </div>
-
-          <div class="tab-panels">
-            <div class="tab-panel active" data-tab-panel="description">
-              <p class="mb-3" id="detailDescription"></p>
-              <ul class="detail-bullets" id="detailHighlights"></ul>
-            </div>
-
-            <div class="tab-panel" data-tab-panel="specifications">
-              <div class="table-responsive">
-                <table class="table table-bordered align-middle detail-table mb-0">
-                  <tbody id="specTableBody"></tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="tab-panel" data-tab-panel="reviews">
-              <div class="review-summary mb-3">
-                <div class="review-score" id="ratingBreakdown">4.8</div>
-                <div>
-                  <div class="stars" id="ratingBreakdownStars"></div>
-                  <p class="section-copy mb-0">Verified customer feedback from recent orders.</p>
-                </div>
-              </div>
-              <div class="review-list" id="reviewCards"></div>
-            </div>
-
-            <div class="tab-panel" data-tab-panel="faqs">
-              <div class="accordion luxury-accordion" id="faqAccordion"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="related-section mt-5">
-          <div class="section-heading mb-4">
-            <p class="eyebrow mb-2">Discover More</p>
-            <h2 class="mb-0">Related Products</h2>
-          </div>
-          <div class="row g-3 g-lg-4" id="relatedGrid"></div>
-        </div>
-      </section>
-    </main>
-
-    <button class="back-to-top" type="button" id="backToTop" aria-label="Back to top">
-      <i class="bi bi-arrow-up"></i>
-    </button>
-
-    <div class="mobile-cart-bar d-lg-none d-none" id="mobileCartBar">
-      <div>
-        <span class="mobile-label">Total</span>
-        <strong id="mobilePrice">₹0</strong>
-      </div>
-      <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-outline-dark btn-sm" type="button" id="mobileWishlistBtn" aria-label="Wishlist">
-          <i class="bi bi-heart"></i>
-        </button>
-        <button class="btn btn-accent btn-sm" type="button" id="mobileAddBtn">Add to Cart</button>
-      </div>
     </div>
 
-    <div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>
-  </div>
+    <nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/product.js"></script>
-</body>
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="product.html">Products</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">Men</a></li>
+
+          <li><a href="#">Kids</a></li>
+
+          <li><a href="#">Accessories</a></li>
+
+          <li><a href="#">Sale</a></li>
+
+          <li><a href="#">Contact</a></li>
+</ul>
+
+    </nav>
+
+    <div class="nav-icons">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <i class="fa-regular fa-heart"></i>
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <i class="fa-regular fa-user"></i>
+
+    </div>
+
+</header>
+
+<section class="products-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <h1>Discover Premium Fashion Collections</h1>
+
+            <p>
+
+                Browse thousands of premium products from top brands.
+
+            </p>
+
+            <div class="search-box">
+
+                <input type="text" placeholder="Search products...">
+
+                <button>
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="categories py-5">
+
+    <div class="container">
+
+        <div class="section-title text-center mb-5">
+
+            <h2>Shop by Category</h2>
+
+            <p>Choose your favorite collection</p>
+
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p1.jpg" alt="Women">
+
+                    <div class="overlay">
+
+                        <h3>Women</h3>
+
+                        <p>1200+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p3.jpg" alt="Men">
+
+                    <div class="overlay">
+
+                        <h3>Men</h3>
+
+                        <p>950+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p2.jpg" alt="Kids">
+
+                    <div class="overlay">
+
+                        <h3>Kids</h3>
+
+                        <p>720+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p4.jpg" alt="Accessories">
+
+                    <div class="overlay">
+
+                        <h3>Accessories</h3>
+
+                        <p>480+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="categories py-2">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- Footwear -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p5.jpg" alt="Footwear">
+
+                    <div class="overlay">
+
+                        <h3>Footwear</h3>
+
+                        <p>680+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Cosmetics -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p6.jpg" alt="Cosmetics">
+
+                    <div class="overlay">
+
+                        <h3>Cosmetics</h3>
+
+                        <p>430+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Jewellery -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p7.jpg" alt="Jewellery">
+
+                    <div class="overlay">
+
+                        <h3>Jewellery</h3>
+
+                        <p>350+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bags -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p8.jpg" alt="Bags">
+
+                    <div class="overlay">
+
+                        <h3>Bags</h3>
+
+                        <p>520+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Watches -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p9.jpg" alt="Watches">
+
+                    <div class="overlay">
+
+                        <h3>Watches</h3>
+
+                        <p>275+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sportswear -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p10.jpg" alt="Sportswear">
+
+                    <div class="overlay">
+
+                        <h3>Sportswear</h3>
+
+                        <p>610+ Products</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- New Arrivals -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p11.jpg" alt="New Arrivals">
+
+                    <div class="overlay">
+
+                        <h3>New Arrivals</h3>
+
+                        <p>Latest Collection</p>
+
+                        <a href="category.html" class="btn btn-dark">
+
+                            Shop Now
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Sale -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-card">
+
+                    <img src="../assets/image/p12.jpg" alt="Sale">
+
+                    <div class="overlay">
+
+                        <h3>Sale</h3>
+
+                        <p>Up to 70% OFF</p>
+
+                        <a href="category.html" class="btn btn-danger">
+
+                            Grab Now
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED COLLECTION ================= -->
+
+<section class="featured-banner">
+
+    <div class="container">
+
+        <div class="banner-content">
+
+            <span>PREMIUM COLLECTION</span>
+
+            <h2>Luxury Fashion That Defines Your Style</h2>
+
+            <p>
+
+                Explore carefully curated collections featuring timeless
+                elegance, premium fabrics, and exclusive designs crafted
+                for every occasion.
+
+            </p>
+
+            <a href="category.html" class="btn btn-dark">
+
+                Shop Collection
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= NEWSLETTER ================= -->
+
+<section class="newsletter">
+
+    <div class="container text-center">
+
+        <h2>
+
+            Subscribe to Our Newsletter
+
+        </h2>
+
+        <p>
+
+            Get updates on new arrivals, exclusive collections and special offers.
+
+        </p>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Enter your email"
+                required>
+
+            <button type="submit">
+
+                Subscribe
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4">
+
+                <h3>FASHION.</h3>
+
+                <p>
+
+                    Luxury fashion destination offering premium collections
+                    for modern lifestyles.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-2">
+
+                <h5>Shop</h5>
+
+                <ul>
+
+                    <li><a href="#">Women</a></li>
+
+                    <li><a href="#">Men</a></li>
+
+                    <li><a href="#">Kids</a></li>
+
+                    <li><a href="#">Accessories</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Customer Care</h5>
+
+                <ul>
+
+                    <li><a href="#">Contact Us</a></li>
+
+                    <li><a href="#">Returns</a></li>
+
+                    <li><a href="#">Shipping</a></li>
+
+                    <li><a href="#">FAQs</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3">
+
+                <h5>Follow Us</h5>
+
+                <div class="social-icons">
+
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="copyright text-center">
+
+            © 2026 Fashion Store. All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/js/product.js"></script></body>
+
 </html>
