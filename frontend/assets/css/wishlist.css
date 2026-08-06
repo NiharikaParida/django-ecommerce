@@ -1,0 +1,990 @@
+/* ==========================================================================
+   INVENTORY MODULE STYLESHEET
+   Luxury Fashion Theme
+   Matches product.css
+========================================================================== */
+
+/* ---------- ROOT VARIABLES ---------- */
+
+:root {
+  --primary: #111827;
+  --accent: #e11d48;
+  --background: #ffffff;
+  --section-bg: #f9fafb;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+
+  --shadow-soft: 0 14px 40px rgba(17, 24, 39, 0.08);
+  --shadow-luxury: 0 24px 64px rgba(17, 24, 39, 0.12);
+
+  --radius-card: 16px;
+  --radius-btn: 12px;
+
+  --transition: 0.25s ease;
+}
+
+/* ---------- RESET ---------- */
+
+*,
+*::before,
+*::after{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+    color:var(--text);
+
+    background:
+    radial-gradient(circle at top left,rgba(225,29,72,.04),transparent 30%),
+    radial-gradient(circle at top right,rgba(17,24,39,.04),transparent 28%),
+    var(--background);
+
+    overflow-x:hidden;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+.inventory-module{
+    position:relative;
+    min-height:100vh;
+}
+
+.section-space{
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+.eyebrow{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+.section-heading h1,
+.section-heading h2,
+.module-intro h1{
+    margin:0;
+    font-weight:800;
+    line-height:1.08;
+    letter-spacing:-.04em;
+    color:var(--primary);
+}
+
+.section-copy{
+    color:var(--muted);
+    max-width:58rem;
+    line-height:1.7;
+}
+
+/* ---------- INTRO PANEL ---------- */
+
+.module-intro-panel{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:1rem;
+
+    padding:1.6rem;
+
+    background:var(--background);
+
+    border:1px solid var(--border);
+    border-radius:var(--radius-card);
+
+    box-shadow:var(--shadow-soft);
+}
+
+.module-intro-panel h1{
+    font-size:clamp(1.8rem,3vw,2.8rem);
+    max-width:14ch;
+}
+
+.module-chips{
+    justify-content:flex-end;
+}
+
+.module-chip{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:.65rem 1rem;
+
+    border:1px solid var(--border);
+    border-radius:999px;
+
+    background:#fff;
+
+    font-size:.85rem;
+    font-weight:600;
+
+    box-shadow:0 10px 22px rgba(17,24,39,.04);
+
+    transition:all var(--transition);
+}
+
+.module-chip:hover{
+    transform:translateY(-2px);
+    border-color:rgba(225,29,72,.25);
+    box-shadow:var(--shadow-soft);
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn{
+    border-radius:var(--radius-btn);
+    font-weight:600;
+    transition:
+    transform var(--transition),
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.btn:hover,
+.btn:focus-visible{
+    transform:translateY(-2px);
+}
+
+.btn-dark{
+    background:var(--primary);
+    border-color:var(--primary);
+}
+
+.btn-dark:hover{
+    background:#1f2937;
+    border-color:#1f2937;
+}
+
+.btn-outline-dark{
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+.btn-outline-dark:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-light{
+    border:1px solid var(--border);
+}
+/* ==========================================================
+   KPI STATISTICS CARDS
+========================================================== */
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius-card);
+
+    box-shadow:var(--shadow-soft);
+
+    transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+
+    height:100%;
+}
+
+.stat-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-luxury);
+    border-color:rgba(225,29,72,.20);
+}
+
+.stat-card span{
+    color:var(--muted);
+    font-size:.82rem;
+    font-weight:600;
+}
+
+.stat-card i{
+    font-size:1.8rem;
+}
+
+.stat-card h3{
+    font-size:2rem;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.stat-card p{
+    margin-bottom:0;
+    font-size:.88rem;
+}
+
+/* ==========================================================
+   SEARCH & FILTER CARD
+========================================================== */
+
+.card{
+    border:none;
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-soft);
+    transition:all var(--transition);
+}
+
+.card:hover{
+    box-shadow:var(--shadow-luxury);
+}
+
+/* ==========================================================
+   SEARCH INPUT
+========================================================== */
+
+.input-group{
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.input-group-text{
+    background:#fff;
+    border:1px solid var(--border);
+    border-right:none;
+    color:var(--muted);
+    padding-left:18px;
+}
+
+.form-control{
+    border:1px solid var(--border);
+    border-left:none;
+    min-height:52px;
+    box-shadow:none;
+}
+
+.form-control:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 .20rem rgba(225,29,72,.10);
+}
+
+/* ==========================================================
+   DROPDOWNS
+========================================================== */
+
+.form-select{
+    min-height:52px;
+
+    border-radius:999px;
+
+    border:1px solid var(--border);
+
+    padding-left:18px;
+
+    box-shadow:none;
+
+    transition:all var(--transition);
+}
+
+.form-select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 .20rem rgba(225,29,72,.10);
+}
+
+/* ==========================================================
+   FILTER BUTTON
+========================================================== */
+
+#resetInventoryFilters{
+    min-height:52px;
+    border-radius:999px;
+}
+
+/* ==========================================================
+   SECTION HEADER
+========================================================== */
+
+.section-heading{
+    margin-bottom:2rem;
+}
+
+.section-heading h2{
+    font-size:2rem;
+    font-weight:800;
+}
+
+.section-heading .btn{
+    padding:.75rem 1.4rem;
+}
+
+/* ==========================================================
+   ICON COLORS
+========================================================== */
+
+.text-primary{
+    color:var(--primary)!important;
+}
+
+.text-warning{
+    color:#d97706!important;
+}
+
+.text-success{
+    color:#15803d!important;
+}
+
+.text-danger{
+    color:var(--accent)!important;
+}
+
+/* ==========================================================
+   SMALL ANIMATIONS
+========================================================== */
+
+.btn,
+.form-control,
+.form-select,
+.card{
+    transition:all .3s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.form-control:hover,
+.form-select:hover{
+    border-color:var(--accent);
+}
+/* ==========================================================
+   INVENTORY TABLE
+   Matches Product.css Luxury Theme
+========================================================== */
+
+.table-responsive{
+    border-radius:var(--radius-card);
+    overflow:hidden;
+}
+
+.table{
+    margin-bottom:0;
+    background:#fff;
+}
+
+.table thead{
+    background:var(--primary);
+}
+
+.table thead th{
+    background:var(--primary);
+    color:#fff;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    border:none;
+    padding:1rem 1.2rem;
+}
+
+.table tbody tr{
+    transition:all var(--transition);
+}
+
+.table tbody tr:hover{
+    background:rgba(17,24,39,.03);
+}
+
+.table tbody td{
+    padding:1rem 1.2rem;
+    vertical-align:middle;
+    border-color:var(--border);
+}
+
+/* ==========================================================
+   PRODUCT IMAGE
+========================================================== */
+
+.table img{
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid var(--border);
+    transition:transform var(--transition),
+               box-shadow var(--transition);
+}
+
+.table tbody tr:hover img{
+    transform:scale(1.08);
+    box-shadow:var(--shadow-soft);
+}
+
+/* ==========================================================
+   PRODUCT NAME
+========================================================== */
+
+.table strong{
+    font-size:.96rem;
+    font-weight:700;
+    color:var(--primary);
+}
+
+.table small{
+    color:var(--muted);
+}
+
+/* ==========================================================
+   SKU CODE
+========================================================== */
+
+code{
+    background:#f3f4f6;
+    color:var(--primary);
+    border-radius:8px;
+    padding:.35rem .55rem;
+    font-size:.82rem;
+    font-weight:600;
+}
+
+/* ==========================================================
+   STATUS BADGES
+========================================================== */
+
+.badge{
+    font-size:.78rem;
+    font-weight:600;
+    padding:.6rem .9rem;
+    border-radius:999px;
+    letter-spacing:.02em;
+}
+
+/* In Stock */
+
+.bg-success-subtle{
+    background:rgba(22,101,52,.10)!important;
+}
+
+.text-success{
+    color:#15803d!important;
+}
+
+/* Low Stock */
+
+.bg-warning-subtle{
+    background:rgba(217,119,6,.12)!important;
+}
+
+.text-warning-emphasis{
+    color:#b45309!important;
+}
+
+/* Out of Stock */
+
+.bg-danger-subtle{
+    background:rgba(225,29,72,.10)!important;
+}
+
+.text-danger{
+    color:var(--accent)!important;
+}
+
+/* ==========================================================
+   ACTION BUTTONS
+========================================================== */
+
+.btn-sm{
+    width:38px;
+    height:38px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    transition:all var(--transition);
+}
+
+.btn-outline-dark:hover{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-outline-danger{
+    border-color:#dc2626;
+    color:#dc2626;
+}
+
+.btn-outline-danger:hover{
+    background:#dc2626;
+    color:#fff;
+}
+
+/* ==========================================================
+   PRODUCT ROW ANIMATION
+========================================================== */
+
+.table tbody tr{
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   INVENTORY CARD
+========================================================== */
+
+.card{
+    overflow:hidden;
+}
+
+/* ==========================================================
+   TABLE SCROLLBAR
+========================================================== */
+
+.table-responsive::-webkit-scrollbar{
+    height:8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb{
+    background:#d1d5db;
+    border-radius:20px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover{
+    background:#9ca3af;
+}
+/* ==========================================================
+   MODALS
+========================================================== */
+
+.modal-content{
+    border:none;
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    box-shadow:var(--shadow-luxury);
+}
+
+.modal-header{
+    border-bottom:1px solid var(--border);
+    padding:1.4rem 1.5rem;
+    background:#fff;
+}
+
+.modal-title{
+    font-weight:700;
+    color:var(--primary);
+}
+
+.modal-body{
+    padding:1.5rem;
+    background:#fff;
+}
+
+.modal-footer{
+    border-top:1px solid var(--border);
+    padding:1.2rem 1.5rem;
+    background:#fff;
+}
+
+.btn-close{
+    box-shadow:none;
+}
+
+/* ==========================================================
+   MODAL FORM
+========================================================== */
+
+.modal label{
+    font-weight:600;
+    color:var(--primary);
+    margin-bottom:.45rem;
+}
+
+.modal .form-control,
+.modal .form-select{
+    min-height:48px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    box-shadow:none;
+}
+
+.modal .form-control:focus,
+.modal .form-select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 .2rem rgba(225,29,72,.10);
+}
+
+.modal .input-group button{
+    min-width:48px;
+}
+
+/* ==========================================================
+   BACK TO TOP
+========================================================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    box-shadow:var(--shadow-luxury);
+
+    transition:all var(--transition);
+
+    z-index:999;
+
+}
+
+.back-to-top:hover{
+
+    transform:translateY(-4px);
+
+    background:var(--accent);
+
+}
+
+.back-to-top.show{
+
+    display:flex;
+
+}
+
+/* ==========================================================
+   TOAST
+========================================================== */
+
+.toast-message{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:90px;
+
+    transform:translateX(-50%);
+
+    background:var(--primary);
+
+    color:#fff;
+
+    padding:14px 24px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    box-shadow:var(--shadow-luxury);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:1050;
+
+}
+
+.toast-message.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================================================
+   BUTTON EFFECTS
+========================================================== */
+
+.btn{
+
+    transition:all .3s ease;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   CARD HOVER
+========================================================== */
+
+.card{
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    box-shadow:var(--shadow-luxury);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+.module-intro-panel{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.module-chips{
+
+justify-content:flex-start;
+
+}
+
+.section-heading{
+
+flex-direction:column;
+
+align-items:flex-start!important;
+
+}
+
+.section-heading .btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.table{
+
+font-size:.9rem;
+
+}
+
+.table img{
+
+width:42px;
+
+height:42px;
+
+}
+
+.stat-card h3{
+
+font-size:1.6rem;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.module-intro-panel{
+
+padding:1.2rem;
+
+}
+
+.module-chip{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.table thead{
+
+display:none;
+
+}
+
+.table,
+
+.table tbody,
+
+.table tr,
+
+.table td{
+
+display:block;
+
+width:100%;
+
+}
+
+.table tr{
+
+margin-bottom:1rem;
+
+border:1px solid var(--border);
+
+border-radius:16px;
+
+overflow:hidden;
+
+box-shadow:var(--shadow-soft);
+
+}
+
+.table td{
+
+text-align:right;
+
+padding-left:45%;
+
+position:relative;
+
+}
+
+.table td::before{
+
+position:absolute;
+
+left:18px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+font-weight:700;
+
+color:var(--primary);
+
+}
+
+.table td:nth-child(1)::before{content:"Product";}
+.table td:nth-child(2)::before{content:"SKU";}
+.table td:nth-child(3)::before{content:"Category";}
+.table td:nth-child(4)::before{content:"Price";}
+.table td:nth-child(5)::before{content:"Stock";}
+.table td:nth-child(6)::before{content:"Status";}
+.table td:nth-child(7)::before{content:"Actions";}
+
+.back-to-top{
+
+right:15px;
+
+bottom:15px;
+
+}
+
+.toast-message{
+
+width:90%;
+
+text-align:center;
+
+}
+
+}
+
+/* ==========================================================
+   SMOOTH FADE ANIMATION
+========================================================== */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.module-intro,
+.stat-card,
+.card{
+
+animation:fadeUp .6s ease;
+
+}
