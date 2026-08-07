@@ -191,7 +191,7 @@ exploreButtons.forEach(button => {
 
     button.addEventListener("click", function () {
 
-        window.location.href = "category.html";
+        window.location.href = button.getAttribute("href") || "product.html";
 
     });
 

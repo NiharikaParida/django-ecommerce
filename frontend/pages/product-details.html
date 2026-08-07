@@ -33,9 +33,9 @@
 
             <li><a href="../index.html">Home</a></li>
             <li><a href="product.html" class="active">Products</a></li>
-            <li><a href="women.html">Women</a></li>
-            <li><a href="men.html">Men</a></li>
-            <li><a href="kids.html">Kids</a></li>
+            <li><a href="categories_women.html">Women</a></li>
+            <li><a href="categories_men.html">Men</a></li>
+            <li><a href="catgories_kids.html">Kids</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
 
@@ -45,10 +45,10 @@
 
     <div class="nav-icons">
 
-        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="#"><i class="fa-regular fa-heart"></i></a>
-        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-        <a href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="product.html"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+        <a href="wishlist.html"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="login.html"><i class="fa-regular fa-user"></i></a>
 
     </div>
 
@@ -83,13 +83,13 @@
 
         </div>
 
-        <div class="thumbnail-images">
+        <div class="thumbnail-images" id="thumbnailImages">
 
-            <img src="../assets/image/d1.jpg" class="thumb active">
+            <img src="../assets/image/product1.jpg" class="thumb active">
 
-            <img src="../assets/image/d2.jpg" class="thumb">
+            <img src="../assets/image/product2.jpg" class="thumb">
 
-            <img src="../assets/image/.jpg" class="thumb">
+            <img src="../assets/image/product3.jpg" class="thumb">
 
             <img src="../assets/image/product4.jpg" class="thumb">
 
@@ -101,7 +101,8 @@
 
     <div class="product-info">
 
-        <span class="brand" id="detailCategory">ZARA</span>
+        <span class="brand" id="detailBrand">ZARA</span>
+        <span class="brand" id="detailCategory">Women</span>
 
         <h1 id="detailName">Women's Floral Printed Dress</h1>
 
@@ -115,11 +116,11 @@
 
         <div class="price" id="detailPriceWrap">
 
-            <span class="new-price">₹2,499</span>
+            <span class="new-price" id="detailPrice">₹2,499</span>
 
-            <span class="old-price">₹3,499</span>
+            <span class="old-price" id="detailOldPrice">₹3,499</span>
 
-            <span class="discount">30% OFF</span>
+            <span class="discount" id="detailDiscount">30% OFF</span>
 
         </div>
 
@@ -132,7 +133,7 @@
 
         <!-- SIZE -->
 
-        <div class="size">
+        <div class="size" id="detailSizes">
 
             <h3>Select Size</h3>
 
@@ -250,6 +251,9 @@
     </div>
 
 </section>
+
+<p id="productNotFound" hidden>Product not found</p>
+
 <!-- ================= PRODUCT HIGHLIGHTS ================= -->
 
 <section class="product-highlights">
@@ -392,7 +396,7 @@
 
         <div class="card">
 
-            <img src="../assets/image/r4.jpg" alt="">
+            <img src="../assets/image/product4.jpg" alt="">
 
             <h4>Elegant Dress</h4>
 
@@ -402,7 +406,7 @@
 
         <div class="card">
 
-            <img src="../assets/image/r1.jpg" alt="">
+            <img src="../assets/image/product1.jpg" alt="">
 
             <h4>Classic Shirt</h4>
 
@@ -412,7 +416,7 @@
 
         <div class="card">
 
-            <img src="../assets/image/r2.jpg" alt="">
+            <img src="../assets/image/product2.jpg" alt="">
 
             <h4>Running Shoes</h4>
 
@@ -422,7 +426,7 @@
 
         <div class="card">
 
-            <img src="../assets/image/r3.jpg" alt="">
+            <img src="../assets/image/product3.jpg" alt="">
 
             <h4>Premium Floral Dress</h4>
 
@@ -469,13 +473,13 @@
 
             <h3>Customer Service</h3>
 
-            <a href="#">FAQs</a>
+<a href="blog.html">FAQs</a>
 
-            <a href="#">Shipping</a>
+<a href="contact.html">Shipping</a>
 
-            <a href="#">Returns</a>
+<a href="contact.html">Returns</a>
 
-            <a href="#">Privacy Policy</a>
+<a href="contact.html">Privacy Policy</a>
 
         </div>
 
@@ -501,6 +505,7 @@
 
 </footer>
 
+<script src="../assets/js/products.js"></script>
 <script src="../assets/js/product-details.js"></script>
 <script src="../assets/js/script.js"></script>
 
