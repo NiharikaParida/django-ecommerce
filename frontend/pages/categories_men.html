@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men</title>
+    <link rel="stylesheet" href="categories_men.css">
+</head>
+
+<body>
+
+    <!-- Page Title -->
+    <section class="page-header">
+        <h1>Men <span>- 386507 items</span></h1>
+    </section>
+
+    <!-- Main Layout: Sidebar + Product Grid -->
+    <main style="display: flex;">
+
+        <!-- Left Sidebar for Filters -->
+        <aside class="sidebar-filters" style="width: 250px;">
+            <h2>FILTERS</h2>
+
+            <!-- Categories Filter -->
+            <div class="filter-group">
+                <h3>CATEGORIES</h3>
+                <ul>
+                    <li><input type="checkbox" id="tshirts"> <label for="tshirts">T-shirt</label></li>
+                    <li><input type="checkbox" id="jeans"> <label for="jeans">Jeans</label></li>
+                    <li><input type="checkbox" id="shirt"> <label for="shirt">Shirt</label></li>
+                    <li><input type="checkbox" id="trouser"> <label for="trouser">Trouser</label></li>
+                    <li><input type="checkbox" id="shoes"> <label for="shoes">Shoes</label></li>
+                    <li><input type="checkbox" id="accessories"> <label for="accessories">Accessories</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>BRAND</h3>
+                <ul>
+                    <li><input type="checkbox" id="seekbuylove"> <label for="seekbuylove">Seekbuylove (39785)</label></li>
+                    <li><input type="checkbox" id="woostro"> <label for="woostro">WOOSTRO (11195)</label></li>
+                    <li><input type="checkbox" id="udnag"> <label for="udnag">UDNAG (9944)</label></li>
+                    <li><input type="checkbox" id="aseria"> <label for="aseria">Aseria (9551)</label></li>
+                    <li><input type="checkbox" id="caseria"> <label for="caseria">Caseria (7403)</label></li>
+                    <li><input type="checkbox" id="modarapido"> <label for="modarapido">Moda Rapido (6025)</label></li>
+                    <li><input type="checkbox" id="roadster"> <label for="roadster">Roadster (5397)</label></li>
+
+                    <!-- Dropdown for more brands using HTML details/summary -->
+                    <details>
+                        <summary
+                            style="cursor: pointer; color: #ff3f6c; font-size: 14px; font-weight: 700; margin-top: 10px; list-style: none;">
+                            + 3 more</summary>
+                        <ul style="margin-top: 8px;">
+                            <li><input type="checkbox" id="herenow"> <label for="herenow">HERE&NOW (5337)</label></li>
+                            <li><input type="checkbox" id="hrx"> <label for="hrx">HRX by Hrithik (4800)</label></li>
+                            <li><input type="checkbox" id="puma"> <label for="puma">Puma (4120)</label></li>
+                        </ul>
+                    </details>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>SIZE</h3>
+                <ul>
+                    <li><input type="checkbox" id="size-xs"> <label for="size-xs">XS</label></li>
+                    <li><input type="checkbox" id="size-s"> <label for="size-s">S</label></li>
+                    <li><input type="checkbox" id="size-m"> <label for="size-m">M</label></li>
+                    <li><input type="checkbox" id="size-l"> <label for="size-l">L</label></li>
+                    <li><input type="checkbox" id="size-xl"> <label for="size-xl">XL</label></li>
+                    <li><input type="checkbox" id="size-xxl"> <label for="size-xxl">XXL</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3>COLOR</h3>
+                <ul>
+                    <li><input type="checkbox" id="color-black"> <label for="color-black"><span
+                                style="display:inline-block; width:12px; height:12px; background-color:black; border-radius:50%; margin-right:5px;"></span>
+                            Black</label></li>
+                    <li><input type="checkbox" id="color-white"> <label for="color-white"><span
+                                style="display:inline-block; width:12px; height:12px; background-color:white; border:1px solid #ccc; border-radius:50%; margin-right:5px;"></span>
+                            White</label></li>
+                    <li><input type="checkbox" id="color-navy"> <label for="color-navy"><span
+                                style="display:inline-block; width:12px; height:12px; background-color:navy; border-radius:50%; margin-right:5px;"></span>
+                            Navy Blue</label></li>
+                    <li><input type="checkbox" id="color-red"> <label for="color-red"><span
+                                style="display:inline-block; width:12px; height:12px; background-color:red; border-radius:50%; margin-right:5px;"></span>
+                            Red</label></li>
+                    <li><input type="checkbox" id="color-grey"> <label for="color-grey"><span
+                                style="display:inline-block; width:12px; height:12px; background-color:grey; border-radius:50%; margin-right:5px;"></span>
+                            Grey</label></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Right Side: Products Listing -->
+        <section class="product-area">
+            <div class="sorting-bar">
+                <span>Brands | colors | Size</span>
+                <select class="sort-dropdown">
+                    <option>Sort by : Recommended</option>
+                    <option value="">Sort by : Low to high</option>
+                    <option value="">Sort by : High to low</option>
+                </select>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" style="display: flex; gap: 20px; flex-wrap: wrap;">
+
+                 <!-- T-SHIRTS -->
+                <div class="product-card" data-category="tshirts">
+                    <img src="" alt="Roadster Graphic T-shirt">
+                    <div class="rating">4.1 ★ | 12k</div>
+                    <h4>Roadster</h4>
+                    <p>Printed Round Neck T-shirt</p>
+                    <div class="price"><strong>Rs. 299</strong> <del>Rs. 599</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="tshirts">
+                    <img src="" alt="Puma Sports T-shirt">
+                    <div class="rating">4.5 ★ | 8.2k</div>
+                    <h4>Puma</h4>
+                    <p>Men Active Sports T-shirt</p>
+                    <div class="price"><strong>Rs. 899</strong> <del>Rs. 1499</del> <span style="color: orange;">(40% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="tshirts">
+                    <img src="" alt="HRX Yellow T-shirt">
+                    <div class="rating">4.2 ★ | 15k</div>
+                    <h4>HRX by Hrithik Roshan</h4>
+                    <p>Yellow Printed T-shirt</p>
+                    <div class="price"><strong>Rs. 349</strong> <del>Rs. 699</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="tshirts">
+                    <img src="" alt="WROGN Slim Fit T-shirt">
+                    <div class="rating">4.0 ★ | 3k</div>
+                    <h4>WROGN</h4>
+                    <p>Slim Fit Graphic T-shirt</p>
+                    <div class="price"><strong>Rs. 650</strong> <del>Rs. 1299</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+                
+                <!-- JEANS -->
+                <div class="product-card" data-category="jeans">
+                    <img src="" alt="Levi's Blue Jeans">
+                    <div class="rating">4.6 ★ | 25k</div>
+                    <h4>Levi's</h4>
+                    <p>Men 511 Slim Fit Jeans</p>
+                    <div class="price"><strong>Rs. 1899</strong> <del>Rs. 3299</del> <span style="color: orange;">(42% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="jeans">
+                    <img src="" alt="Wrangler Black Jeans">
+                    <div class="rating">4.3 ★ | 9.1k</div>
+                    <h4>Wrangler</h4>
+                    <p>Men Millard Skinny Fit Jeans</p>
+                    <div class="price"><strong>Rs. 1250</strong> <del>Rs. 2499</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="jeans">
+                    <img src="" alt="Spykar Distressed Jeans">
+                    <div class="rating">4.1 ★ | 4k</div>
+                    <h4>Spykar</h4>
+                    <p>Distressed Denim Jeans</p>
+                    <div class="price"><strong>Rs. 1499</strong> <del>Rs. 2999</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="jeans">
+                    <img src="" alt="Roadster Regular Jeans">
+                    <div class="rating">3.9 ★ | 18k</div>
+                    <h4>Roadster</h4>
+                    <p>Men Regular Fit Jeans</p>
+                    <div class="price"><strong>Rs. 899</strong> <del>Rs. 1799</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <!-- SHIRTS -->
+                <div class="product-card" data-category="shirt">
+                    <img src="" alt="Highlander Casual Shirt">
+                    <div class="rating">4.4 ★ | 11k</div>
+                    <h4>Highlander</h4>
+                    <p>Men Slim Fit Casual Shirt</p>
+                    <div class="price"><strong>Rs. 699</strong> <del>Rs. 1399</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shirt">
+                    <img src="" alt="Arrow Formal Shirt">
+                    <div class="rating">4.7 ★ | 6.5k</div>
+                    <h4>Arrow</h4>
+                    <p>Men Pure Cotton Formal Shirt</p>
+                    <div class="price"><strong>Rs. 1299</strong> <del>Rs. 2599</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shirt">
+                    <img src="" alt="U.S. Polo Assn Shirt">
+                    <div class="rating">4.5 ★ | 14k</div>
+                    <h4>U.S. Polo Assn.</h4>
+                    <p>Checked Casual Shirt</p>
+                    <div class="price"><strong>Rs. 1149</strong> <del>Rs. 2299</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shirt">
+                    <img src="" alt="Tommy Hilfiger Shirt">
+                    <div class="rating">4.8 ★ | 3.2k</div>
+                    <h4>Tommy Hilfiger</h4>
+                    <p>White Tailored Fit Shirt</p>
+                    <div class="price"><strong>Rs. 2499</strong> <del>Rs. 4999</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <!-- SHOES -->
+                <div class="product-card" data-category="shoes">
+                    <img src="" alt="Nike Running Shoes">
+                    <div class="rating">4.6 ★ | 32k</div>
+                    <h4>Nike</h4>
+                    <p>Men Revolution 6 Running Shoes</p>
+                    <div class="price"><strong>Rs. 2995</strong> <del>Rs. 3695</del> <span style="color: orange;">(18% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shoes">
+                    <img src="" alt="Adidas Sneakers">
+                    <div class="rating">4.4 ★ | 21k</div>
+                    <h4>Adidas</h4>
+                    <p>Men Grand Court Sneakers</p>
+                    <div class="price"><strong>Rs. 2499</strong> <del>Rs. 4999</del> <span style="color: orange;">(50% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shoes">
+                    <img src="" alt="Puma Sports Shoes">
+                    <div class="rating">4.3 ★ | 45k</div>
+                    <h4>Puma</h4>
+                    <p>Men Softride Premier Shoes</p>
+                    <div class="price"><strong>Rs. 1899</strong> <del>Rs. 4499</del> <span style="color: orange;">(57% OFF)</span></div>
+                </div>
+
+                <div class="product-card" data-category="shoes">
+                    <img src="" alt="Woodland Leather Shoes">
+                    <div class="rating">4.5 ★ | 18k</div>
+                    <h4>Woodland</h4>
+                    <p>Men Solid Leather Casual Shoes</p>
+                    <div class="price"><strong>Rs. 3199</strong> <del>Rs. 3999</del> <span style="color: orange;">(20% OFF)</span></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+ <script>
+        const checkboxes = document.querySelectorAll('.filter-group:first-of-type input[type="checkbox"]');
+        const products = document.querySelectorAll('.product-card');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterProducts);
+        });
+
+        function filterProducts() {
+            const checkedBoxes = Array.from(checkboxes)
+                .filter(box => box.checked)
+                .map(box => box.id);
+
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+
+                if (checkedBoxes.length === 0) {
+                    product.style.display = 'flex'; 
+                } 
+                
+                else if (checkedBoxes.includes(productCategory)) {
+                    product.style.display = 'flex';
+                } 
+
+                else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
