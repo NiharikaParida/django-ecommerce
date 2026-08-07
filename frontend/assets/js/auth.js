@@ -1,20 +1,6 @@
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
 
-const loggedInView = new URLSearchParams(window.location.search).get('loggedIn') === 'true';
-const accountPanel = document.querySelector('.form-panel');
-if (loggedInView && accountPanel) {
-    accountPanel.innerHTML = `
-        <h2>My Account</h2>
-        <p>You are signed in and can continue shopping with your saved wishlist.</p>
-        <button type="button" class="btn-primary" id="logout-btn">Log Out</button>
-    `;
-    document.getElementById('logout-btn')?.addEventListener('click', () => {
-        localStorage.removeItem('fashionAuth');
-        window.location.href = 'login.html';
-    });
-}
-
 if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('open');
@@ -27,11 +13,6 @@ authForms.forEach(form => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const action = form.dataset.action;
-        if (action === 'Login') {
-            localStorage.setItem('fashionAuth', 'true');
-            window.location.href = 'login.html?loggedIn=true';
-            return;
-        }
         alert(`${action} action submitted.`);
     });
 });
@@ -152,7 +133,6 @@ if (registerForm) {
         } else {
             event.preventDefault();
             alert('Account created successfully.');
-            localStorage.setItem('fashionAuth', 'true');
             registerForm.reset();
             updatePasswordFeedback('');
             if (confirmMessage) {
