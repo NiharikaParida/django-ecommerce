@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | Fashion Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">FASHION<span>.</span></div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a class="active" href="users.html">Users</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+    <div class="nav-icons">
+        <span>🔍</span>
+        <span>❤</span>
+        <span>🛒</span>
+        <span>👤</span>
+    </div>
+    <div class="menu-btn">☰</div>
+</header>
+<div class="page-section">
+    <div class="section-title">
+        <h2>Community members</h2>
+        <p>Explore active members, roles, and availability in the fashion store community.</p>
+    </div>
+
+    <div class="users-toolbar">
+        <label class="search-box" for="user-search">
+            <span>🔎</span>
+            <input type="search" id="user-search" placeholder="Search by name or role">
+        </label>
+        <div class="filter-pills" role="listbox" aria-label="Filter users by role">
+            <button class="chip active" data-filter="all" type="button">All</button>
+            <button class="chip" data-filter="Admin" type="button">Admin</button>
+            <button class="chip" data-filter="Member" type="button">Member</button>
+        </div>
+    </div>
+
+    <div class="users-grid users-list" id="users-list">
+        <article class="users-card" data-name="Alice Lee" data-role="Admin" data-status="Online">
+            <div class="user-avatar">AL</div>
+            <div class="user-info">
+                <h3>Alice Lee</h3>
+                <p>Fashion editor and premium member since 2024.</p>
+            </div>
+            <div class="user-meta">
+                <span class="user-status user-status--online">Online</span>
+                <span class="user-role">Admin</span>
+            </div>
+        </article>
+        <article class="users-card" data-name="Jay Brooks" data-role="Member" data-status="Away">
+            <div class="user-avatar">JB</div>
+            <div class="user-info">
+                <h3>Jay Brooks</h3>
+                <p>Shopper with saved outfits and wishlist favorites.</p>
+            </div>
+            <div class="user-meta">
+                <span class="user-status user-status--away">Away</span>
+                <span class="user-role">Member</span>
+            </div>
+        </article>
+    </div>
+    <p class="empty-state" id="empty-state">No users matched your search.</p>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
