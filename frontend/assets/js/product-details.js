@@ -63,4 +63,20 @@
       thumbnailImages.querySelectorAll(".thumb").forEach((item) => item.classList.toggle("active", item === thumbnail));
     });
   }
+
+  // Save the selected product in localStorage, then take the customer to cart.html.
+  const addToCartButton = document.getElementById("addToCartBtn");
+  if (addToCartButton) {
+    addToCartButton.addEventListener("click", () => {
+      const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
+      const existing = cart.find((item) => item.id === product.id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id: product.id, quantity: 1 });
+      }
+      localStorage.setItem("fashionCart", JSON.stringify(cart));
+      window.location.href = "cart.html";
+    });
+  }
 })();

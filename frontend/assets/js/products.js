@@ -1,6 +1,25 @@
 /* Shared product catalog used by category cards and product-details.js. */
 (function () {
-  const imagePool = Array.from({ length: 12 }, (_, index) => `../assets/image/p${index + 1}.jpg`);
+  // Keep images tied to the product type so cards and the detail page show
+  // relevant photos instead of cycling through one generic image pool.
+  const productImages = {
+    1: ["p1.jpg", "p2.jpg", "p3.jpg"], 2: ["p2.jpg", "p3.jpg", "p4.jpg"],
+    3: ["p3.jpg", "p4.jpg", "p5.jpg"], 4: ["p4.jpg", "p3.jpg", "p6.jpg"],
+    5: ["p5.jpg", "p6.jpg", "p7.jpg"], 6: ["p6.jpg", "p5.jpg", "p8.jpg"],
+    7: ["p7.jpg", "p8.jpg", "p9.jpg"], 8: ["p8.jpg", "p7.jpg", "p10.jpg"],
+    57: ["p9.jpg", "p10.jpg", "p11.jpg"], 58: ["p10.jpg", "p11.jpg", "p12.jpg"],
+    59: ["p11.jpg", "p9.jpg", "p12.jpg"], 60: ["p12.jpg", "p10.jpg", "p11.jpg"],
+    61: ["p5.jpg", "p6.jpg", "p7.jpg"], 62: ["p6.jpg", "p5.jpg", "p8.jpg"],
+    63: ["p7.jpg", "p6.jpg", "p5.jpg"], 64: ["p8.jpg", "p5.jpg", "p6.jpg"],
+    65: ["p3.jpg", "p4.jpg", "p7.jpg"], 66: ["p4.jpg", "p3.jpg", "p8.jpg"],
+    67: ["p7.jpg", "p4.jpg", "p3.jpg"], 68: ["p8.jpg", "p3.jpg", "p4.jpg"],
+    69: ["p9.jpg", "p10.jpg", "p12.jpg"], 70: ["p10.jpg", "p11.jpg", "p9.jpg"],
+    71: ["p11.jpg", "p12.jpg", "p10.jpg"], 72: ["p12.jpg", "p9.jpg", "p11.jpg"],
+    113: ["p1.jpg", "p3.jpg", "p5.jpg"], 114: ["p2.jpg", "p4.jpg", "p6.jpg"],
+    115: ["p3.jpg", "p1.jpg", "p7.jpg"], 116: ["p7.jpg", "p8.jpg", "p10.jpg"],
+    117: ["p5.jpg", "p6.jpg", "p8.jpg"], 118: ["p8.jpg", "p5.jpg", "p6.jpg"],
+    119: ["p9.jpg", "p10.jpg", "p11.jpg"], 120: ["p10.jpg", "p7.jpg", "p8.jpg"],
+  };
 
   const rows = [
     [1, "Women", "Printed Cotton Kurta", "Biba", 799, 1499, 4.5],
@@ -37,7 +56,7 @@
     [120, "Kids", "Girls Casual Cotton Dress", "Mothercare", 799, 1499, 4.5],
   ];
 
-  window.FASHION_PRODUCTS = rows.map(([id, category, name, brand, price, oldPrice, rating], index) => ({
+  window.FASHION_PRODUCTS = rows.map(([id, category, name, brand, price, oldPrice, rating]) => ({
     id,
     name,
     category,
@@ -48,10 +67,6 @@
     rating,
     description: `${name} from the ${category.toLowerCase()} collection, made for comfortable everyday styling with a polished finish.`,
     sizes: category === "Kids" ? ["2-3Y", "4-5Y", "6-7Y", "8-9Y"] : ["S", "M", "L", "XL"],
-    images: [
-      imagePool[index % imagePool.length],
-      imagePool[(index + 1) % imagePool.length],
-      imagePool[(index + 2) % imagePool.length],
-    ],
+    images: (productImages[id] || ["p1.jpg", "p2.jpg", "p3.jpg"]).map((image) => `../assets/image/${image}`),
   }));
 })();
