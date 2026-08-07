@@ -250,3 +250,28 @@ backToTop.addEventListener("click", () => {
     });
 
 });
+const summerBanner = document.querySelector(".summer-banner");
+
+const bannerObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},{
+
+    threshold:0.3
+
+});
+
+if(summerBanner){
+
+    bannerObserver.observe(summerBanner);
+
+}

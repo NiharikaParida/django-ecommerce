@@ -233,9 +233,19 @@ body{
 
 .nav-icons{
     display:flex;
+    align-items:center;
     gap:20px;
+}
+
+.nav-icons i{
     font-size:22px;
+    color:#333;
     cursor:pointer;
+    transition:.3s;
+}
+
+.nav-icons i:hover{
+    color:#D72638;
 }
 
 .menu-btn{
