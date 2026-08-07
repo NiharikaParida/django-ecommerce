@@ -72,15 +72,9 @@ const readButtons = document.querySelectorAll(".blog-content a");
 readButtons.forEach(button=>{
 
 
-    button.addEventListener("click",(e)=>{
-
-
-        e.preventDefault();
-
-
+    if (button.getAttribute("href") !== "#") return;
+    button.addEventListener("click", () => {
         alert("Full article page coming soon!");
-
-
     });
 
 

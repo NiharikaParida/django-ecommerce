@@ -21,19 +21,12 @@ cards.forEach(card => {
 });
 const buttons = document.querySelectorAll(".btn");
 
+// Leave real links to the browser so homepage cards and banners navigate normally.
 buttons.forEach(button => {
-
-    button.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        alert("Redirecting to Shop Page...");
-
-        // Later you can use:
-        // window.location.href = "shop.html";
-
+    if (button.getAttribute("href") && button.getAttribute("href") !== "#") return;
+    button.addEventListener("click", () => {
+        window.location.href = "pages/product.html";
     });
-
 });
 
 cards.forEach(card => {

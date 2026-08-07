@@ -141,6 +141,8 @@ window.addEventListener("scroll", () => {
 
     const navbar = document.querySelector(".navbar");
 
+    if (!navbar) return;
+
     if (window.scrollY > 80) {
 
         navbar.style.padding = "12px 8%";
