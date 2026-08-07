@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Fashion</title>
+    <link rel="stylesheet" href="../assets/css/product.css">
+    <link rel="stylesheet" href="../assets/css/categories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .cart-page { max-width: 1100px; margin: 40px auto; padding: 0 24px; }
+        .cart-item { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #eaeaec; }
+        .cart-item img { width: 90px; height: 115px; object-fit: cover; border-radius: 4px; }
+        .cart-item div { flex: 1; }
+        .cart-item h2 { font-size: 18px; margin-bottom: 6px; }
+        .cart-item p { color: #535766; margin-bottom: 8px; }
+        .cart-item button, #clearCartBtn { border: 1px solid #ff3f6c; background: white; color: #ff3f6c; padding: 9px 14px; cursor: pointer; }
+        .cart-summary { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; }
+        @media (max-width: 600px) { .cart-item { align-items: flex-start; } .cart-item button { margin-left: auto; } .cart-summary { gap: 15px; flex-wrap: wrap; } }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">FASHION<span>.</span></div>
+        <nav><ul class="nav-links">
+            <li><a href="../index.html">Home</a></li><li><a href="product.html">Products</a></li>
+            <li><a href="categories_women.html">Women</a></li><li><a href="categories_men.html">Men</a></li>
+            <li><a href="catgories_kids.html">Kids</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li>
+        </ul></nav>
+        <div class="nav-icons"><a href="product.html" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a><a href="wishlist.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a><a href="cart.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a><a href="login.html" aria-label="Profile"><i class="fa-regular fa-user"></i></a></div>
+    </header>
+    <main class="cart-page">
+        <h1>Your Cart</h1>
+        <p id="cartEmpty">Your cart is empty.</p>
+        <div id="cartItems"></div>
+        <div class="cart-summary"><strong>Total: <span id="cartTotal">₹0</span></strong><button id="clearCartBtn" type="button">Clear Cart</button></div>
+    </main>
+    <script src="../assets/js/products.js"></script>
+    <script src="../assets/js/cart.js"></script>
+</body>
+</html>

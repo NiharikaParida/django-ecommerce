@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kids Category | Fashion Store</title>
+
+    <link rel="stylesheet" href="../assets/css/categories.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            FASHION<span>.</span>
+        </div>
+
+        <nav>
+
+            <ul class="nav-links">
+
+                <li><a href="../index.html">Home</a></li>
+
+                <li><a href="product.html">Products</a></li>
+
+                <li><a href="categories_women.html">Women</a></li>
+
+                <li><a href="categories_men.html">Men</a></li>
+
+                <li><a href="catgories_kids.html" class="active">Kids</a></li>
+
+                <li><a href="blog.html">Blog</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+        <div class="nav-icons">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <i class="fa-regular fa-heart"></i>
+
+            <a href="cart.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <i class="fa-regular fa-user"></i>
+
+        </div>
+
+        <div class="menu-btn">
+            ☰
+        </div>
+
+    </header>
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <div class="page-header">
+
+        <h1>
+            Kids Clothing
+            <span>- 8 Items</span>
+        </h1>
+
+    </div>
+
+    <main>
+
+        <!-- Sidebar Filters -->
+
+        <aside class="sidebar-filters">
+
+            <h2>FILTERS</h2>
+
+            <!-- Categories -->
+
+            <div class="filter-group">
+
+                <h3>CATEGORIES</h3>
+
+                <ul>
+
+                    <li>
+                        <input type="checkbox" id="tshirt">
+                        <label for="tshirt">T-Shirts</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="shirt">
+                        <label for="shirt">Shirts</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="dress">
+                        <label for="dress">Dresses</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="jeans">
+                        <label for="jeans">Jeans</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="shorts">
+                        <label for="shorts">Shorts</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="shoes">
+                        <label for="shoes">Shoes</label>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Brand -->
+
+            <div class="filter-group">
+
+                <h3>BRAND</h3>
+
+                <ul>
+
+                    <li>
+                        <input type="checkbox" id="hm">
+                        <label for="hm">H&M (8500)</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="max">
+                        <label for="max">Max (7600)</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="zara">
+                        <label for="zara">Zara Kids (5200)</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="mothercare">
+                        <label for="mothercare">Mothercare (4300)</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="uspa">
+                        <label for="uspa">U.S. Polo Kids (3100)</label>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Size -->
+
+            <div class="filter-group">
+
+                <h3>SIZE</h3>
+
+                <ul>
+
+                    <li>
+                        <input type="checkbox" id="2-3">
+                        <label for="2-3">2-3Y</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="4-5">
+                        <label for="4-5">4-5Y</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="6-7">
+                        <label for="6-7">6-7Y</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="8-9">
+                        <label for="8-9">8-9Y</label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="10-12">
+                        <label for="10-12">10-12Y</label>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Color -->
+
+            <div class="filter-group">
+
+                <h3>COLOR</h3>
+
+                <ul>
+
+                    <li>
+                        <input type="checkbox" id="blue">
+                        <label for="blue">
+                            <span class="color blue"></span>
+                            Blue
+                        </label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="red">
+                        <label for="red">
+                            <span class="color red"></span>
+                            Red
+                        </label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="yellow">
+                        <label for="yellow">
+                            <span class="color yellow"></span>
+                            Yellow
+                        </label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="green">
+                        <label for="green">
+                            <span class="color green"></span>
+                            Green
+                        </label>
+                    </li>
+
+                    <li>
+                        <input type="checkbox" id="white">
+                        <label for="white">
+                            <span class="color white"></span>
+                            White
+                        </label>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+        <!-- ================= PRODUCT AREA ================= -->
+
+        <section class="product-area">
+
+            <div class="sorting-bar">
+
+                <span>
+                    Brands | Colors | Size
+                </span>
+
+                <select class="sort-dropdown">
+
+                    <option>
+                        Sort by : Recommended
+                    </option>
+
+                    <option>
+                        Sort by : Low to High
+                    </option>
+
+                    <option>
+                        Sort by : High to Low
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="product-grid">
+
+                <!-- T-Shirt -->
+
+                <div class="product-card"
+                    data-category="tshirt"
+                    data-brand="hm"
+                    data-size="6-7"
+                    data-color="blue">
+
+                    <img src="../assets/image/p1.jpg"
+                        alt="Kids T-Shirt">
+
+                    <div class="rating">
+                        4.5 ★ | 6k
+                    </div>
+
+                    <h4>H&M</h4>
+
+                    <p>Boys Printed Cotton T-Shirt</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.499
+                        </strong>
+
+                        <del>
+                            Rs.899
+                        </del>
+
+                        <span>
+                            (44% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="product-card"
+                    data-category="tshirt"
+                    data-brand="max"
+                    data-size="4-5"
+                    data-color="red">
+
+                    <img src="../assets/image/p2.jpg"
+                        alt="Girls T-Shirt">
+
+                    <div class="rating">
+                        4.4 ★ | 5k
+                    </div>
+
+                    <h4>Max</h4>
+
+                    <p>Girls Graphic Cotton T-Shirt</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.399
+                        </strong>
+
+                        <del>
+                            Rs.799
+                        </del>
+
+                        <span>
+                            (50% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Shirt -->
+
+                <div class="product-card"
+                    data-category="shirt"
+                    data-brand="uspa"
+                    data-size="8-9"
+                    data-color="white">
+
+                    <img src="../assets/image/p3.jpg"
+                        alt="Kids Shirt">
+
+                    <div class="rating">
+                        4.6 ★ | 4k
+                    </div>
+
+                    <h4>U.S. Polo Kids</h4>
+
+                    <p>Boys Casual Checked Shirt</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.799
+                        </strong>
+
+                        <del>
+                            Rs.1499
+                        </del>
+
+                        <span>
+                            (47% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+                                <!-- Dress -->
+
+                <div class="product-card"
+                    data-category="dress"
+                    data-brand="zara"
+                    data-size="8-9"
+                    data-color="red">
+
+                    <img src="../assets/image/p7.jpg"
+                        alt="Kids Dress">
+
+                    <div class="rating">
+                        4.8 ★ | 7k
+                    </div>
+
+                    <h4>Zara Kids</h4>
+
+                    <p>Girls Floral Party Dress</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.999
+                        </strong>
+
+                        <del>
+                            Rs.1899
+                        </del>
+
+                        <span>
+                            (47% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Jeans -->
+
+                <div class="product-card"
+                    data-category="jeans"
+                    data-brand="max"
+                    data-size="10-12"
+                    data-color="blue">
+
+                    <img src="../assets/image/p5.jpg"
+                        alt="Kids Jeans">
+
+                    <div class="rating">
+                        4.5 ★ | 5k
+                    </div>
+
+                    <h4>Max</h4>
+
+                    <p>Boys Slim Fit Jeans</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.899
+                        </strong>
+
+                        <del>
+                            Rs.1699
+                        </del>
+
+                        <span>
+                            (47% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Shorts -->
+
+                <div class="product-card"
+                    data-category="shorts"
+                    data-brand="mothercare"
+                    data-size="4-5"
+                    data-color="green">
+
+                    <img src="../assets/image/p8.jpg"
+                        alt="Kids Shorts">
+
+                    <div class="rating">
+                        4.4 ★ | 3k
+                    </div>
+
+                    <h4>Mothercare</h4>
+
+                    <p>Cotton Summer Shorts</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.499
+                        </strong>
+
+                        <del>
+                            Rs.899
+                        </del>
+
+                        <span>
+                            (44% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Shoes -->
+
+                <div class="product-card"
+                    data-category="shoes"
+                    data-brand="hm"
+                    data-size="6-7"
+                    data-color="white">
+
+                    <img src="../assets/image/p9.jpg"
+                        alt="Kids Shoes">
+
+                    <div class="rating">
+                        4.7 ★ | 8k
+                    </div>
+
+                    <h4>H&M</h4>
+
+                    <p>Kids Casual Sneakers</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.1199
+                        </strong>
+
+                        <del>
+                            Rs.2199
+                        </del>
+
+                        <span>
+                            (45% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- Dress -->
+
+                <div class="product-card"
+                    data-category="dress"
+                    data-brand="mothercare"
+                    data-size="2-3"
+                    data-color="yellow">
+
+                    <img src="../assets/image/p10.jpg"
+                        alt="Girls Dress">
+
+                    <div class="rating">
+                        4.6 ★ | 4k
+                    </div>
+
+                    <h4>Mothercare</h4>
+
+                    <p>Girls Casual Cotton Dress</p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rs.799
+                        </strong>
+
+                        <del>
+                            Rs.1499
+                        </del>
+
+                        <span>
+                            (47% OFF)
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- Company -->
+
+        <div class="footer-box">
+
+            <h2>Fashion<span>.</span></h2>
+
+            <p>
+                Premium fashion store offering latest trends for men,
+                women and kids.
+            </p>
+
+        </div>
+
+        <!-- Quick Links -->
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <a href="../index.html">Home</a>
+
+            <a href="product.html">Shop</a>
+
+            <a href="product.html#categories">Categories</a>
+
+            <a href="product.html#sale">Sale</a>
+
+        </div>
+
+        <!-- Customer Support -->
+
+        <div class="footer-box">
+
+            <h3>Customer Support</h3>
+
+            <a href="contact.html">Contact Us</a>
+
+            <a href="contact.html#returns">Returns</a>
+
+            <a href="contact.html#shipping">Shipping</a>
+
+            <a href="contact.html#privacy">Privacy Policy</a>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div class="footer-box">
+
+            <h3>Contact</h3>
+
+            <p>📧 support@fashion.com</p>
+
+            <p>📞 +91 9876543210</p>
+
+            <p>📍 Bhubaneswar, Odisha</p>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 Fashion Store | All Rights Reserved
+
+    </div>
+
+</footer>
+
+<script src="../assets/js/products.js"></script>
+<script src="../assets/js/script.js"></script>
