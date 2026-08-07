@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Fashion Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body class="auth-page">
+<div class="auth-panel">
+    <div class="auth-card">
+        <div class="side-panel">
+            <h2>My Fashion Account</h2>
+            <p>Manage your personal details and continue shopping with your saved account.</p>
+            <button class="btn-primary" id="logoutButton" type="button">Log Out</button>
+        </div>
+        <div class="form-panel">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <div class="avatar">F</div>
+                    <h3 id="profileDisplayName">Fashion customer</h3>
+                    <p>Your account details</p>
+                </div>
+                <div class="profile-info">
+                    <h3>Profile</h3>
+                    <div class="profile-view">
+                        <div class="profile-details-view">
+                            <div><span>Name</span><strong id="view-name"></strong></div>
+                            <div><span>Email</span><strong id="view-email"></strong></div>
+                            <div><span>Location</span><strong id="view-location"></strong></div>
+                            <div><span>Phone</span><strong id="view-phone"></strong></div>
+                        </div>
+                        <div class="profile-buttons"><button class="btn-primary profile-edit-btn" type="button">Edit Profile</button><a class="btn-primary" href="../index.html">Continue Shopping</a></div>
+                    </div>
+                    <form class="profile-form hidden">
+                        <div class="form-group"><label for="profile-name">Name</label><input id="profile-name" type="text" required></div>
+                        <div class="form-group"><label for="profile-email">Email</label><input id="profile-email" type="email" required></div>
+                        <div class="form-group"><label for="profile-location">Location</label><input id="profile-location" type="text"></div>
+                        <div class="form-group"><label for="profile-phone">Phone</label><input id="profile-phone" type="tel"></div>
+                        <div class="profile-buttons"><button class="btn-primary" type="submit">Save Changes</button><button class="btn-primary profile-cancel-btn" type="button">Cancel</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>
