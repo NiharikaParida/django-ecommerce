@@ -55,12 +55,7 @@ body {
   background: var(--bg-color);
   color: var(--text-primary);
 }
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 36px;
-}
+
 .logo {
   font-size: 28px;
   font-family: var(--font-heading);
@@ -69,28 +64,63 @@ header {
     color: var(--error);
   }
 }
-nav {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-  }
+
+.navbar{
+    position:sticky;
+    top:0;
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    z-index:1000;
 }
-.nav-icons {
-  display: flex;
-  gap: 15px;
-  a {
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    i {
-      color: black;
-      font-size: 22px;
-    }
-  }
+
+
+.logo{
+    font-size:32px;
+    font-family:'Playfair Display',serif;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#D72638;
+}
+
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
+
+
+.nav-icons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+
+.nav-icons i{
+    font-size:22px;
+    color:#333;
+    cursor:pointer;
+}
+
+
+.menu-btn{
+    display:none;
+    font-size:28px;
 }
 
 /* contact Hero page */

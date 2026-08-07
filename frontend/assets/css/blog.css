@@ -1,0 +1,756 @@
+/* ================= BLOG BANNER ================= */
+
+.blog-banner {
+
+    height: 300px;
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45)
+    ),
+    url("../image/blog-banner.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+}
+
+
+.blog-banner h1 {
+
+    font-family: "Playfair Display",serif;
+    font-size: 48px;
+    margin-bottom: 10px;
+
+}
+
+
+.blog-banner p {
+
+    font-size: 14px;
+
+}
+
+
+
+
+
+/* ================= FEATURE STORY ================= */
+
+
+.featured-story {
+
+    max-width:1200px;
+
+    margin:60px auto 0;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    padding:0 20px;
+
+}
+
+
+
+.featured-image img {
+
+    width:100%;
+
+    height:400px;
+
+    object-fit:cover;
+
+}
+
+
+
+
+.featured-content {
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+}
+
+
+
+.featured-content span {
+
+    color:#e53637;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    font-weight:600;
+
+}
+
+
+
+.featured-content h1 {
+
+    font-family:"Playfair Display",serif;
+
+    font-size:38px;
+
+    margin:15px 0;
+
+}
+
+
+
+.featured-content p {
+
+    color:#777;
+
+    line-height:1.8;
+
+}
+
+
+
+.featured-content a {
+
+    margin-top:20px;
+
+    display:inline-block;
+
+    background:#111;
+
+    color:white;
+
+    padding:12px 25px;
+
+    width:max-content;
+
+}
+
+
+
+
+
+/* ================= BLOG SECTION ================= */
+
+
+
+.blog-section {
+
+    max-width:1200px;
+
+    margin:70px auto 0;
+
+    padding:0 20px;
+
+}
+
+
+
+.section-title {
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.section-title h2 {
+
+    font-family:"Playfair Display",serif;
+
+    font-size:35px;
+
+}
+
+
+
+.section-title p {
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+
+.blog-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+.blog-card {
+
+    border:1px solid #eee;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+
+
+.blog-card:hover {
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.blog-card img {
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+}
+
+
+
+.blog-content {
+
+    padding:25px;
+
+}
+
+
+
+.category {
+
+    color:#e53637;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+
+.blog-content h3 {
+
+    font-family:"Playfair Display",serif;
+
+    font-size:21px;
+
+    margin:12px 0;
+
+}
+
+
+
+.blog-content p {
+
+    color:#777;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+
+
+.blog-content a {
+
+    display:inline-block;
+
+    margin-top:15px;
+
+    color:#111;
+
+    border-bottom:1px solid #111;
+
+}
+
+
+
+
+
+/* ================= CATEGORY ================= */
+
+
+.fashion-categories {
+
+    max-width:1200px;
+
+    margin:70px auto 0;
+
+    padding:0 20px;
+
+}
+
+
+
+.category-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.category-box {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.category-box img {
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+}
+
+
+
+.category-box div {
+
+    padding:20px;
+
+}
+
+
+
+.category-box h3 {
+
+    font-family:"Playfair Display",serif;
+
+}
+
+
+
+
+
+/* ================= TIPS ================= */
+
+
+
+.fashion-tips {
+
+    max-width:1200px;
+
+    margin:60px auto 0;
+
+    padding:0 20px;
+
+}
+
+
+
+.tips-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.tip-card {
+
+    padding:30px;
+
+    border:1px solid #eee;
+
+}
+
+
+
+.tip-card h3 {
+
+    font-family:"Playfair Display",serif;
+
+}
+
+
+
+.tip-card p {
+
+    color:#777;
+
+    line-height:1.7;
+
+}
+
+
+
+.tip-card a {
+
+    color:#111;
+
+    font-size:13px;
+
+}
+
+
+
+
+
+/* ================= NEWSLETTER ================= */
+
+
+
+.newsletter-section {
+
+    margin-top:60px;
+
+    background:#111;
+
+    color:white;
+
+    padding:45px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+
+
+.newsletter-section p {
+
+    color:#aaa;
+
+}
+
+
+
+.subscribe-box {
+
+    display:flex;
+
+}
+
+
+
+.subscribe-box input {
+
+    padding:15px;
+
+    width:250px;
+
+    border:none;
+
+}
+
+
+
+.subscribe-box button {
+
+    background:#e53637;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 25px;
+
+}
+
+
+
+
+
+/* ================= INSTAGRAM ================= */
+
+
+
+.instagram-section {
+
+    max-width:1200px;
+
+    margin:60px auto 0;
+
+    padding:0 20px;
+
+}
+
+
+
+.instagram-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:10px;
+
+}
+
+
+
+.instagram-grid img {
+
+    height:170px;
+
+    width:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+
+/* ================= SIDEBAR ================= */
+
+
+.blog-sidebar-area {
+
+    max-width:1200px;
+
+    margin:60px auto 0;
+
+    padding:0 20px;
+
+}
+
+
+
+.sidebar-content {
+
+    border-top:1px solid #eee;
+
+    padding-top:30px;
+
+}
+
+
+
+.sidebar-content h3 {
+
+    font-family:"Playfair Display",serif;
+
+}
+
+
+
+.sidebar-content ul {
+
+    list-style:none;
+
+}
+
+
+
+.sidebar-content li {
+
+    padding:12px 0;
+
+    border-bottom:1px solid #eee;
+
+    color:#666;
+
+}
+
+
+
+.tags span {
+
+    display:inline-block;
+
+    border:1px solid #ddd;
+
+    padding:8px 15px;
+
+    margin:5px;
+
+    font-size:12px;
+
+}
+
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:900px){
+
+
+.featured-story{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.blog-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.category-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.tips-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.newsletter-section{
+
+flex-direction:column;
+
+}
+
+
+
+.instagram-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.blog-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.category-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.instagram-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+
+
+.blog-banner h1{
+
+font-size:32px;
+
+}
+}
+.blog-banner {
+
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+
+}
+
+
+.blog-banner img {
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+
+
+.banner-content {
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+    color:white;
+
+}
+
+
+.banner-content h1 {
+
+    font-family:"Playfair Display",serif;
+    font-size:48px;
+    margin-bottom:10px;
+
+}
+
+
+.banner-content p {
+
+    font-size:14px;
+
+}
