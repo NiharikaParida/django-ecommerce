@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111827">
+    <meta name="description" content="Luxury Fashion Wishlist">
+
+    <title>My Wishlist | Fashion Store</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Stylesheets -->
+   <link rel="stylesheet" href="../assets/css/home.css">
+<link rel="stylesheet" href="../assets/css/product.css">
+<link rel="stylesheet" href="../assets/css/wishlist.css">
+</head>
+
+<body>
+
+<div class="wishlist-module">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+
+        <div class="container">
+
+            <a class="navbar-brand logo" href="../../index.html">
+                FASHION<span>.</span>
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+
+                <ul class="navbar-nav mx-auto gap-lg-4">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Women</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Men</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Kids</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accessories</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sale</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+
+                </ul>
+
+                <div class="d-flex align-items-center gap-3 nav-icons">
+
+                    <a href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+
+                    <a href="wishlist.html" class="text-danger">
+                        <i class="bi bi-heart-fill"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-bag"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="bi bi-person"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="container-xxl py-4 py-lg-5">
+
+        <!-- ================= PAGE INTRO ================= -->
+
+        <section class="module-intro mb-4">
+
+            <p class="eyebrow mb-2">
+                My Account
+            </p>
+
+            <div class="module-intro-panel">
+
+                <div>
+
+                    <h1>My Wishlist</h1>
+
+                    <p class="section-copy mb-0">
+                        All the products you've saved for later, beautifully organized in one premium wishlist.
+                    </p>
+
+                </div>
+
+                <div class="module-chips d-flex flex-wrap gap-2">
+
+                    <span class="module-chip" id="wishlistCount">
+                        4 Items Saved
+                    </span>
+
+                    <span class="module-chip">
+                        Premium Collection
+                    </span>
+
+                    <span class="module-chip">
+                        Ready for Checkout
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ================= BREADCRUMB ================= -->
+
+        <nav aria-label="breadcrumb" class="mb-4">
+
+            <ol class="breadcrumb luxury-breadcrumb mb-0">
+
+                <li class="breadcrumb-item">
+                    <a href="../../index.html">Home</a>
+                </li>
+
+                <li class="breadcrumb-item active" aria-current="page">
+                    Wishlist
+                </li>
+
+            </ol>
+
+        </nav>
+                <!-- ================= WISHLIST SECTION ================= -->
+
+        <section id="wishlistSection" class="section-space">
+
+            <div class="section-heading d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+
+                <div>
+
+                    <p class="eyebrow mb-2">Saved Collection</p>
+
+                    <h2 class="mb-2">Your Favourite Products</h2>
+
+                    <p class="section-copy mb-0">
+                        Review your favourite products, move them to your shopping bag,
+                        or remove them from your wishlist.
+                    </p>
+
+                </div>
+
+                <div class="d-flex align-items-center gap-2">
+
+                    <button type="button"
+                            class="btn btn-outline-dark btn-sm"
+                            id="shareWishlistBtn">
+
+                        <i class="bi bi-share me-2"></i>
+                        Share
+
+                    </button>
+
+                    <button type="button"
+                            class="btn btn-dark btn-sm"
+                            id="clearWishlistBtn">
+
+                        <i class="bi bi-trash3 me-2"></i>
+                        Clear Wishlist
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ================= WISHLIST GRID ================= -->
+
+            <div class="row g-4" id="wishlistGrid">
+
+                <!-- PRODUCT 1 -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">-29%</span>
+
+                        <button class="wishlist-icon active">
+
+                            <i class="bi bi-heart-fill"></i>
+
+                        </button>
+
+                        <img src="../image/product2.jpg"
+                             alt="Women's Floral Dress">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+                                ZARA
+                            </span>
+
+                            <h3>
+                                Women's Floral Dress
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+                                    ★★★★★
+                                </span>
+
+                                <span>(142)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+                                    ₹2,499
+                                </span>
+
+                                <span class="old-price">
+                                    ₹3,499
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                                <button class="btn btn-outline-dark btn-sm remove-btn">
+
+                                    Remove
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- PRODUCT 2 -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">-18%</span>
+
+                        <button class="wishlist-icon active">
+
+                            <i class="bi bi-heart-fill"></i>
+
+                        </button>
+
+                        <img src="../image/product1.jpg"
+                             alt="Nike Sneakers">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+
+                                NIKE
+
+                            </span>
+
+                            <h3>
+
+                                Air Max Sneakers
+
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+
+                                    ★★★★★
+
+                                </span>
+
+                                <span>(318)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+
+                                    ₹4,999
+
+                                </span>
+
+                                <span class="old-price">
+
+                                    ₹5,999
+
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                                <button class="btn btn-outline-dark btn-sm remove-btn">
+
+                                    Remove
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- PRODUCT 3 -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">-24%</span>
+
+                        <button class="wishlist-icon active">
+
+                            <i class="bi bi-heart-fill"></i>
+
+                        </button>
+
+                        <img src="../image/product3.jpg"
+                             alt="Classic White Shirt">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+
+                                H&amp;M
+
+                            </span>
+
+                            <h3>
+
+                                Classic White Shirt
+
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+
+                                    ★★★★☆
+
+                                </span>
+
+                                <span>(96)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+
+                                    ₹1,499
+
+                                </span>
+
+                                <span class="old-price">
+
+                                    ₹2,199
+
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                                <button class="btn btn-outline-dark btn-sm remove-btn">
+
+                                    Remove
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- PRODUCT 4 -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">-15%</span>
+
+                        <button class="wishlist-icon active">
+
+                            <i class="bi bi-heart-fill"></i>
+
+                        </button>
+
+                        <img src="../image/product4.jpg"
+                             alt="Running Shoes">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+
+                                PUMA
+
+                            </span>
+
+                            <h3>
+
+                                Running Shoes
+
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+
+                                    ★★★★★
+
+                                </span>
+
+                                <span>(210)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+
+                                    ₹3,299
+
+                                </span>
+
+                                <span class="old-price">
+
+                                    ₹4,199
+
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                                <button class="btn btn-outline-dark btn-sm remove-btn">
+
+                                    Remove
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+            <!-- ================= EMPTY WISHLIST ================= -->
+
+            <div class="wishlist-empty text-center d-none" id="wishlistEmpty">
+
+                <i class="bi bi-heart display-2 mb-3"></i>
+
+                <h3>Your Wishlist is Empty</h3>
+
+                <p class="section-copy">
+                    Looks like you haven't saved any products yet.
+                    Browse our latest premium collections and add your favourites.
+                </p>
+
+                <a href="../../index.html" class="btn btn-dark mt-2">
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ================= RECOMMENDED PRODUCTS ================= -->
+
+        <section class="related-section section-space mt-5">
+
+            <div class="section-heading mb-4">
+
+                <p class="eyebrow mb-2">
+                    You May Also Like
+                </p>
+
+                <h2 class="mb-2">
+                    Recommended For You
+                </h2>
+
+                <p class="section-copy mb-0">
+                    Based on your wishlist, here are some premium products
+                    you might love.
+                </p>
+
+            </div>
+
+            <div class="row g-4" id="relatedGrid">
+
+                <!-- Product -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">NEW</span>
+
+                        <button class="wishlist-icon">
+
+                            <i class="bi bi-heart"></i>
+
+                        </button>
+
+                        <img src="../assets/image/PremiumLeatherJacket.png" 
+                             alt="Leather Jacket">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+                                LEVI'S
+                            </span>
+
+                            <h3>
+                                Premium Leather Jacket
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+                                    ★★★★★
+                                </span>
+
+                                <span>(184)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+                                    ₹5,999
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- Product -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">HOT</span>
+
+                        <button class="wishlist-icon">
+
+                            <i class="bi bi-heart"></i>
+
+                        </button>
+
+                       <img src="../assets/image/handbag.png" 
+                             alt="Handbag">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+                                GUESS
+                            </span>
+
+                            <h3>
+                                Luxury Handbag
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+                                    ★★★★★
+                                </span>
+
+                                <span>(152)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+                                    ₹4,799
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- Product -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">NEW</span>
+
+                        <button class="wishlist-icon">
+
+                            <i class="bi bi-heart"></i>
+
+                        </button>
+
+                       <img src="../assets/image/watch.png" 
+                             alt="Watch">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+                                FOSSIL
+                            </span>
+
+                            <h3>
+                                Classic Wrist Watch
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+                                    ★★★★☆
+                                </span>
+
+                                <span>(95)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+                                    ₹6,499
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- Product -->
+
+                <div class="col-sm-6 col-lg-3">
+
+                    <article class="product-card">
+
+                        <span class="badge-discount">SALE</span>
+
+                        <button class="wishlist-icon">
+
+                            <i class="bi bi-heart"></i>
+
+                        </button>
+
+                       <img src="../assets/image/product1.jpg" alt="Sneakers">
+
+                        <div class="card-body">
+
+                            <span class="brand-pill">
+                                ADIDAS
+                            </span>
+
+                            <h3>
+                                Ultraboost Sneakers
+                            </h3>
+
+                            <div class="card-meta">
+
+                                <span class="stars">
+                                    ★★★★★
+                                </span>
+
+                                <span>(267)</span>
+
+                            </div>
+
+                            <div class="price-row">
+
+                                <span class="current-price">
+                                    ₹7,299
+                                </span>
+
+                            </div>
+
+                            <div class="card-actions">
+
+                                <button class="btn btn-accent btn-sm flex-fill">
+
+                                    <i class="bi bi-bag me-1"></i>
+
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+         </main>
+                <!-- ================= FOOTER ================= -->
+
+        <footer class="footer mt-5">
+
+            <div class="container">
+
+                <div class="row g-4">
+
+                    <div class="col-6 col-lg-3">
+
+                        <h2>Fashion.</h2>
+
+                        <p>
+                            Premium fashion store offering the latest
+                            trends for men, women, and kids.
+                        </p>
+
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+
+                        <h3>Quick Links</h3>
+
+                        <a href="../../index.html">Home</a>
+
+                        <a href="#">Shop</a>
+
+                        <a href="#">Categories</a>
+
+                        <a href="#">Sale</a>
+
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+
+                        <h3>Customer Support</h3>
+
+                        <a href="#">Contact Us</a>
+
+                        <a href="#">Returns</a>
+
+                        <a href="#">Shipping</a>
+
+                        <a href="#">Privacy Policy</a>
+
+                    </div>
+
+                    <div class="col-6 col-lg-3">
+
+                        <h3>Contact</h3>
+
+                        <p>📧 support@fashion.com</p>
+
+                        <p>📞 +91 9876543210</p>
+
+                        <p>📍 Bhubaneswar, Odisha</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="copyright">
+
+                © 2026 Fashion Store | All Rights Reserved
+
+            </div>
+
+        </footer>
+
+   
+
+    <!-- ================= BACK TO TOP ================= -->
+
+    <button class="back-to-top"
+            type="button"
+            id="backToTop"
+            aria-label="Back to Top">
+
+        <i class="bi bi-arrow-up"></i>
+
+    </button>
+
+    <!-- ================= TOAST ================= -->
+
+    <div class="toast-message"
+         id="toastMessage"
+         role="status"
+         aria-live="polite">
+
+    </div>
+
+</div>
+
+<!-- ================= SCRIPTS ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/js/home.js"></script>
+<script src="../assets/js/wishlist.js"></script>
+
+</body>
+
+</html>

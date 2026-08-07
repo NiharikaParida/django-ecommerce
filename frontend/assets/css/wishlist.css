@@ -1,0 +1,562 @@
+/* ==========================================================
+   WISHLIST.CSS
+   Luxury Wishlist Module
+   Matches product.css design language
+========================================================== */
+
+/* ================= ROOT LAYOUT ================= */
+
+.wishlist-module{
+    min-height:100vh;
+    background:var(--background);
+}
+
+/* ================= PAGE SPACING ================= */
+
+.section-space{
+    padding:3rem 0;
+}
+
+.section-copy{
+    color:var(--muted);
+    font-size:.96rem;
+    line-height:1.7;
+    max-width:650px;
+}
+
+/* ================= PAGE INTRO ================= */
+
+.module-intro{
+    margin-bottom:2rem;
+}
+
+.eyebrow{
+    display:inline-block;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+}
+
+.module-intro-panel{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:2rem;
+    padding:2rem;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow-soft);
+}
+
+.module-intro-panel h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(2rem,4vw,3rem);
+    color:var(--primary);
+    margin-bottom:.75rem;
+}
+
+.module-intro-panel p{
+    margin:0;
+    color:var(--muted);
+}
+
+/* ================= MODULE CHIPS ================= */
+
+.module-chips{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:.75rem;
+}
+
+.module-chip{
+    padding:.7rem 1.25rem;
+    border-radius:50px;
+    background:#fff;
+    border:1px solid var(--border);
+    font-weight:600;
+    color:var(--primary);
+    transition:.3s;
+}
+
+.module-chip:hover{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+}
+
+#wishlistCount{
+    background:var(--accent);
+    color:#fff;
+    border-color:var(--accent);
+}
+
+/* ================= BREADCRUMB ================= */
+
+.luxury-breadcrumb{
+    background:#fff;
+    padding:1rem 1.5rem;
+    border-radius:18px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid var(--border);
+}
+
+.luxury-breadcrumb .breadcrumb-item{
+    font-weight:500;
+}
+
+.luxury-breadcrumb a{
+    color:var(--primary);
+    text-decoration:none;
+}
+
+.luxury-breadcrumb a:hover{
+    color:var(--accent);
+}
+
+.luxury-breadcrumb .active{
+    color:var(--accent);
+    font-weight:600;
+}
+
+/* ================= SECTION HEADING ================= */
+
+.section-heading h2{
+    font-family:"Playfair Display",serif;
+    font-size:2rem;
+    color:var(--primary);
+    margin-bottom:.5rem;
+}
+
+.section-heading .btn{
+    border-radius:50px;
+    padding:.65rem 1.4rem;
+}
+/* ==========================================================
+   WISHLIST PRODUCT CARDS
+========================================================== */
+
+#wishlistGrid{
+    margin-top:1rem;
+}
+
+.product-card{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    transition:all .35s ease;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-luxury);
+}
+
+/* ================= PRODUCT IMAGE ================= */
+
+.product-card img{
+    width:100%;
+    aspect-ratio:4/4.6;
+    object-fit:cover;
+    background:#f8f8f8;
+    transition:transform .45s ease;
+}
+
+.product-card:hover img{
+    transform:scale(1.05);
+}
+
+/* ================= DISCOUNT BADGE ================= */
+
+.badge-discount{
+    position:absolute;
+    top:18px;
+    left:18px;
+    background:var(--accent);
+    color:#fff;
+    font-size:.75rem;
+    font-weight:700;
+    padding:.45rem .85rem;
+    border-radius:50px;
+    z-index:3;
+}
+
+/* ================= HEART BUTTON ================= */
+
+.wishlist-icon{
+    position:absolute;
+    top:16px;
+    right:16px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    cursor:pointer;
+    transition:.3s;
+    z-index:3;
+}
+
+.wishlist-icon i{
+    font-size:1rem;
+}
+
+.wishlist-icon:hover{
+    transform:scale(1.08);
+}
+
+.wishlist-icon.active{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* ================= CARD BODY ================= */
+
+.card-body{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    padding:1.35rem;
+}
+
+.brand-pill{
+    display:inline-block;
+    align-self:flex-start;
+    background:#f5f5f5;
+    color:var(--primary);
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    padding:.45rem .8rem;
+    border-radius:50px;
+    margin-bottom:.9rem;
+}
+
+.card-body h3{
+    font-family:"Playfair Display",serif;
+    font-size:1.18rem;
+    color:var(--primary);
+    margin-bottom:.8rem;
+    line-height:1.35;
+    min-height:58px;
+}
+
+/* ================= RATINGS ================= */
+
+.card-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.88rem;
+    color:var(--muted);
+    margin-bottom:1rem;
+}
+
+.stars{
+    color:#f6b100;
+    letter-spacing:2px;
+}
+/* ==========================================================
+   WISHLIST PRODUCT CARD
+========================================================== */
+
+#wishlistGrid .product-card{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    transition:all .35s ease;
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+    height:100%;
+}
+
+#wishlistGrid .product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 50px rgba(0,0,0,.12);
+}
+
+#wishlistGrid .product-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    display:block;
+}
+
+.badge-discount{
+    position:absolute;
+    top:15px;
+    left:15px;
+    background:var(--accent);
+    color:#fff;
+    font-size:.8rem;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:50px;
+    z-index:2;
+}
+
+.wishlist-icon{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+    cursor:pointer;
+    transition:.3s;
+    z-index:2;
+}
+
+.wishlist-icon:hover{
+    transform:scale(1.1);
+}
+
+.card-body{
+    padding:1.4rem;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.brand-pill{
+    display:inline-block;
+    background:#f4f4f4;
+    color:var(--primary);
+    font-size:.78rem;
+    font-weight:600;
+    padding:5px 12px;
+    border-radius:30px;
+    margin-bottom:12px;
+}
+
+.card-body h3{
+    font-size:1.08rem;
+    font-weight:700;
+    margin-bottom:.6rem;
+    color:var(--primary);
+    line-height:1.4;
+}
+
+.card-meta{
+    color:#ffb400;
+    font-size:.9rem;
+    margin-bottom:.8rem;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:1.2rem;
+}
+
+.current-price{
+    color:var(--primary);
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+.old-price{
+    color:#9ca3af;
+    text-decoration:line-through;
+    font-size:.92rem;
+}
+
+.card-actions{
+    margin-top:auto;
+    display:flex;
+    gap:10px;
+}
+
+.card-actions .btn{
+    flex:1;
+    border-radius:12px;
+}
+/* ==========================================================
+   EMPTY WISHLIST
+========================================================== */
+
+.wishlist-empty{
+    padding:5rem 2rem;
+    border:2px dashed var(--border);
+    border-radius:24px;
+    background:var(--section-bg);
+}
+
+.wishlist-empty i{
+    font-size:4rem;
+    color:var(--accent);
+    margin-bottom:1rem;
+}
+
+.wishlist-empty h3{
+    font-size:2rem;
+    font-weight:700;
+    color:var(--primary);
+    margin-bottom:.8rem;
+}
+
+.wishlist-empty p{
+    color:var(--muted);
+    max-width:500px;
+    margin:0 auto 2rem;
+}
+
+.wishlist-empty .btn{
+    border-radius:50px;
+    padding:12px 28px;
+}
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+    background:#111;
+    color:#fff;
+    margin-top:5rem;
+    padding:70px 0 25px;
+}
+
+.footer h2{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.footer h3{
+    font-size:1.15rem;
+    margin-bottom:20px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.footer a{
+    display:block;
+    color:#cbd5e1;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.footer a:hover{
+    color:#fff;
+    padding-left:6px;
+}
+
+.copyright{
+    margin-top:45px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.12);
+    text-align:center;
+    color:#94a3b8;
+    font-size:.9rem;
+}
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:991px){
+
+    .module-intro-panel{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    #wishlistGrid .product-card img{
+        height:240px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .section-heading{
+        text-align:center;
+    }
+
+    .section-heading .btn{
+        width:100%;
+    }
+
+    .card-actions{
+        flex-direction:column;
+    }
+
+    .card-actions .btn{
+        width:100%;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .module-intro h1{
+        font-size:2rem;
+    }
+
+    #wishlistGrid .product-card img{
+        height:200px;
+    }
+
+    .card-body{
+        padding:1rem;
+    }
+
+    .card-body h3{
+        font-size:1rem;
+    }
+
+    .current-price{
+        font-size:1.1rem;
+    }
+
+    .wishlist-empty{
+        padding:3rem 1.2rem;
+    }
+
+}
+
+/* ==========================================================
+   SMOOTH ANIMATIONS
+========================================================== */
+
+.product-card,
+.module-intro-panel,
+.btn,
+.wishlist-icon{
+    transition:all .35s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.product-card:hover .wishlist-icon{
+    transform:scale(1.08);
+}
