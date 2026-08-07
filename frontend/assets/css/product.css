@@ -68,94 +68,99 @@ ul{
 
 .navbar{
 
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#fff;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-    z-index:999;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    z-index: 1000;
 
 }
 
 .logo{
 
-    font-size:32px;
-    font-weight:700;
-    font-family:'Playfair Display',serif;
-    color:var(--primary);
+    font-size: 32px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #111827;
 
 }
 
 .logo span{
 
-    color:var(--accent);
+    color: #D72638;
 
 }
 
 .nav-links{
 
-    display:flex;
-    gap:35px;
+    display: flex;
+    list-style: none;
+    gap: 30px;
 
+}
+.nav-links li{
+    list-style: none;
 }
 
 .nav-links li a{
 
-    color:var(--primary);
-    font-size:15px;
-    font-weight:500;
-    transition:var(--transition);
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .3s;
 
 }
 
 .nav-links li a:hover{
 
-    color:var(--accent);
+    color: #D72638;
 
 }
 
 .nav-links li a.active{
 
-    color:var(--accent);
+    color: #D72638;
 
 }
 
 .nav-icons{
 
-    display:flex;
-    gap:20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
 }
 
 .nav-icons i{
 
-    cursor:pointer;
-    font-size:18px;
-    transition:var(--transition);
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+    transition: .3s;
 
 }
 
 .nav-icons i:hover{
 
-    color:var(--accent);
-    transform:translateY(-3px);
+    color: #D72638;
+    transform: translateY(-2px);
 
 }
 
 .products-hero{
 
-    margin-top:85px;
+     margin-top:0;
     min-height:480px;
     background:
     linear-gradient(rgba(17,24,39,.55),
     rgba(17,24,39,.55)),
     url("../image/hero4.png") center/cover no-repeat;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -493,6 +498,309 @@ ul{
 .category-card{
 
     animation:fadeUp .8s ease;
+
+}
+/* ===========================
+   Summer Banner
+=========================== */
+
+.summer-banner{
+
+    padding:100px 0;
+
+    background:linear-gradient(135deg,#fff7f7,#ffecec);
+
+    overflow:hidden;
+
+}
+
+.summer-content span{
+
+    display:inline-block;
+
+    color:#E11D48;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    margin-bottom:18px;
+
+}
+
+.summer-content h2{
+
+    font-size:52px;
+
+    font-family:'Playfair Display',serif;
+
+    color:#111827;
+
+    margin-bottom:25px;
+
+    line-height:1.2;
+
+}
+
+.summer-content p{
+
+    font-size:17px;
+
+    color:#6B7280;
+
+    line-height:30px;
+
+    margin-bottom:35px;
+
+    max-width:520px;
+
+}
+
+.summer-content .btn{
+
+    padding:15px 40px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.summer-content .btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.summer-image{
+
+    text-align:center;
+
+}
+
+.summer-image img{
+
+    max-width:100%;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+
+    transition:.5s;
+
+}
+
+.summer-image img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* Responsive */
+
+@media(max-width:991px){
+
+.summer-banner{
+
+padding:70px 0;
+
+text-align:center;
+
+}
+
+.summer-content{
+
+margin-bottom:50px;
+
+}
+
+.summer-content p{
+
+margin:auto auto 30px;
+
+}
+
+.summer-content h2{
+
+font-size:40px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.summer-content h2{
+
+font-size:30px;
+
+}
+
+.summer-content p{
+
+font-size:15px;
+
+line-height:28px;
+
+}
+
+}
+/*=========================
+    Fashion Inspiration
+=========================*/
+
+.fashion-slider{
+
+    background:#f8f9fa;
+
+}
+
+#fashionSlider{
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+#fashionSlider img{
+
+    height:650px;
+
+    object-fit:cover;
+
+}
+
+.carousel-caption{
+
+    background:rgba(0,0,0,.45);
+
+    padding:40px;
+
+    border-radius:18px;
+
+    max-width:550px;
+
+    left:8%;
+
+    right:auto;
+
+    bottom:12%;
+
+    text-align:left;
+
+}
+
+.carousel-caption span{
+
+    color:#ff4d6d;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+}
+
+.carousel-caption h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:52px;
+
+    margin:20px 0;
+
+}
+
+.carousel-caption p{
+
+    font-size:17px;
+
+    line-height:30px;
+
+    margin-bottom:25px;
+
+}
+
+.carousel-caption .btn{
+
+    border-radius:50px;
+
+    padding:14px 35px;
+
+}
+
+.carousel-indicators button{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+
+    background-size:60%;
+
+}
+
+@media(max-width:991px){
+
+#fashionSlider img{
+
+height:500px;
+
+}
+
+.carousel-caption{
+
+left:5%;
+right:5%;
+max-width:100%;
+
+}
+
+.carousel-caption h2{
+
+font-size:38px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+#fashionSlider img{
+
+height:380px;
+
+}
+
+.carousel-caption{
+
+padding:20px;
+
+bottom:20px;
+
+}
+
+.carousel-caption h2{
+
+font-size:28px;
+
+}
+
+.carousel-caption p{
+
+display:none;
+
+}
 
 }
 
