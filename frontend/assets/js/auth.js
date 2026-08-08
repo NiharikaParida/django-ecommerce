@@ -7,15 +7,40 @@ if (menuBtn && navLinks) {
     });
 }
 
-const authForms = document.querySelectorAll('.auth-form');
+const ACCOUNT_KEY = 'fashionAccount';
+const SESSION_KEY = 'fashionUser';
 
-authForms.forEach(form => {
-    form.addEventListener('submit', (event) => {
+function saveSession(account) {
+    localStorage.setItem(SESSION_KEY, JSON.stringify({
+        name: account.name,
+        email: account.email,
+        location: account.location || '',
+        phone: account.phone || ''
+    }));
+}
+
+function getSession() {
+    try { return JSON.parse(localStorage.getItem(SESSION_KEY) || 'null'); }
+    catch (error) { return null; }
+}
+
+const loginForm = document.querySelector('.auth-form[data-action="Login"]');
+if (loginForm) {
+    loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const action = form.dataset.action;
-        alert(`${action} action submitted.`);
+        const email = loginForm.querySelector('[name="email"]').value.trim().toLowerCase();
+        const password = loginForm.querySelector('[name="password"]').value;
+        let account = null;
+        try { account = JSON.parse(localStorage.getItem(ACCOUNT_KEY) || 'null'); } catch (error) { account = null; }
+
+        if (!account || account.email !== email || account.password !== password) {
+            alert('Invalid login details. Please register first or check your email and password.');
+            return;
+        }
+        saveSession(account);
+        window.location.href = 'profile.html';
     });
-});
+}
 
 const profileEditBtn = document.querySelector('.profile-edit-btn');
 const profileCancelBtn = document.querySelector('.profile-cancel-btn');
@@ -37,6 +62,20 @@ if (profileCancelBtn && profileForm && profileView) {
 }
 
 if (profileForm && profileView) {
+    const session = getSession();
+    if (!session) {
+        window.location.href = 'login.html';
+    } else {
+        ['name', 'email', 'location', 'phone'].forEach((field) => {
+            const input = profileForm.querySelector(`#profile-${field}`);
+            const output = document.querySelector(`#view-${field}`);
+            if (input) input.value = session[field] || '';
+            if (output) output.textContent = session[field] || 'Not added';
+        });
+        const profileName = document.querySelector('#profileDisplayName');
+        if (profileName) profileName.textContent = session.name || 'Fashion customer';
+    }
+
     profileForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
@@ -45,10 +84,16 @@ if (profileForm && profileView) {
         const location = profileForm.querySelector('#profile-location').value;
         const phone = profileForm.querySelector('#profile-phone').value;
 
-        document.querySelector('#view-name').textContent = name;
-        document.querySelector('#view-email').textContent = email;
-        document.querySelector('#view-location').textContent = location;
-        document.querySelector('#view-phone').textContent = phone;
+        const account = JSON.parse(localStorage.getItem(ACCOUNT_KEY) || '{}');
+        const updatedAccount = { ...account, name, email, location, phone };
+        localStorage.setItem(ACCOUNT_KEY, JSON.stringify(updatedAccount));
+        saveSession(updatedAccount);
+        document.querySelector('#view-name').textContent = name || 'Not added';
+        document.querySelector('#view-email').textContent = email || 'Not added';
+        document.querySelector('#view-location').textContent = location || 'Not added';
+        document.querySelector('#view-phone').textContent = phone || 'Not added';
+        const profileName = document.querySelector('#profileDisplayName');
+        if (profileName) profileName.textContent = name || 'Fashion customer';
 
         profileForm.classList.add('hidden');
         profileView.classList.remove('hidden');
@@ -132,14 +177,25 @@ if (registerForm) {
             alert('Please make sure your password has at least 8 characters and includes a number, uppercase letter, lowercase letter, and special character.');
         } else {
             event.preventDefault();
-            alert('Account created successfully.');
-            registerForm.reset();
-            updatePasswordFeedback('');
-            if (confirmMessage) {
-                confirmMessage.textContent = '';
-                confirmMessage.style.color = '';
-            }
+            const account = {
+                name: document.getElementById('fullname').value.trim(),
+                email: document.getElementById('email-register').value.trim().toLowerCase(),
+                password: passwordInput.value,
+                location: '',
+                phone: ''
+            };
+            localStorage.setItem(ACCOUNT_KEY, JSON.stringify(account));
+            saveSession(account);
+            window.location.href = 'profile.html';
         }
+    });
+}
+
+const logoutButton = document.getElementById('logoutButton');
+if (logoutButton) {
+    logoutButton.addEventListener('click', () => {
+        localStorage.removeItem(SESSION_KEY);
+        window.location.href = 'login.html';
     });
 }
 
