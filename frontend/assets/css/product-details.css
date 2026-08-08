@@ -783,3 +783,8 @@ ul{
     font-style:italic;
     margin-top:8px;
 }
+
+.wishlist.active{
+    color:#D72638;
+    background:#fff0f2;
+}
