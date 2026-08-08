@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Mobile Menu Toggle
 const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
@@ -422,4 +421,3 @@ reviewGrid.innerHTML = reviews.map((item) => {
                     </div>  
   `
 }).join("");
->>>>>>> 7fe1b45dcdb5e4cca70aa2cb09e0842ea444aa04
