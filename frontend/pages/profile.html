@@ -1,53 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | Fashion Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/auth.css">
-    <link rel="stylesheet" href="../assets/css/site.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Fashion | Profile</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
-<body class="auth-page">
-<div class="auth-panel">
-    <div class="auth-card">
-        <div class="side-panel">
-            <h2>My Fashion Account</h2>
-            <p>Manage your personal details and continue shopping with your saved account.</p>
-            <button class="btn-primary" id="logoutButton" type="button">Log Out</button>
+
+<body>
+   <header class="navbar">
+        <div class="logo">
+            FASHION<span>.</span>
         </div>
-        <div class="form-panel">
-            <div class="profile-card">
-                <div class="profile-avatar">
-                    <div class="avatar">F</div>
-                    <h3 id="profileDisplayName">Fashion customer</h3>
-                    <p>Your account details</p>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="kids.html">Kids</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-icons">
+            <i class="ri-search-line"></i>
+            <a href="./wishlist.html"><i class="ri-heart-line"></i></a>
+            <i class="ri-shopping-cart-2-line"></i>
+            <a href="./profile.html"><i class="ri-user-line"></i></a>
+            <a href="#"><i class="ri-bank-card-line"></i></a></a>
+        </div>
+        <div class="menu-btn">
+            ☰
+        </div>
+    </header>
+
+    <div class="profile_hero">
+        <h1>My Account</h1>
+        <span></span>
+    </div>
+
+
+
+    <div class="profile_main_div">
+        <aside class="profile_side_bar">
+            <div class="profile_card">
+                <div class="profile_image">
+                    <img src="https://i.pinimg.com/736x/34/5c/6d/345c6d52234bbc72407ea25d49ad945e.jpg" alt="use_image">
                 </div>
-                <div class="profile-info">
-                    <h3>Profile</h3>
-                    <div class="profile-view">
-                        <div class="profile-details-view">
-                            <div><span>Name</span><strong id="view-name"></strong></div>
-                            <div><span>Email</span><strong id="view-email"></strong></div>
-                            <div><span>Location</span><strong id="view-location"></strong></div>
-                            <div><span>Phone</span><strong id="view-phone"></strong></div>
-                        </div>
-                        <div class="profile-buttons"><button class="btn-primary profile-edit-btn" type="button">Edit Profile</button><a class="btn-primary" href="../index.html">Continue Shopping</a></div>
-                    </div>
-                    <form class="profile-form hidden">
-                        <div class="form-group"><label for="profile-name">Name</label><input id="profile-name" type="text" required></div>
-                        <div class="form-group"><label for="profile-email">Email</label><input id="profile-email" type="email" required></div>
-                        <div class="form-group"><label for="profile-location">Location</label><input id="profile-location" type="text"></div>
-                        <div class="form-group"><label for="profile-phone">Phone</label><input id="profile-phone" type="tel"></div>
-                        <div class="profile-buttons"><button class="btn-primary" type="submit">Save Changes</button><button class="btn-primary profile-cancel-btn" type="button">Cancel</button></div>
-                    </form>
+                <div class="profile_info">
+                    <h3>Srimanta Nayak</h3>
+                    <p>ssrimanta2006@gmail.com</p>
                 </div>
             </div>
+            <div class="sidebar_menu">
+                <a href="#" class="active">
+                    <i class="ri-user-line"></i>
+                    <span>Profile</span>
+                </a>
+
+                <a href="#">
+                    <i class="ri-shopping-bag-line"></i>
+                    <span>My Orders</span>
+                </a>
+                <a href="#">
+                    <i class="ri-heart-line"></i>
+                    <span>Wishlist</span>
+                </a>
+
+                <a href="#">
+                    <i class="ri-star-line"></i>
+                    <span>Reviews</span>
+                </a>
+
+                <a href="#">
+                    <i class="ri-bank-card-line"></i>
+                    <span>Payment Methods</span>
+                </a>
+            </div>
+        </aside>
+        <div class="profile_right_bar">
+            <h3 class="user_path">
+                Home > My Account > <span class="current_page">Profile</span>
+            </h3>
+            <section class="active user_sidebar_section user_profile">
+                <div class="profile_header">
+                    <div>
+                        <h1>My Profile</h1>
+                        <p>Manage your personal information and preference</p>
+                    </div>
+                    <div class="profile_edit_btn" id="profileEditBtn">
+                        <span>Edit Profile</span>
+                        <span><i class="ri-edit-2-fill"></i></span>
+                    </div>
+                </div>
+                <div class="user_stats">
+                    <div class="stat_card">
+                        <div class="stat_icon">
+                            <i class="ri-shopping-bag-4-line"></i>
+                        </div>
+                        <div class="stat_info">
+                            <h1 class="stat_count">12</h1>
+                            <p class="stat_type">Orders</p>
+                            <a href="#">View all orders</a>
+                        </div>
+                    </div>
+                    <div class="stat_card">
+                        <div class="stat_icon">
+                            <i class="ri-heart-line"></i>
+                        </div>
+                        <div class="stat_info">
+                            <h1 class="stat_count">8</h1>
+                            <p class="stat_type">Wishlist items</p>
+                            <a href="#">View wishlist</a>
+                        </div>
+                    </div>
+                    <div class="stat_card">
+                        <div class="stat_icon">
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <div class="stat_info">
+                            <h1 class="stat_count">3</h1>
+                            <p class="stat_type">Saved Address</p>
+                            <a href="#">View addresses</a>
+                        </div>
+                    </div>
+                    <div class="stat_card">
+                        <div class="stat_icon">
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <div class="stat_info">
+                            <h1 class="stat_count">24</h1>
+                            <p class="stat_type">Reviews</p>
+                            <a href="#">View reviews</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="personal_information">
+                    <div class="personal_info">
+                        <h2>personal information</h2>
+                        <div class="info">
+                            <div class="info_item">
+                                <i class="ri-user-line"></i>
+                                <p class="info_label">
+                                    <span>Full Name</span>
+                                <h4 class="info_value">Srimanta Nayak</h4>
+                                </p>
+                            </div>
+                            <div class="info_item">
+                                <i class="ri-mail-line"></i>
+                                <p class="info_label">
+                                    <span>Email Address</span>
+                                <h4 class="info_value">ssrimanta2006@gmail.com</h4>
+                                </p>
+                            </div>
+                            <div class="info_item">
+                                <i class="ri-phone-fill"></i>
+                                <p class="info_label">
+                                    <span>Phone Number</span>
+                                <h4 class="info_value">+91 77359 81301</h4>
+                                </p>
+                            </div>
+                            <div class="info_item">
+                                <i class="ri-calendar-line"></i>
+                                <p class="info_label">
+                                    <span>Date of Birth</span>
+                                <h4 class="info_value">05 Sept 2006</h4>
+                                </p>
+                            </div>
+                            <div class="info_item">
+                                <i class="ri-men-line"></i>
+                                <p class="info_label">
+                                    <span>Gender</span>
+                                <h4 class="info_value">Male</h4>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="saved_address">
+                        <div class="address_header">
+                            <div>
+                                <h2>Saved Addresses</h2>
+                                <p>Manage your delivery locations</p>
+                            </div>
+                            <button class="add_address_btn">
+                                <i class="ri-add-line"></i>
+                                Add Address
+                            </button>
+                        </div>
+                        <div class="address_grid">
+                            <!-- Address Card -->
+                            <div class="address_card">
+                                <div class="address_top">
+                                    <span class="address_type">Home</span>
+                                    <div class="address_actions">
+                                        <button><i class="ri-edit-line"></i></button>
+                                        <button><i class="ri-delete-bin-line"></i></button>
+                                        <button><i class="ri-verified-badge-fill"></i></button>
+                                    </div>
+                                </div>
+                                <h4 class="receiver_name">Srimanta Nayak</h4>
+                                <p class="address_text">
+                                    Plot No. 24, BJB Nagar,<br>
+                                    Bhubaneswar, Odisha - 751014
+                                </p>
+                                <p class="phone_number">
+                                    +91 77359 81301
+                                </p>
+                                <!-- <button class="default_address">
+                                    Default Address
+                                </button> -->
+                            </div>
+                            <!-- Second Card -->
+                            <div class="address_card">
+                                <div class="address_top">
+                                    <span class="address_type work">Office</span>
+                                    <div class="address_actions">
+                                        <button><i class="ri-edit-line"></i></button>
+                                        <button><i class="ri-delete-bin-line"></i></button>
+                                    </div>
+                                </div>
+                                <h4 class="receiver_name">Srimanta Nayak</h4>
+
+                                <p class="address_text">
+                                    Infocity Road,<br>
+                                    Patia, Bhubaneswar
+                                </p>
+
+                                <p class="phone_number">
+                                    +91 77359 81301
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </section>
+
+
+
+            <section class=" user_sidebar_section user_orders">
+                <div class="section_header">
+                    <h1>My Orders</h1>
+                    <p>Track, view and manage all your orders</p>
+                </div>
+                <div class="profile_products_container">
+                    <div class="profile_product_search">
+                        <div class="search_box">
+                            <i class="ri-search-line"></i>
+                            <input type="text" placeholder="Search by product name or order ID...">
+                        </div>
+                        <button class="filter_btn">
+                            <i class="ri-equalizer-line"></i>
+                            Filter
+                        </button>
+                    </div>
+                    <div class="profile_products">
+                        <div class="product_card">
+                            <div class="product_image">
+                                <img src="https://i.pinimg.com/1200x/ce/95/98/ce95982d2515db95605656158075e676.jpg"
+                                    alt="product_Image">
+                            </div>
+                            <div class="product_info">
+                                <span class="order_id">Order ID : #SH12345</span>
+                                <h3 class="product_name">Oversized Black Hoodie</h3>
+                                <div class="product_meta">
+                                    <span>
+                                        <strong>Size:</strong> L
+                                    </span>
+                                    <span>
+                                        <strong>Color:</strong> Black
+                                    </span>
+                                    <span>
+                                        <strong>Qty:</strong> 1
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Order Status -->
+                            <div class="order_status">
+                                <span class="status delivered">Delivered</span>
+                                <p>Delivered on<strong>12 May 2024</strong></p>
+                            </div>
+                            <!-- Price -->
+                            <div class="order_price">
+                                <h3>₹1,299</h3>
+                                <span>1 Item</span>
+                            </div>
+                            <!-- Actions -->
+                            <div class="order_actions">
+                                <button class="primary_btn">View Details</button>
+                                <button class="secondary_btn">Track Order</button>
+                            </div>
+                        </div> <!-- first card end-->
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+            <section class="user_sidebar_section user_wishlist">
+                <h1>User wishlist</h1>
+            </section>
+            <section class=" user_sidebar_section user_review">
+                <div class="section_header">
+                    <h1>Customer Reviews</h1>
+                    <p>Real feedback from our users</p>
+                </div>
+                <div class="review_grid" id="reviewGrid">
+                         <!-- review card here -->
+                </div>
+            </section>
+
+
+
+            <section class=" user_sidebar_section user_payment">
+                <div class="profile_header">
+                    <div>
+                        <h1>Payment Method</h1>
+                        <p>Manage your saved cards, UPI and other payment options</p>
+                    </div>
+                    <button class="add_payment_method">
+                        <i class="ri-add-large-line"></i>
+                        <span>Add New Payment Method</span>
+                    </button>
+                </div>
+                <div class="payment_security">
+                    <div class="security_icon">
+                        <i class="ri-shield-check-fill"></i>
+                    </div>
+                    <div class="security_content">
+                        <h3>100% Secure Payments</h3>
+                        <p>
+                            Your payment information is encrypted and protected with
+                            industry-standard security protocols.
+                        </p>
+                    </div>
+                </div>
+                <div class="saved_cards">
+                    <div class="saved_card_header">
+                        <h1>Saved Cards</h1>
+                        <div>
+                            <span>Manage Cards</span>
+                            <i class="ri-settings-3-line"></i>
+                        </div>
+                    </div>
+                    <div class="card_holder">
+                        <div class="payment_card">
+                            <div class="card_header">
+                                <div class="card_brand">Premium</div>
+                                <div class="card_chip"></div>
+                            </div>
+                            <div class="card_middle" id="cardNumber">•••• •••• •••• ••••</div>
+                            <div class="card_bottom">
+                                <div class="card_holder">
+                                    <div class="card_label">CARD HOLDER</div>
+                                    <div class="holder_name">Srimanta Nayak</div>
+                                </div>
+                                <div class="card_expries">
+                                    <div class="card_label">Expries</div>
+                                    <div class="expiry_date">02/26</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add_new_card">
+                        <button class="add_card">
+                            <i class="ri-add-line"></i>
+                            <span>Add New Card</span>
+                        </button>
+                        <p>Save your card securly for faster checkout</p>
+                    </div>
+                </div>
+                <div class="payment_methods">
+                    <div class="upi_methods">
+                        <div class="card_header">Other Payment Options</div>
+                        <div class="upi_card_holder">
+                            <div class="upi_card">
+                                <div class="upi_logo">
+                                    <img src="https://imgs.search.brave.com/03oVkI1g81skfbKqGgUQbe8ywa0SkkX13QSIADX_pAI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bGlibG9nby5jb20v/aW1nLWxvZ28vZ284/ODI1ZzM2Ny1nb29n/bGUtcGF5LWxvZ28t/Z29vZ2xlLXBheS1k/b3dubG9hZC1sb2dv/LWljb24tcG5nLXN2/Zy5wbmc"
+                                        alt="">
+                                </div>
+                                <div class="upi_details">
+                                    <div class="upi_holder">
+                                        <span class="upi_type">Google Pay</span>
+                                        <span class="upi_holder_name">srimanta@okaxis</span>
+                                    </div>
+                                </div>
+                                <div class="upi_badge">
+                                    <span class="verification">Verified</span>
+                                </div>
+                            </div><!--upi card end -->
+                        </div>
+                        <div class="add_new_card">
+                            <button class="add_card">
+                                <i class="ri-add-line"></i>
+                                <span>Add New Card</span>
+                            </button>
+                            <p>Save your card securly for faster checkout</p>
+                        </div>
+                    </div>
+                    <div class="other_payment_methods">
+                        <div class="card_header">Other Payment Options</div>
+                        <div class="other_card_holder">
+                            <div class="other_card">
+                                <div class="card_logo">
+                                    <i class="ri-wallet-line"></i>
+                                </div>
+                                <div class="other_card_detials">
+                                    <div class="card_type">Cash On Delivery</div>
+                                    <span class="card_info">Pay in cash when your order is delivered</span>
+                                </div>
+                                <div class="card_badge">
+                                    Enabled
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
-</div>
-<script src="../assets/js/auth.js"></script>
-<script src="../assets/js/components.js"></script>
+    <script src="../assets/js/profile.js"></script>
 </body>
+
 </html>
