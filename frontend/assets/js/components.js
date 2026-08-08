@@ -4,7 +4,9 @@
   const inPages = window.location.pathname.toLowerCase().includes("/pages/");
   const link = (file) => inPages ? file : `pages/${file}`;
   const home = inPages ? "../index.html" : "index.html";
-  const loggedIn = Boolean(localStorage.getItem("fashionUser"));
+  let session = null;
+  try { session = JSON.parse(localStorage.getItem("fashionUser") || "null"); } catch (error) { session = null; }
+  const loggedIn = Boolean(session && session.name);
   const profile = loggedIn ? link("profile.html") : link("login.html");
   const current = window.location.pathname.split("/").pop().toLowerCase();
 

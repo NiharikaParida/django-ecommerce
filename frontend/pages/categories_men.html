@@ -293,36 +293,7 @@
         </div>
         <div class="copyright">© 2026 Fashion Store | All Rights Reserved</div>
     </footer>
- <script>
-        const checkboxes = document.querySelectorAll('.filter-group:first-of-type input[type="checkbox"]');
-        const products = document.querySelectorAll('.product-card');
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', filterProducts);
-        });
-
-        function filterProducts() {
-            const checkedBoxes = Array.from(checkboxes)
-                .filter(box => box.checked)
-                .map(box => box.id);
-
-            products.forEach(product => {
-                const productCategory = product.getAttribute('data-category');
-
-                if (checkedBoxes.length === 0) {
-                    product.style.display = 'flex'; 
-                } 
-                
-                else if (checkedBoxes.includes(productCategory)) {
-                    product.style.display = 'flex';
-                } 
-
-                else {
-                    product.style.display = 'none';
-                }
-            });
-        }
-    </script>
+    <script src="../assets/js/categories.js"></script>
     <script src="../assets/js/products.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/account.js"></script>
