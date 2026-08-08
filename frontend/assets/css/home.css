@@ -720,3 +720,414 @@ body{
 }
 
 }
+/*==========================
+TRENDING PRODUCTS
+==========================*/
+
+.trending-products{
+
+    width:90%;
+    max-width:1300px;
+    margin:90px auto;
+
+}
+
+.trend-container{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+
+}
+
+.trend-column h3{
+
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    margin-bottom:35px;
+    position:relative;
+
+}
+
+.trend-column h3::after{
+
+    content:"";
+    width:60px;
+    height:3px;
+    background:#D72638;
+    position:absolute;
+    left:0;
+    bottom:-10px;
+
+}
+
+.trend-item{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-bottom:28px;
+    transition:.4s;
+    cursor:pointer;
+
+}
+
+.trend-item:hover{
+
+    transform:translateX(10px);
+
+}
+
+.trend-item img{
+
+    width:95px;
+    height:120px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:.4s;
+
+}
+
+.trend-item:hover img{
+
+    transform:scale(1.06);
+
+}
+
+.trend-info h4{
+
+    font-size:17px;
+    margin-bottom:8px;
+    color:#111;
+
+}
+
+.stars{
+
+    color:#FFC107;
+    margin-bottom:10px;
+    font-size:15px;
+
+}
+
+.trend-info p{
+
+    font-size:18px;
+    font-weight:600;
+    color:#D72638;
+
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+
+.trend-container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.trend-container{
+
+grid-template-columns:1fr;
+
+}
+
+.trend-column{
+
+margin-bottom:40px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.trend-item{
+
+gap:15px;
+
+}
+
+.trend-item img{
+
+width:85px;
+height:110px;
+
+}
+
+.trend-column h3{
+
+font-size:24px;
+
+}
+
+}
+/*==============================
+SUMMER SALE
+==============================*/
+
+.summer-sale{
+
+    width:90%;
+    max-width:1300px;
+    margin:100px auto;
+
+}
+
+.sale-container{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.sale-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
+
+.sale-content{
+
+    padding:70px;
+    text-align:center;
+    position:relative;
+
+}
+
+.sale-circle{
+
+    width:120px;
+    height:120px;
+    background:#f8f8f8;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border:4px solid #D72638;
+
+}
+
+.sale-circle span{
+
+    font-size:15px;
+    color:#555;
+
+}
+
+.sale-circle h2{
+
+    color:#D72638;
+    font-size:42px;
+
+}
+
+.sale-content h4{
+
+    margin-top:30px;
+    color:#D72638;
+    letter-spacing:2px;
+
+}
+
+.sale-content h2{
+
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    margin:15px 0;
+
+}
+
+.sale-content p{
+
+    color:#666;
+    margin-bottom:35px;
+
+}
+
+.countdown{
+
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-bottom:40px;
+
+}
+
+.countdown div{
+
+    text-align:center;
+
+}
+
+.countdown h3{
+
+    font-size:34px;
+    color:#111;
+
+}
+
+.countdown span{
+
+    color:#666;
+
+}
+
+.sale-btn{
+
+    display:inline-block;
+    padding:14px 40px;
+    background:#111;
+    color:#fff;
+    text-decoration:none;
+    border-radius:50px;
+    transition:.4s;
+
+}
+
+.sale-btn:hover{
+
+    background:#D72638;
+
+}
+
+/*==============================
+SERVICES
+==============================*/
+
+.services{
+
+    width:90%;
+    max-width:1300px;
+    margin:80px auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+
+}
+
+.service-box{
+
+    background:#fff;
+    padding:40px 25px;
+    text-align:center;
+    border-radius:18px;
+    transition:.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.service-box:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.service-box i{
+
+    font-size:42px;
+    color:#D72638;
+    margin-bottom:20px;
+
+}
+
+.service-box h3{
+
+    margin-bottom:15px;
+
+}
+
+.service-box p{
+
+    color:#777;
+    line-height:1.7;
+
+}
+
+/*==============================
+RESPONSIVE
+==============================*/
+
+@media(max-width:992px){
+
+.sale-container{
+
+grid-template-columns:1fr;
+
+}
+
+.sale-content{
+
+padding:50px;
+
+}
+
+.services{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:576px){
+
+.services{
+
+grid-template-columns:1fr;
+
+}
+
+.sale-content{
+
+padding:35px;
+
+}
+
+.sale-content h2{
+
+font-size:32px;
+
+}
+
+.countdown{
+
+gap:12px;
+
+}
+
+.countdown h3{
+
+font-size:24px;
+
+}
+
+.sale-circle{
+
+width:100px;
+height:100px;
+
+}
+
+.sale-circle h2{
+
+font-size:34px;
+
+}
+
+}

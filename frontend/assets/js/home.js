@@ -143,3 +143,40 @@ setInterval(()=>{
 
 },5000);
 
+// ==========================================
+// SUMMER SALE COUNTDOWN TIMER
+// ==========================================
+
+const endDate = new Date();
+endDate.setDate(endDate.getDate() + 30);
+
+function updateCountdown() {
+
+    const now = new Date().getTime();
+    const distance = endDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const dayEl = document.getElementById("days");
+    const hourEl = document.getElementById("hours");
+    const minuteEl = document.getElementById("minutes");
+    const secondEl = document.getElementById("seconds");
+
+    if(dayEl && hourEl && minuteEl && secondEl){
+
+        dayEl.textContent = days;
+        hourEl.textContent = hours;
+        minuteEl.textContent = minutes;
+        secondEl.textContent = seconds;
+
+    }
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
