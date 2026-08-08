@@ -2,9 +2,12 @@
   "use strict";
 
   const inPages = window.location.pathname.toLowerCase().includes("/pages/");
-  const link = (file) => inPages ? file : `pages/${file}`;
-  const home = inPages ? "../index.html" : "index.html";
-  const loggedIn = Boolean(localStorage.getItem("fashionUser"));
+  const inDjangoRoute = /^\/(checkout|order-success)(\/|$)/i.test(window.location.pathname);
+  const link = (file) => inPages ? file : inDjangoRoute ? `/frontend/pages/${file}` : `pages/${file}`;
+  const home = inPages ? "../index.html" : inDjangoRoute ? "/frontend/index.html" : "index.html";
+  let session = null;
+  try { session = JSON.parse(localStorage.getItem("fashionUser") || "null"); } catch (error) { session = null; }
+  const loggedIn = Boolean(session && session.name);
   const profile = loggedIn ? link("profile.html") : link("login.html");
   const current = window.location.pathname.split("/").pop().toLowerCase();
 
@@ -23,6 +26,7 @@
       <a href="${link("product.html")}" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
       <a href="${link("wishlist.html")}" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
       <a href="${link("cart.html")}" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="${link("checkout.html")}" aria-label="Checkout"><i class="fa-regular fa-credit-card"></i></a>
       <a href="${profile}" aria-label="${loggedIn ? "Profile" : "Login"}"><i class="fa-regular fa-user"></i></a>
     </div>
     <button class="menu-btn" type="button" aria-label="Open navigation">☰</button>

@@ -64,7 +64,12 @@ if (profileCancelBtn && profileForm && profileView) {
 if (profileForm && profileView) {
     const session = getSession();
     if (!session) {
-        window.location.href = 'login.html';
+        const guestMessage = document.querySelector('#profileGuestMessage');
+        const profileName = document.querySelector('#profileDisplayName');
+        if (guestMessage) guestMessage.classList.remove('hidden');
+        if (profileName) profileName.textContent = 'Please login';
+        profileView.classList.add('hidden');
+        profileForm.classList.add('hidden');
     } else {
         ['name', 'email', 'location', 'phone'].forEach((field) => {
             const input = profileForm.querySelector(`#profile-${field}`);

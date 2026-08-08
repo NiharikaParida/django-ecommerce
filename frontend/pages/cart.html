@@ -7,18 +7,8 @@
     <link rel="stylesheet" href="../assets/css/product.css">
     <link rel="stylesheet" href="../assets/css/categories.css">
     <link rel="stylesheet" href="../assets/css/site.css">
+    <link rel="stylesheet" href="../assets/css/cart-page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        .cart-page { max-width: 1100px; margin: 40px auto; padding: 0 24px; }
-        .cart-item { display: flex; align-items: center; gap: 20px; padding: 18px 0; border-bottom: 1px solid #eaeaec; }
-        .cart-item img { width: 90px; height: 115px; object-fit: cover; border-radius: 4px; }
-        .cart-item div { flex: 1; }
-        .cart-item h2 { font-size: 18px; margin-bottom: 6px; }
-        .cart-item p { color: #535766; margin-bottom: 8px; }
-        .cart-item button, #clearCartBtn { border: 1px solid #ff3f6c; background: white; color: #ff3f6c; padding: 9px 14px; cursor: pointer; }
-        .cart-summary { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; }
-        @media (max-width: 600px) { .cart-item { align-items: flex-start; } .cart-item button { margin-left: auto; } .cart-summary { gap: 15px; flex-wrap: wrap; } }
-    </style>
 </head>
 <body>
     <header class="navbar">
@@ -31,10 +21,18 @@
         <div class="nav-icons"><a href="product.html" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a><a href="wishlist.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a><a href="cart.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a><a href="login.html" aria-label="Profile"><i class="fa-regular fa-user"></i></a></div>
     </header>
     <main class="cart-page">
-        <h1>Your Cart</h1>
-        <p id="cartEmpty">Your cart is empty.</p>
-        <div id="cartItems"></div>
-        <div class="cart-summary"><strong>Total: <span id="cartTotal">₹0</span></strong><button id="clearCartBtn" type="button">Clear Cart</button></div>
+        <div class="cart-breadcrumb"><a href="../index.html">Home</a><span>/</span><strong>Shopping Cart</strong></div>
+        <div class="cart-title-row"><div><h1>Shopping Cart</h1><p><b id="itemCountText">0</b> items in your cart</p></div><a class="continue-shopping" href="product.html">← Continue Shopping</a></div>
+        <div class="cart-layout">
+            <section class="cart-main">
+                <div class="cart-promo"><strong>Style delivered to your door</strong><span>Free shipping on orders over ₹999</span></div>
+                <div id="cartItemsWrap"></div>
+                <div class="empty-cart" id="emptyCart" hidden><div class="empty-icon">🛒</div><h2>Your cart is empty</h2><p>Looks like you haven't added anything to your bag yet.</p><a class="cart-button" href="product.html">Continue Shopping</a></div>
+                <div class="coupon-card"><h3>Have a coupon code?</h3><div class="coupon-row"><input id="couponInput" placeholder="Enter coupon code"><button id="applyCouponBtn" type="button">Apply</button></div><p id="couponMsg"></p><small>Try <b>FASHION20</b> for 20% off.</small></div>
+                <div class="shipping-card"><h3>Shipping Options</h3><label class="ship-option active" data-cost="0"><span><b>Free Shipping</b><small>Delivered in 7–9 business days</small></span><strong>₹0</strong></label><label class="ship-option" data-cost="99"><span><b>Standard Shipping</b><small>Delivered in 4–6 business days</small></span><strong>₹99</strong></label><label class="ship-option" data-cost="199"><span><b>Express Shipping</b><small>Delivered in 2–3 business days</small></span><strong>₹199</strong></label></div>
+            </section>
+            <aside class="cart-side"><div class="summary-card"><h2>Order Summary</h2><p><span>Cart Subtotal</span><b id="sumSubtotal">₹0</b></p><p class="discount"><span>Discount</span><b id="sumDiscount">−₹0</b></p><p><span>Shipping</span><b id="sumShipping">₹0</b></p><p><span>Estimated Tax</span><b id="sumTax">₹0</b></p><hr><div class="summary-total"><span>Total</span><strong id="sumTotal">₹0</strong></div><div class="saving">You're saving <b id="sumSavings">₹0</b> on this order</div><button class="checkout-button" id="checkoutBtn" type="button">Proceed to Checkout</button><a class="continue-shopping center" href="product.html">Continue Shopping</a></div></aside>
+        </div>
     </main>
     <script src="../assets/js/products.js"></script>
     <script src="../assets/js/cart.js"></script>
