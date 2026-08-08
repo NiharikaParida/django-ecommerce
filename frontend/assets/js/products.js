@@ -15,10 +15,10 @@
     67: ["p7.jpg", "p4.jpg", "p3.jpg"], 68: ["p8.jpg", "p3.jpg", "p4.jpg"],
     69: ["p9.jpg", "p10.jpg", "p12.jpg"], 70: ["p10.jpg", "p11.jpg", "p9.jpg"],
     71: ["p11.jpg", "p12.jpg", "p10.jpg"], 72: ["p12.jpg", "p9.jpg", "p11.jpg"],
-    113: ["p1.jpg", "p3.jpg", "p5.jpg"], 114: ["p2.jpg", "p4.jpg", "p6.jpg"],
-    115: ["p3.jpg", "p1.jpg", "p7.jpg"], 116: ["p7.jpg", "p8.jpg", "p10.jpg"],
-    117: ["p5.jpg", "p6.jpg", "p8.jpg"], 118: ["p8.jpg", "p5.jpg", "p6.jpg"],
-    119: ["p9.jpg", "p10.jpg", "p11.jpg"], 120: ["p10.jpg", "p7.jpg", "p8.jpg"],
+    113: ["whiteshirt1.png", "whiteshirt2.png", "whiteshirt3.png"], 114: ["max1.jpg", "max2.jpg", "max3.jpg"],
+    115: ["check1.jpg", "check2.jpg", "check3.jpg"], 116: ["pdd1.png", "pdd1.1.png", "pdd1.2.png"],
+    117: ["maxp1.1.png", "maxp1.2.png", "maxp1.3.png"], 118: ["shots1.png", "shots1.1.png", "shots1.2.png"],
+    119: ["casual1.png", "casual2.pg", "casual3.jpg"], 120: ["cott1.png", "cott2.png", "cott3.png"],
   };
 
   const rows = [
