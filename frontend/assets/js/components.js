@@ -74,6 +74,11 @@
       "read article": link("blog.html"),
       "read more": link("blog.html"),
       "read guide →": link("blog.html"),
+      "shop now": link("product.html"),
+      explore: link("product.html"),
+      "shop sale": link("product.html#sale"),
+      "shop collection": link("product.html#new-arrivals"),
+      "discover now": link("product.html"),
     };
     document.querySelectorAll('a[href="#"]').forEach((anchor) => {
       const target = placeholderTargets[anchor.textContent.trim().toLowerCase()];
