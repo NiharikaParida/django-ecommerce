@@ -3,10 +3,10 @@ html, body { max-width: 100%; overflow-x: hidden; }
 body.auth-page { display: block; min-height: 100vh; width: 100%; }
 .auth-page .auth-panel { min-height: calc(100vh - 85px); display: flex; align-items: stretch; }
 .auth-page .auth-card { width: 100%; min-height: calc(100vh - 85px); }
-.site-header { position: sticky; top: 0; z-index: 1000; width: 100%; max-width: none; background: #fff; display: flex; justify-content: flex-start; align-items: center; gap: 200px; padding: 20px 8%; box-shadow: 0 5px 15px rgba(0,0,0,.08); }
+.site-header { position: sticky; top: 0; z-index: 1000; width: 100%; max-width: none; background: #fff; display: flex; justify-content: flex-start; align-items: center; gap: 0; padding: 20px 8%; box-shadow: 0 5px 15px rgba(0,0,0,.08); }
 .site-header .logo, .site-header .logo a { display: block; width: auto !important; min-width: 178px; height: 38px; flex: 0 0 178px; color: #111; font-family: 'Playfair Display', serif !important; font-size: 32px !important; font-weight: 700 !important; line-height: 38px !important; text-decoration: none; white-space: nowrap; }
 .site-header .logo span { color: #D72638; }
-.site-header nav { flex: 0 1 auto; margin: 0; min-width: 0; }
+.site-header nav { flex: 0 1 auto; margin: 0 0 0 200px; min-width: 0; }
 .site-header .nav-links { display: flex; list-style: none; gap: 24px; margin: 0; padding: 0; }
 .site-header .nav-links a { color: #333; text-decoration: none; font-weight: 500; transition: .3s; }
 .site-header .nav-links a:hover, .site-header .nav-links a.active { color: #D72638; }
@@ -25,7 +25,8 @@ body.auth-page { display: block; min-height: 100vh; width: 100%; }
 img { max-width: 100%; }
 button, a { touch-action: manipulation; }
 @media (max-width: 900px) {
-  .site-header { padding: 16px 5%; }
+  .site-header { padding: 16px 5%; gap: 0; }
+  .site-header nav { margin-left: 0; }
   .site-header .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 12px 5%; background: #fff; box-shadow: 0 8px 15px rgba(0,0,0,.08); }
   .site-header .nav-links.open { display: flex; }
   .site-header .nav-links li { padding: 10px 0; }
