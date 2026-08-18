@@ -211,12 +211,13 @@ function initAddToCartButtons(scope) {
             e.preventDefault();
             e.stopPropagation();
             const name = btn.closest(".product-card").querySelector("h3").textContent.trim();
-            const catalogProduct = (window.FASHION_PRODUCTS || []).find((item) => item.name === name);
+            const productId = Number(btn.dataset.productId) || Number(btn.closest(".product-card")?.dataset.id);
+            const catalogProduct = (window.FASHION_PRODUCTS || []).find((item) => item.id === productId) || (window.FASHION_PRODUCTS || []).find((item) => item.name === name);
             if (catalogProduct) {
                 const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
-                const existing = cart.find((item) => Number(item.id) === catalogProduct.id);
+                const existing = cart.find((item) => Number(item.id) === catalogProduct.id && (item.size || "") === "");
                 if (existing) existing.quantity = (Number(existing.quantity) || 1) + 1;
-                else cart.push({ id: catalogProduct.id, quantity: 1 });
+                else cart.push({ id: catalogProduct.id, size: catalogProduct.sizes[0], quantity: 1 });
                 localStorage.setItem("fashionCart", JSON.stringify(cart));
             }
             showToast(`Added ${name} to cart.`);

@@ -49,7 +49,36 @@
 
     const menu = document.querySelector(".site-header .menu-btn");
     const nav = document.querySelector(".site-header .nav-links");
-    if (menu && nav) menu.addEventListener("click", () => nav.classList.toggle("open"));
+    if (menu && nav) {
+      menu.addEventListener("click", () => {
+        const open = nav.classList.toggle("open");
+        menu.setAttribute("aria-expanded", String(open));
+      });
+    }
+
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) logoutButton.addEventListener("click", () => {
+      localStorage.removeItem("fashionUser");
+      window.location.href = link("login.html");
+    });
+
+    const placeholderTargets = {
+      home,
+      shop: link("product.html"),
+      categories: link("product.html#new-arrivals"),
+      sale: link("product.html#new-arrivals"),
+      "contact us": link("contact.html"),
+      returns: `${link("contact.html")}#returns`,
+      shipping: `${link("contact.html")}#shipping`,
+      "privacy policy": `${link("contact.html")}#privacy`,
+      "read article": link("blog.html"),
+      "read more": link("blog.html"),
+      "read guide →": link("blog.html"),
+    };
+    document.querySelectorAll('a[href="#"]').forEach((anchor) => {
+      const target = placeholderTargets[anchor.textContent.trim().toLowerCase()];
+      if (target) anchor.href = target;
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderSharedChrome);

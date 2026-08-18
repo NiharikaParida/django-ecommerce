@@ -19,21 +19,9 @@ const observer = new IntersectionObserver((entries) => {
 cards.forEach(card => {
     observer.observe(card);
 });
-const buttons = document.querySelectorAll(".btn");
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        alert("Redirecting to Shop Page...");
-
-        // Later you can use:
-        // window.location.href = "shop.html";
-
-    });
-
+// Keep real links navigable. Only buttons without a destination need custom JS.
+document.querySelectorAll(".btn:not([href])").forEach(button => {
+    button.addEventListener("click", () => { window.location.href = "pages/product.html"; });
 });
 
 cards.forEach(card => {

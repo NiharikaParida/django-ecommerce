@@ -18,7 +18,7 @@
     const total = subtotal - discount + shipping + tax;
     document.getElementById("itemCountText").textContent = items.reduce((sum, item) => sum + item.quantity, 0);
     document.getElementById("emptyCart").hidden = items.length > 0;
-    wrap.innerHTML = items.map((item) => `<article class="cart-item" data-id="${item.id}"><img src="${item.images[0]}" alt="${item.name}"><div><span class="brand">${item.brand}</span><h2>${item.name}</h2><p class="meta">${item.category} · Sizes: ${item.sizes.join(", ")}</p><span class="price">${money.format(item.price)}</span>${item.oldPrice > item.price ? `<span class="old-price">${money.format(item.oldPrice)}</span>` : ""}<div class="item-bottom"><div class="qty"><button data-action="minus" aria-label="Decrease quantity">−</button><span>${item.quantity}</span><button data-action="plus" aria-label="Increase quantity">+</button></div><strong>${money.format(item.price * item.quantity)}</strong><div class="item-actions"><button data-action="save">Save for Later</button><button class="remove" data-action="remove">Remove</button></div></div></div></article>`).join("");
+    wrap.innerHTML = items.map((item) => `<article class="cart-item" data-id="${item.id}" data-size="${item.selectedSize}"><img src="${item.images[0]}" alt="${item.name}"><div><span class="brand">${item.brand}</span><h2>${item.name}</h2><p class="meta">${item.category} · Size: ${item.selectedSize}</p><span class="price">${money.format(item.price)}</span>${item.oldPrice > item.price ? `<span class="old-price">${money.format(item.oldPrice)}</span>` : ""}<div class="item-bottom"><div class="qty"><button type="button" data-action="minus" aria-label="Decrease quantity">−</button><span>${item.quantity}</span><button type="button" data-action="plus" aria-label="Increase quantity">+</button></div><strong>${money.format(item.price * item.quantity)}</strong><div class="item-actions"><button type="button" data-action="save">Save for Later</button><button type="button" class="remove" data-action="remove">Remove</button></div></div></div></article>`).join("");
     document.getElementById("sumSubtotal").textContent = money.format(subtotal);
     document.getElementById("sumDiscount").textContent = `−${money.format(discount)}`;
     document.getElementById("sumShipping").textContent = money.format(shipping);
@@ -30,11 +30,13 @@
   wrap.addEventListener("click", (event) => {
     const button = event.target.closest("[data-action]");
     if (!button) return;
-    const id = Number(button.closest(".cart-item").dataset.id);
+    const card = button.closest(".cart-item");
+    const id = Number(card.dataset.id);
+    const size = card.dataset.size;
     const cart = readCart();
-    const entry = cart.find((item) => Number(item.id) === id);
+    const entry = cart.find((item) => Number(item.id) === id && (item.size || "") === (size || ""));
     if (button.dataset.action === "remove" || button.dataset.action === "save") {
-      writeCart(cart.filter((item) => Number(item.id) !== id));
+      writeCart(cart.filter((item) => !(Number(item.id) === id && (item.size || "") === (size || ""))));
       if (button.dataset.action === "save") { const saved = JSON.parse(localStorage.getItem("fashionSavedForLater") || "[]"); if (!saved.includes(id)) saved.push(id); localStorage.setItem("fashionSavedForLater", JSON.stringify(saved)); }
     } else if (entry) entry.quantity = Math.max(1, Number(entry.quantity || 1) + (button.dataset.action === "plus" ? 1 : -1));
     writeCart(cart); render();

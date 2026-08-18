@@ -2,7 +2,7 @@
   "use strict";
 
   const products = window.FASHION_PRODUCTS || [];
-  const productId = Number(new URLSearchParams(window.location.search).get("id"));
+  const productId = Number(new URLSearchParams(window.location.search).get("id")) || 1;
   const product = products.find((item) => item.id === productId);
   const details = document.querySelector(".product-details");
   const notFound = document.getElementById("productNotFound");
@@ -50,8 +50,17 @@
   setText("detailDescription", product.description);
 
   const sizeGroup = document.getElementById("detailSizes");
+  let selectedSize = product.sizes[0];
   if (sizeGroup) {
     sizeGroup.innerHTML = `<h3>Select Size</h3>${product.sizes.map((size) => `<button type="button">${size}</button>`).join("")}`;
+    const sizeButtons = Array.from(sizeGroup.querySelectorAll("button"));
+    sizeButtons[0]?.classList.add("active");
+    sizeButtons.forEach((button) => button.addEventListener("click", () => {
+      selectedSize = button.textContent.trim();
+      sizeGroup.dataset.selectedSize = selectedSize;
+      sizeButtons.forEach((item) => item.classList.toggle("active", item === button));
+    }));
+    sizeGroup.dataset.selectedSize = selectedSize;
   }
 
   let quantity = 1;
@@ -75,27 +84,26 @@
   }
 
   // Save the selected product in localStorage, then take the customer to cart.html.
+  const readCart = () => { try { return JSON.parse(localStorage.getItem("fashionCart") || "[]"); } catch { return []; } };
+  const saveCart = (cart) => localStorage.setItem("fashionCart", JSON.stringify(cart));
+  const addCurrentProductToCart = () => {
+    const cart = readCart();
+    const selected = sizeGroup?.dataset.selectedSize || selectedSize;
+    const existing = cart.find((item) => Number(item.id) === product.id && item.size === selected);
+    if (existing) existing.quantity = Math.min(10, (Number(existing.quantity) || 1) + quantity);
+    else cart.push({ id: product.id, size: selected, quantity });
+    saveCart(cart);
+  };
   const addToCartButton = document.getElementById("addToCartBtn");
   if (addToCartButton) {
     addToCartButton.addEventListener("click", () => {
-      const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
-      const existing = cart.find((item) => item.id === product.id);
-      if (existing) {
-        existing.quantity = (Number(existing.quantity) || 1) + quantity;
-      } else {
-        cart.push({ id: product.id, quantity });
-      }
-      localStorage.setItem("fashionCart", JSON.stringify(cart));
+      addCurrentProductToCart();
       window.location.href = "cart.html";
     });
   }
 
   const addToCart = () => {
-    const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
-    const existing = cart.find((item) => Number(item.id) === product.id);
-    if (existing) existing.quantity = (Number(existing.quantity) || 1) + quantity;
-    else cart.push({ id: product.id, quantity });
-    localStorage.setItem("fashionCart", JSON.stringify(cart));
+    addCurrentProductToCart();
   };
 
   document.querySelector(".buy-btn")?.addEventListener("click", () => {
