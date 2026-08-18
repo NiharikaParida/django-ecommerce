@@ -1131,3 +1131,419 @@ font-size:34px;
 }
 
 }
+/* ==========================================
+   FASHION PROMOTION
+========================================== */
+
+.fashion-promo {
+    position: relative;
+
+    width: 90%;
+    max-width: 1300px;
+
+    height: 500px;
+
+    margin: 100px auto;
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    background: #111;
+}
+
+
+/* ==========================================
+   BACKGROUND IMAGE
+========================================== */
+
+.promo-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    display: block;
+
+    transition: transform 0.7s ease;
+}
+
+
+/* Image zoom on hover */
+
+.fashion-promo:hover .promo-image img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================
+   DARK OVERLAY
+   Keeps text readable on the right
+========================================== */
+
+.fashion-promo::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.02) 35%,
+        rgba(0, 0, 0, 0.15) 55%,
+        rgba(0, 0, 0, 0.55) 100%
+    );
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   TEXT CONTENT
+========================================== */
+
+.promo-content {
+    position: absolute;
+
+    z-index: 3;
+
+    top: 50%;
+    right: 7%;
+
+    transform: translateY(-50%);
+
+    width: 43%;
+    max-width: 520px;
+
+    color: white;
+}
+
+
+/* Small heading */
+
+.promo-content span {
+    display: block;
+
+    color: #D72638;
+
+    letter-spacing: 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+
+/* Main heading */
+
+.promo-content h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 52px;
+    line-height: 1.12;
+
+    margin: 0 0 22px;
+
+    color: #fff;
+
+    font-weight: 600;
+}
+
+
+/* Description */
+
+.promo-content p {
+    color: #d6d6d6;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    max-width: 430px;
+
+    margin: 0 0 30px;
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 32px;
+
+    background: #fff;
+    color: #111;
+
+    text-decoration: none;
+
+    border-radius: 40px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.promo-btn:hover {
+    background: #D72638;
+    color: #fff;
+
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 900px) {
+
+    .fashion-promo {
+        width: 92%;
+        height: 480px;
+    }
+
+    .promo-content {
+        right: 5%;
+        width: 48%;
+    }
+
+    .promo-content h2 {
+        font-size: 42px;
+    }
+
+    .promo-content p {
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .fashion-promo {
+        width: 92%;
+
+        height: auto;
+        min-height: 650px;
+
+        margin: 70px auto;
+
+        border-radius: 20px;
+    }
+
+
+    /* Move image slightly so model remains visible */
+
+    .promo-image img {
+        object-position: 35% center;
+    }
+
+
+    /* Darker overlay for mobile */
+
+    .fashion-promo::after {
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05) 20%,
+            rgba(0, 0, 0, 0.75) 70%,
+            rgba(0, 0, 0, 0.92) 100%
+        );
+    }
+
+
+    .promo-content {
+        top: auto;
+        right: auto;
+        bottom: 45px;
+        left: 30px;
+
+        transform: none;
+
+        width: calc(100% - 60px);
+    }
+
+
+    .promo-content span {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+
+    .promo-content h2 {
+        font-size: 38px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .promo-content p {
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        margin-bottom: 25px;
+    }
+
+
+    .promo-btn {
+        padding: 13px 26px;
+
+        font-size: 14px;
+    }
+}
+/* ==========================================
+   SHOP BY COLLECTION
+========================================== */
+
+.collections {
+    width: 90%;
+    max-width: 1300px;
+    margin: 100px auto;
+}
+
+.collections .section-title span {
+    color: #D72638;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 600;
+}
+
+.collection-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.collection-card {
+    position: relative;
+
+    height: 480px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.collection-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.6s ease;
+}
+
+.collection-card:hover img {
+    transform: scale(1.08);
+}
+
+.collection-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,.8),
+        rgba(0,0,0,.1)
+    );
+}
+
+.collection-overlay {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 2;
+
+    color: white;
+}
+
+.collection-overlay span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ddd;
+}
+
+.collection-overlay h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 30px;
+
+    margin: 8px 0 15px;
+}
+
+.collection-overlay button {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    padding: 0;
+}
+
+.collection-overlay button:hover {
+    color: #D72638;
+}
+
+
+/* Responsive */
+
+@media(max-width:992px) {
+
+    .collection-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width:576px) {
+
+    .collection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-card {
+        height: 400px;
+    }
+
+}
