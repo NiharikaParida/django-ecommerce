@@ -4,8 +4,14 @@
   let session = null;
   try { session = JSON.parse(localStorage.getItem("fashionUser") || "null"); } catch (error) { session = null; }
 
-  const name = session?.name?.trim() || "Please login";
-  const email = session?.email || (session ? "" : "Please login to view your profile.");
+  // A profile is private, so send guests to the existing login/register page.
+  if (!session || !session.name) {
+    window.location.replace("login.html");
+    return;
+  }
+
+  const name = session.name.trim() || "Fashion customer";
+  const email = session.email || "";
   const summaryName = document.querySelector(".profile_info h3");
   const summaryEmail = document.querySelector(".profile_info p");
   if (summaryName) summaryName.textContent = name;
