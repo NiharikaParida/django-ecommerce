@@ -24,7 +24,7 @@ body.auth-page{
     align-items:center;
     justify-content:center;
     padding:0;
-    overflow-x:hidden;
+    overflow-x:clip;
 }
 
 a{

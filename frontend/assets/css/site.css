@@ -1,5 +1,6 @@
 /* Shared home-page header, footer, and responsive safeguards. */
-html, body { max-width: 100%; overflow-x: hidden; }
+html { max-width: 100%; overflow-x: clip; }
+body { max-width: 100%; overflow-x: clip; }
 /* Keep every storefront navigation bar visible while the page scrolls. */
 header.navbar { position: sticky !important; top: 0; z-index: 1100; width: 100%; }
 body.auth-page { display: block; min-height: 100vh; width: 100%; }
