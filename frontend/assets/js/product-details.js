@@ -108,7 +108,7 @@
 
   document.querySelector(".buy-btn")?.addEventListener("click", () => {
     addToCart();
-    window.location.href = "checkout.html";
+    window.location.href = "checkout.html?checkout=1";
   });
 
   const wishlistButton = document.querySelector(".buttons .wishlist");

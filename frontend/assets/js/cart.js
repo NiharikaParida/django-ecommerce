@@ -43,6 +43,6 @@
   });
   document.querySelectorAll(".ship-option").forEach((option) => option.addEventListener("click", () => { document.querySelectorAll(".ship-option").forEach((item) => item.classList.remove("active")); option.classList.add("active"); shipping = Number(option.dataset.cost); localStorage.setItem("fashionShipping", String(shipping)); render(); }));
   document.getElementById("applyCouponBtn").addEventListener("click", () => { const code = document.getElementById("couponInput").value.trim().toUpperCase(); const message = document.getElementById("couponMsg"); discountRate = code === "FASHION20" || code === "ASHION20" ? .2 : 0; localStorage.setItem("fashionDiscountRate", String(discountRate)); message.textContent = discountRate ? "Coupon applied successfully." : "Enter a valid coupon code."; render(); });
-  document.getElementById("checkoutBtn").addEventListener("click", () => { if (!getItems().length) return alert("Your cart is empty."); localStorage.setItem("fashionShipping", String(shipping)); localStorage.setItem("fashionDiscountRate", String(discountRate)); window.location.href = "checkout.html"; });
+  document.getElementById("checkoutBtn").addEventListener("click", () => { if (!getItems().length) return alert("Your cart is empty."); localStorage.setItem("fashionShipping", String(shipping)); localStorage.setItem("fashionDiscountRate", String(discountRate)); window.location.href = "checkout.html?checkout=1"; });
   render();
 })();

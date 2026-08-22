@@ -26,7 +26,7 @@
       <a href="${link("product.html")}" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
       <a href="${link("wishlist.html")}" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
       <a href="${link("cart.html")}" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
-      <a href="${link("checkout.html")}" aria-label="Checkout"><i class="fa-regular fa-credit-card"></i></a>
+      <a href="${link("checkout.html?checkout=1")}" aria-label="Checkout"><i class="fa-regular fa-credit-card"></i></a>
       <a href="${profile}" aria-label="${loggedIn ? "Profile" : "Login"}"><i class="fa-regular fa-user"></i></a>
     </div>
     <button class="menu-btn" type="button" aria-label="Open navigation">☰</button>
