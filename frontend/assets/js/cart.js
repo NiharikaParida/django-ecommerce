@@ -8,7 +8,10 @@
   let discountRate = 0;
   const readCart = () => { try { return JSON.parse(localStorage.getItem("fashionCart") || "[]"); } catch { return []; } };
   const writeCart = (cart) => localStorage.setItem("fashionCart", JSON.stringify(cart));
-  const getItems = () => readCart().map((entry) => ({ ...products.find((p) => p.id === Number(entry.id)), quantity: Math.max(1, Number(entry.quantity) || 1) })).filter((item) => item.id);
+  const getItems = () => readCart().map((entry) => {
+    const product = products.find((p) => p.id === Number(entry.id));
+    return product ? { ...product, selectedSize: entry.size || product.sizes[0], quantity: Math.max(1, Number(entry.quantity) || 1) } : null;
+  }).filter(Boolean);
 
   function render() {
     const items = getItems();

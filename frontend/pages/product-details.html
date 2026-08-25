@@ -59,10 +59,11 @@
 
 <section class="breadcrumb">
 
-    <p>
-
-        Home > Products > Women > Floral Printed Dress
-
+    <p id="productBreadcrumb">
+        <a href="../index.html">Home</a><span aria-hidden="true">›</span>
+        <a href="product.html">Products</a><span aria-hidden="true">›</span>
+        <a id="breadcrumbCategory" href="product.html">Category</a><span aria-hidden="true">›</span>
+        <strong id="breadcrumbProduct">Product</strong>
     </p>
 
 </section>
@@ -179,7 +180,7 @@
 
             <button id="minus">-</button>
 
-            <input type="text" id="qty" value="1">
+            <input type="number" id="qty" value="1" min="1" max="10" step="1" inputmode="numeric" aria-label="Quantity">
 
             <button id="plus">+</button>
 
@@ -253,7 +254,11 @@
 
 </section>
 
-<p id="productNotFound" hidden>Product not found</p>
+<section id="productNotFound" class="product-not-found" hidden aria-live="polite">
+    <h1 id="productNotFoundTitle">Product not found</h1>
+    <p id="productNotFoundMessage">We could not find that product. Please choose another item from the catalog.</p>
+    <a class="back-to-products" href="product.html">Back to Products</a>
+</section>
 
 <!-- ================= PRODUCT HIGHLIGHTS ================= -->
 
@@ -393,49 +398,7 @@
 
     <h2>You May Also Like</h2>
 
-    <div class="related-grid">
-
-        <div class="card">
-
-            <img src="../assets/image/product4.jpg" alt="">
-
-            <h4>Elegant Dress</h4>
-
-            <p>₹1,999</p>
-
-        </div>
-
-        <div class="card">
-
-            <img src="../assets/image/product1.jpg" alt="">
-
-            <h4>Classic Shirt</h4>
-
-            <p>₹1,499</p>
-
-        </div>
-
-        <div class="card">
-
-            <img src="../assets/image/product2.jpg" alt="">
-
-            <h4>Running Shoes</h4>
-
-            <p>₹3,299</p>
-
-        </div>
-
-        <div class="card">
-
-            <img src="../assets/image/product3.jpg" alt="">
-
-            <h4>Premium Floral Dress</h4>
-
-            <p>₹2,499</p>
-
-        </div>
-
-    </div>
+    <div class="related-grid" id="relatedGrid"></div>
 
 </section>
 

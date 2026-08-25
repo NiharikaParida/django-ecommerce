@@ -18,7 +18,7 @@
     113: ["whiteshirt1.png", "whiteshirt2.png", "whiteshirt3.png"], 114: ["max1.jpg", "max2.jpg", "max3.jpg"],
     115: ["check1.jpg", "check2.jpg", "check3.jpg"], 116: ["pdd1.png", "pdd1.1.png", "pdd1.2.png"],
     117: ["maxp1.1.png", "maxp1.2.png", "maxp1.3.png"], 118: ["shots1.png", "shots1.1.png", "shots1.2.png"],
-    119: ["casual1.png", "casual2.pg", "casual3.jpg"], 120: ["cott1.png", "cott2.png", "cott3.png"],
+    119: ["casual1.png", "casual2.png", "casual.jpg"], 120: ["cott1.png", "cott2.png", "cott3.png"],
 
   };
 

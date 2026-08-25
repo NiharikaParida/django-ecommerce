@@ -25,7 +25,7 @@
     <div class="nav-icons">
       <a href="${link("product.html")}" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
       <a href="${link("wishlist.html")}" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
-      <a href="${link("cart.html")}" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+      <a href="${link("cart.html")}" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-count" data-cart-count hidden>0</span></a>
       <a href="${link("checkout.html?checkout=1")}" aria-label="Checkout"><i class="fa-regular fa-credit-card"></i></a>
       <a href="${profile}" aria-label="${loggedIn ? "Profile" : "Login"}"><i class="fa-regular fa-user"></i></a>
     </div>
@@ -84,6 +84,9 @@
       const target = placeholderTargets[anchor.textContent.trim().toLowerCase()];
       if (target) anchor.href = target;
     });
+    let count = 0;
+    try { count = JSON.parse(localStorage.getItem("fashionCart") || "[]").reduce((sum, item) => sum + Math.max(1, Number(item.quantity) || 1), 0); } catch (error) { count = 0; }
+    document.querySelectorAll("[data-cart-count]").forEach((badge) => { badge.textContent = count; badge.hidden = count === 0; });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderSharedChrome);

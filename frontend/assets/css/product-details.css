@@ -104,6 +104,19 @@ ul{
     font-size:15px;
 }
 
+.breadcrumb p{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.breadcrumb a{color:#666;text-decoration:none}
+.breadcrumb a:hover{color:#D72638}
+
+.product-not-found{width:90%;max-width:700px;margin:80px auto;padding:50px 30px;text-align:center;background:#fff;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.product-not-found h1{font-family:'Playfair Display',serif;color:#111;margin-bottom:12px}
+.product-not-found p{color:#666;margin-bottom:24px}
+.back-to-products{display:inline-block;padding:12px 22px;border-radius:8px;background:#D72638;color:#fff}
+.selection-message{color:#D72638;font-size:14px;margin:10px 0 0}
+.related-card{display:block;color:inherit;text-decoration:none}
+.cart-count{position:absolute;top:-10px;right:-12px;min-width:18px;height:18px;padding:0 4px;border-radius:10px;background:#D72638;color:#fff;font:600 11px/18px Poppins,sans-serif;text-align:center}
+.nav-icons a{position:relative}
+
 /* ===================================
    PRODUCT DETAILS
 =================================== */

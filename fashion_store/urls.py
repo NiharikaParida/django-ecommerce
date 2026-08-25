@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
 from django.urls import path
+from django.views.static import serve
+
+from core import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/products/', core_views.product_list_api, name='product-list-api'),
+    path('api/products/<int:product_id>/', core_views.product_detail_api, name='product-detail-api'),
+    path('api/categories/', core_views.category_list_api, name='category-list-api'),
+    path('api/brands/', core_views.brand_list_api, name='brand-list-api'),
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(path('frontend/<path:path>', serve, {'document_root': settings.BASE_DIR / 'frontend'}))
