@@ -43,6 +43,8 @@ class Product(models.Model):
     stock_quantity = models.PositiveIntegerField(default=0)
     description = models.TextField(blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=0)
+    review_count = models.PositiveIntegerField(default=0)
+    color = models.CharField(max_length=100, blank=True)
 
     class Meta:
         ordering = ["name"]

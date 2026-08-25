@@ -30,7 +30,7 @@ CATALOG = [
     (72, "Men", "Woodland Leather Shoes", "Woodland", 3199, 3999, 4.5, ["pm16.png", "pm16.1.png", "pm16.2.png"]),
     (113, "Kids", "Boys Printed Cotton T-Shirt", "H&M", 499, 899, 4.5, ["whiteshirt1.png", "whiteshirt2.png", "whiteshirt3.png"]),
     (114, "Kids", "Girls Graphic Cotton T-Shirt", "Max", 399, 799, 4.4, ["max1.jpg", "max2.jpg", "max3.jpg"]),
-    (115, "Kids", "Boys Casual Checked Shirt", "U.S. Polo Kids", 799, 1499, 4.6, ["check1.jpg", "check2.png", "check3.png"]),
+    (115, "Kids", "Boys Casual Checked Shirt", "U.S. Polo Kids", 799, 1499, 4.6, ["check.jpg", "check2.png", "check3.png"]),
     (116, "Kids", "Girls Floral Party Dress", "Zara Kids", 999, 1899, 4.7, ["pdd1.png", "pdd1.1.png", "pdd1.2.png"]),
     (117, "Kids", "Boys Slim Fit Jeans", "Max", 899, 1699, 4.5, ["maxp1.1.png", "maxp1.2.png", "maxp1.3.png"]),
     (118, "Kids", "Cotton Summer Shorts", "Mothercare", 499, 899, 4.3, ["shots1.png", "shots1.1.png", "shots1.2.png"]),
@@ -65,6 +65,8 @@ class Command(BaseCommand):
                     "stock_quantity": 10,
                     "description": f"{name} from the {category_name.lower()} collection, made for comfortable everyday styling with a polished finish.",
                     "rating": rating,
+                    "review_count": 0,
+                    "color": "",
                 },
             )
 

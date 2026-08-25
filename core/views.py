@@ -10,7 +10,7 @@ def _image_url(path):
         return path
     if path.startswith("/frontend/assets/image/"):
         return path
-    return f"../assets/image/{path.rsplit('/', 1)[-1]}"
+    return f"/frontend/assets/image/{path.rsplit('/', 1)[-1]}"
 
 
 def _serialize_product(product):
@@ -25,6 +25,8 @@ def _serialize_product(product):
         "brand": product.brand.name,
         "category": product.category.name,
         "rating": float(product.rating),
+        "review_count": product.review_count,
+        "color": product.color,
         "price": float(product.price),
         "old_price": float(product.old_price) if product.old_price is not None else None,
         "discount": product.discount,
