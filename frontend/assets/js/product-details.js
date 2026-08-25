@@ -1,7 +1,9 @@
 (function () {
   "use strict";
 
+  const products = window.FASHION_PRODUCTS || [];
   const productId = Number(new URLSearchParams(window.location.search).get("id"));
+  const product = products.find((item) => item.id === productId);
   const details = document.querySelector(".product-details");
   const notFound = document.getElementById("productNotFound");
   const relatedSection = document.querySelector(".related-products");
@@ -13,12 +15,6 @@
     document.querySelectorAll(".product-highlights, .product-tabs, .reviews, .related-products").forEach((section) => { section.hidden = true; });
     if (notFound) { notFound.hidden = false; setText("productNotFoundTitle", title); setText("productNotFoundMessage", message); }
   };
-
-  const normalizeProduct = (data) => ({
-    ...data, id: Number(data.id), price: Number(data.price), oldPrice: data.old_price == null ? null : Number(data.old_price),
-    discount: Number(data.discount) || 0, rating: Number(data.rating) || 0,
-    images: Array.isArray(data.images) ? data.images.filter(Boolean) : [], sizes: Array.isArray(data.sizes) ? data.sizes.filter(Boolean) : [],
-  });
 
   const updateCartCount = () => {
     let count = 0;
@@ -93,21 +89,6 @@
     updateCartCount();
   }
 
-  async function loadFromApi() {
-    if (!Number.isInteger(productId) || productId < 1) return showError("Product not found", "Please choose a valid product from the catalog.");
-    try {
-      const response = await fetch(`/api/products/${productId}/`, { headers: { Accept: "application/json" } });
-      if (!response.ok) { if (response.status === 404) throw new Error("PRODUCT_NOT_FOUND"); throw new Error("API_UNAVAILABLE"); }
-      const data = await response.json(); const product = normalizeProduct(data);
-      if (!product.name || !product.category || !product.brand || !product.images.length) throw new Error("INVALID_PRODUCT");
-      let relatedProducts = [];
-      try { const relatedResponse = await fetch("/api/products/", { headers: { Accept: "application/json" } }); if (relatedResponse.ok) { const relatedData = await relatedResponse.json(); if (Array.isArray(relatedData)) relatedProducts = relatedData.map(normalizeProduct); } } catch { /* Detail remains usable without recommendations. */ }
-      renderProduct(product, relatedProducts);
-    } catch (error) {
-      const messages = { PRODUCT_NOT_FOUND: ["Product not found", "We could not find that product. Please choose another item from the catalog."], INVALID_PRODUCT: ["Product unavailable", "The product response was incomplete. Please try another product."], API_UNAVAILABLE: ["Product service unavailable", "We could not load this product right now. Please try again shortly."] };
-      const [title, message] = messages[error.message] || messages.API_UNAVAILABLE; showError(title, message);
-    }
-  }
-
-  loadFromApi();
+  if (!product) showError("Product not found", "Please choose a valid product from the catalog.");
+  else renderProduct(product, products);
 })();
