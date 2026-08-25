@@ -27,6 +27,18 @@ urlpatterns = [
     path('api/products/<int:product_id>/', core_views.product_detail_api, name='product-detail-api'),
     path('api/categories/', core_views.category_list_api, name='category-list-api'),
     path('api/brands/', core_views.brand_list_api, name='brand-list-api'),
+    path('api/cart/', core_views.cart_api, name='cart-api'),
+    path('api/cart/items/', core_views.cart_item_create_api, name='cart-item-create-api'),
+    path('api/cart/items/<int:item_id>/', core_views.cart_item_api, name='cart-item-api'),
+    path('api/wishlist/', core_views.wishlist_api, name='wishlist-api'),
+    path('api/wishlist/items/', core_views.wishlist_item_create_api, name='wishlist-item-create-api'),
+    path('api/wishlist/items/<int:product_id>/', core_views.wishlist_item_api, name='wishlist-item-api'),
+    path('api/orders/', core_views.order_api, name='order-api'),
+    path('api/orders/<str:order_number>/', core_views.order_detail_api, name='order-detail-api'),
+    path('api/auth/register/', core_views.register_api, name='auth-register-api'),
+    path('api/auth/login/', core_views.login_api, name='auth-login-api'),
+    path('api/auth/logout/', core_views.logout_api, name='auth-logout-api'),
+    path('api/auth/me/', core_views.current_user_api, name='auth-me-api'),
 ]
 
 if settings.DEBUG:

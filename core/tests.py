@@ -1,6 +1,10 @@
+import json
+from unittest.mock import patch
+
+from django.core.management import call_command
 from django.test import TestCase
 
-from .models import Brand, Category, Product
+from .models import Brand, Category, Order, Product
 
 
 class ProductApiTests(TestCase):
@@ -40,3 +44,49 @@ class ProductApiTests(TestCase):
         response = self.client.get("/api/products/999999/")
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {"detail": "Product not found."})
+
+
+class BackendWorkflowTests(TestCase):
+    def setUp(self):
+        category = Category.objects.create(name="Women")
+        brand = Brand.objects.create(name="Test Brand")
+        Product.objects.create(frontend_id=1, name="Existing Catalog Product", category=category, brand=brand, price=799, old_price=1499, images=["pw1.png", "pw1.1.png"], sizes=["S", "M"], stock_quantity=10)
+
+    def post_json(self, url, data):
+        return self.client.post(url, data=json.dumps(data), content_type="application/json")
+
+    def test_anonymous_cart_and_wishlist_workflows(self):
+        added = self.post_json("/api/cart/items/", {"product_id": 1, "quantity": 2, "size": "M"})
+        self.assertEqual(added.status_code, 201)
+        cart = self.client.get("/api/cart/").json()
+        self.assertEqual(cart["item_count"], 2)
+        item_id = cart["items"][0]["item_id"]
+        updated = self.client.patch(f"/api/cart/items/{item_id}/", data=json.dumps({"quantity": 3}), content_type="application/json")
+        self.assertEqual(updated.status_code, 200)
+        self.assertEqual(updated.json()["quantity"], 3)
+        wished = self.post_json("/api/wishlist/items/", {"product_id": 1})
+        self.assertEqual(wished.status_code, 201)
+        self.assertEqual(self.client.get("/api/wishlist/").json()["items"][0]["id"], 1)
+        self.assertEqual(self.client.delete("/api/wishlist/items/1/").status_code, 200)
+
+    def test_authentication_and_order_workflow(self):
+        registered = self.post_json("/api/auth/register/", {"name": "Test Shopper", "email": "shopper@example.com", "password": "StrongPass123!"})
+        self.assertEqual(registered.status_code, 201)
+        self.assertTrue(self.client.get("/api/auth/me/").json()["authenticated"])
+        order = self.post_json("/api/orders/", {"customer": {"name": "Test Shopper", "email": "shopper@example.com", "phone": "9999999999", "address": "1 Main Road", "city": "Bhubaneswar", "state": "Odisha", "postal_code": "751001"}, "items": [{"product_id": 1, "quantity": 1, "size": "M"}], "payment_method": "cod", "shipping": 0, "tax": 0})
+        self.assertEqual(order.status_code, 201)
+        self.assertEqual(order.json()["status"], "placed")
+        self.assertEqual(Order.objects.count(), 1)
+        self.assertEqual(len(self.client.get("/api/orders/").json()), 1)
+        self.assertEqual(self.client.post("/api/auth/logout/").status_code, 200)
+
+    @patch("core.management.commands.import_public_products.fetch_products")
+    def test_public_import_is_additive_and_idempotent(self, fetch_products):
+        fetch_products.return_value = [{"id": 999, "title": "Imported Dress", "description": "Imported description", "category": "womens-dresses", "price": 25, "discountPercentage": 20, "rating": 4.5, "stock": 4, "brand": "Public Brand", "images": ["https://example.com/dress.webp"]}]
+        call_command("import_public_products")
+        call_command("import_public_products")
+        self.assertEqual(Product.objects.filter(source="manual").count(), 1)
+        self.assertEqual(Product.objects.filter(source="dummyjson").count(), 1)
+        imported = Product.objects.get(source="dummyjson")
+        self.assertEqual(imported.frontend_id, 100999)
+        self.assertEqual(imported.image, "https://example.com/dress.webp")

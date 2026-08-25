@@ -114,6 +114,12 @@
       return;
     }
     const localProduct = products.find((item) => item.id === productId);
+    const servedByLiveServer = window.location.port === "5501";
+    if (servedByLiveServer) {
+      if (localProduct) renderProduct({ ...normalizeProduct(localProduct), source: "local-catalog" }, products.map(normalizeProduct));
+      else showError("Product not found", "Please choose a valid product from the catalog.");
+      return;
+    }
     try {
       const response = await fetch(`/api/products/${productId}/`, { headers: { Accept: "application/json" } });
       if (response.status === 404) {

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const products = Array.from(document.querySelectorAll(".product-card"));
+    let products = Array.from(document.querySelectorAll(".product-card"));
     const filters = Array.from(document.querySelectorAll(".filter-group input[type='checkbox']"));
     const sortDropdown = document.querySelector(".sort-dropdown");
 
@@ -50,4 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     filterProducts();
+    document.addEventListener("catalog:updated", () => {
+        products = Array.from(document.querySelectorAll(".product-card"));
+        filterProducts();
+    });
 });
