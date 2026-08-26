@@ -7,6 +7,7 @@
   const notFound = document.getElementById("productNotFound");
   const relatedSection = document.querySelector(".related-products");
   const setText = (id, value) => { const element = document.getElementById(id); if (element) element.textContent = value; };
+  const specified = (value) => value == null || String(value).trim() === "" ? "Not specified" : String(value);
   const money = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
 
   const normalizeProduct = (data) => ({
@@ -51,7 +52,15 @@
 
     setText("detailName", product.name); setText("detailCategory", product.category); setText("detailBrand", product.brand);
     setText("detailPrice", money.format(product.price)); setText("detailOldPrice", product.oldPrice == null ? "" : money.format(product.oldPrice));
-    setText("detailDiscount", `${product.discount}% OFF`); setText("detailRating", `★ ${product.rating}`); setText("detailDescription", product.description || "Product details are not available.");
+    setText("detailDiscount", `${product.discount}% OFF`); setText("detailRating", `★ ${product.rating}`);
+    const description = specified(product.description);
+    setText("detailDescription", description); setText("detailTabDescription", description);
+    setText("detailSpecBrand", product.brand);
+    setText("detailSpecMaterial", product.material ?? product.fabric);
+    setText("detailSpecFit", product.fit);
+    setText("detailSpecPattern", product.pattern);
+    setText("detailSpecSleeve", product.sleeve);
+    setText("detailSpecWashCare", product.washCare ?? product.wash_care);
     setText("detailReviewCount", `(${product.reviewCount} Review${product.reviewCount === 1 ? "" : "s"})`);
     setText("detailColor", product.color || "Not Available");
     setText("detailStock", product.stockQuantity > 0 ? `${product.stockQuantity} available` : "Currently out of stock");
