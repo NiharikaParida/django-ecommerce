@@ -115,13 +115,15 @@
     }
     const localProduct = products.find((item) => item.id === productId);
     const servedByLiveServer = window.location.port === "5501";
+    const djangoApiOrigin = servedByLiveServer ? "http://127.0.0.1:8765" : "";
     if (servedByLiveServer) {
-      if (localProduct) renderProduct({ ...normalizeProduct(localProduct), source: "local-catalog" }, products.map(normalizeProduct));
-      else showError("Product not found", "Please choose a valid product from the catalog.");
-      return;
+      if (localProduct) {
+        renderProduct({ ...normalizeProduct(localProduct), source: "local-catalog" }, products.map(normalizeProduct));
+        return;
+      }
     }
     try {
-      const response = await fetch(`/api/products/${productId}/`, { headers: { Accept: "application/json" } });
+      const response = await fetch(`${djangoApiOrigin}/api/products/${productId}/`, { headers: { Accept: "application/json" } });
       if (response.status === 404) {
         showError("Product not found", "Please choose a valid product from the catalog.");
         return;
@@ -131,7 +133,7 @@
       if (!apiProduct.name || !apiProduct.category || !apiProduct.brand || !apiProduct.images.length) throw new Error("Incomplete product");
       let related = [];
       try {
-        const relatedResponse = await fetch("/api/products/", { headers: { Accept: "application/json" } });
+        const relatedResponse = await fetch(`${djangoApiOrigin}/api/products/`, { headers: { Accept: "application/json" } });
         if (relatedResponse.ok) related = (await relatedResponse.json()).map(normalizeProduct);
       } catch { related = []; }
       renderProduct(apiProduct, related);
