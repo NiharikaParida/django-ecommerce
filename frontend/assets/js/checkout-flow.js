@@ -12,7 +12,7 @@
     sizes: Array.isArray(product.sizes) ? product.sizes.filter(Boolean) : [],
   });
   const localProducts = products.map(normalizeProduct);
-  const apiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8765" : "";
+  const apiOrigin = "";
   const loadProducts = async () => {
     const byId = new Map(localProducts.map((product) => [product.id, product]));
     const missingIds = [...new Set(cart.map((entry) => Number(entry.id)).filter((id) => Number.isInteger(id) && !byId.has(id)))];

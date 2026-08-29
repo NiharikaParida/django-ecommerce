@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path
+from django.views.generic.base import RedirectView
 from django.views.static import serve
 
 from core import views as core_views
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/frontend/index.html', permanent=False), name='frontend-home'),
     path('admin/', admin.site.urls),
     path('api/products/', core_views.product_list_api, name='product-list-api'),
     path('api/products/<int:product_id>/', core_views.product_detail_api, name='product-detail-api'),

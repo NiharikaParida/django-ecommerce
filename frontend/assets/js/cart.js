@@ -16,7 +16,7 @@
     images: Array.isArray(product.images) ? product.images.filter(Boolean) : [],
   });
   let catalog = products.map(normalizeProduct);
-  const apiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8765" : "";
+  const apiOrigin = "";
   const loadCatalog = async () => {
     const cartIds = new Set(readCart().map((entry) => Number(entry.id)));
     const localIds = new Set(catalog.map((product) => product.id));

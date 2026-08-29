@@ -8,7 +8,7 @@
   const category = path.includes("women") ? "Women" : path.includes("men") ? "Men" : path.includes("kids") ? "Kids" : "";
   const isHomePage = path.endsWith("/") || path.endsWith("/index.html");
   if (!category && !isHomePage) return;
-  const djangoApiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8765" : "";
+  const djangoApiOrigin = "";
 
   const money = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
   const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[character]));
