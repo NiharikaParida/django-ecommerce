@@ -8,8 +8,27 @@
   let discountRate = 0;
   const readCart = () => { try { return JSON.parse(localStorage.getItem("fashionCart") || "[]"); } catch { return []; } };
   const writeCart = (cart) => localStorage.setItem("fashionCart", JSON.stringify(cart));
+  const normalizeProduct = (product) => ({
+    ...product,
+    id: Number(product.id),
+    price: Number(product.price) || 0,
+    sizes: Array.isArray(product.sizes) ? product.sizes.filter(Boolean) : [],
+    images: Array.isArray(product.images) ? product.images.filter(Boolean) : [],
+  });
+  let catalog = products.map(normalizeProduct);
+  const apiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8765" : "";
+  const loadCatalog = async () => {
+    const cartIds = new Set(readCart().map((entry) => Number(entry.id)));
+    const localIds = new Set(catalog.map((product) => product.id));
+    if ([...cartIds].some((id) => !localIds.has(id))) {
+      try {
+        const response = await fetch(`${apiOrigin}/api/products/`, { headers: { Accept: "application/json" } });
+        if (response.ok) catalog = (await response.json()).map(normalizeProduct);
+      } catch { /* Keep the local catalog available when Django is offline. */ }
+    }
+  };
   const getItems = () => readCart().map((entry) => {
-    const product = products.find((p) => p.id === Number(entry.id));
+    const product = catalog.find((p) => p.id === Number(entry.id));
     return product ? { ...product, selectedSize: entry.size || product.sizes[0], quantity: Math.max(1, Number(entry.quantity) || 1) } : null;
   }).filter(Boolean);
 
@@ -47,5 +66,5 @@
   document.querySelectorAll(".ship-option").forEach((option) => option.addEventListener("click", () => { document.querySelectorAll(".ship-option").forEach((item) => item.classList.remove("active")); option.classList.add("active"); shipping = Number(option.dataset.cost); localStorage.setItem("fashionShipping", String(shipping)); render(); }));
   document.getElementById("applyCouponBtn").addEventListener("click", () => { const code = document.getElementById("couponInput").value.trim().toUpperCase(); const message = document.getElementById("couponMsg"); discountRate = code === "FASHION20" || code === "ASHION20" ? .2 : 0; localStorage.setItem("fashionDiscountRate", String(discountRate)); message.textContent = discountRate ? "Coupon applied successfully." : "Enter a valid coupon code."; render(); });
   document.getElementById("checkoutBtn").addEventListener("click", () => { if (!getItems().length) return alert("Your cart is empty."); localStorage.setItem("fashionShipping", String(shipping)); localStorage.setItem("fashionDiscountRate", String(discountRate)); window.location.href = "checkout.html?checkout=1"; });
-  render();
+  loadCatalog().then(render);
 })();

@@ -125,12 +125,6 @@
     const localProduct = products.find((item) => item.id === productId);
     const servedByLiveServer = window.location.port === "5501";
     const djangoApiOrigin = servedByLiveServer ? "http://127.0.0.1:8765" : "";
-    if (servedByLiveServer) {
-      if (localProduct) {
-        renderProduct({ ...normalizeProduct(localProduct), source: "local-catalog" }, products.map(normalizeProduct));
-        return;
-      }
-    }
     try {
       const response = await fetch(`${djangoApiOrigin}/api/products/${productId}/`, { headers: { Accept: "application/json" } });
       if (response.status === 404) {

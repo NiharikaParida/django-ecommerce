@@ -6,7 +6,8 @@
   if (!grid) return;
   const path = window.location.pathname.toLowerCase();
   const category = path.includes("women") ? "Women" : path.includes("men") ? "Men" : path.includes("kids") ? "Kids" : "";
-  if (!category) return;
+  const isHomePage = path.endsWith("/") || path.endsWith("/index.html");
+  if (!category && !isHomePage) return;
   const djangoApiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8765" : "";
 
   const money = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
@@ -16,7 +17,8 @@
     .then((response) => response.ok ? response.json() : [])
     .then((products) => {
       const existingIds = new Set(Array.from(grid.querySelectorAll(".product-card[data-product-id]")).map((card) => card.dataset.productId));
-      const imported = products.filter((product) => product.source !== "manual" && product.category === category && !existingIds.has(String(product.id)));
+      const matching = products.filter((product) => product.source !== "manual" && (!category || product.category === category) && !existingIds.has(String(product.id)));
+      const imported = category ? matching : matching.slice(0, 4);
       imported.forEach((product) => {
         const card = document.createElement("div");
         card.className = "product-card";
