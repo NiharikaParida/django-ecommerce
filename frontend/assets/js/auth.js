@@ -9,6 +9,19 @@ if (menuBtn && navLinks) {
 
 const ACCOUNT_KEY = 'fashionAccount';
 const SESSION_KEY = 'fashionUser';
+const AUTH_API_ORIGIN = window.location.port === '5501' ? 'http://127.0.0.1:8000' : '';
+
+async function authRequest(path, data) {
+    const response = await fetch(`${AUTH_API_ORIGIN}/api/auth/${path}/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(data)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.detail || 'Authentication request failed.');
+    return result;
+}
 
 function saveSession(account) {
     localStorage.setItem(SESSION_KEY, JSON.stringify({
@@ -26,19 +39,17 @@ function getSession() {
 
 const loginForm = document.querySelector('.auth-form[data-action="Login"]');
 if (loginForm) {
-    loginForm.addEventListener('submit', (event) => {
+    loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const email = loginForm.querySelector('[name="email"]').value.trim().toLowerCase();
         const password = loginForm.querySelector('[name="password"]').value;
-        let account = null;
-        try { account = JSON.parse(localStorage.getItem(ACCOUNT_KEY) || 'null'); } catch (error) { account = null; }
-
-        if (!account || account.email !== email || account.password !== password) {
-            alert('Invalid login details. Please register first or check your email and password.');
-            return;
+        try {
+            const account = await authRequest('login', { email, password });
+            saveSession(account);
+            window.location.href = 'profile.html';
+        } catch (error) {
+            alert(error.message);
         }
-        saveSession(account);
-        window.location.href = 'profile.html';
     });
 }
 
@@ -170,7 +181,7 @@ if (confirmPasswordInput) {
 }
 
 if (registerForm) {
-    registerForm.addEventListener('submit', (event) => {
+    registerForm.addEventListener('submit', async (event) => {
         const checks = getPasswordChecks(passwordInput?.value || '');
         const isValidPassword = checks.every(({ passed }) => passed);
         const isMatch = validatePasswordMatch();
@@ -182,25 +193,18 @@ if (registerForm) {
             alert('Please make sure your password has at least 8 characters and includes a number, uppercase letter, lowercase letter, and special character.');
         } else {
             event.preventDefault();
-            const account = {
-                name: document.getElementById('fullname').value.trim(),
-                email: document.getElementById('email-register').value.trim().toLowerCase(),
-                password: passwordInput.value,
-                location: '',
-                phone: ''
-            };
-            localStorage.setItem(ACCOUNT_KEY, JSON.stringify(account));
-            saveSession(account);
-            window.location.href = 'profile.html';
+            try {
+                const account = await authRequest('register', {
+                    name: document.getElementById('fullname').value.trim(),
+                    email: document.getElementById('email-register').value.trim().toLowerCase(),
+                    password: passwordInput.value
+                });
+                saveSession(account);
+                window.location.href = 'profile.html';
+            } catch (error) {
+                alert(error.message);
+            }
         }
-    });
-}
-
-const logoutButton = document.getElementById('logoutButton');
-if (logoutButton) {
-    logoutButton.addEventListener('click', () => {
-        localStorage.removeItem(SESSION_KEY);
-        window.location.href = 'login.html';
     });
 }
 

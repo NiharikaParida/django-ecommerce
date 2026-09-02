@@ -57,9 +57,18 @@
     }
 
     const logoutButton = document.getElementById("logoutButton");
-    if (logoutButton) logoutButton.addEventListener("click", () => {
-      localStorage.removeItem("fashionUser");
-      window.location.href = link("login.html");
+    if (logoutButton) logoutButton.addEventListener("click", async () => {
+      const apiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8000" : "";
+      try {
+        await fetch(`${apiOrigin}/api/auth/logout/`, {
+          method: "POST",
+          credentials: "include",
+          headers: { Accept: "application/json" },
+        });
+      } finally {
+        localStorage.removeItem("fashionUser");
+        window.location.href = link("login.html");
+      }
     });
 
     const placeholderTargets = {

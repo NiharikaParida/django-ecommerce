@@ -19,6 +19,7 @@ from django.conf import settings
 from django.urls import path
 from django.views.generic.base import RedirectView
 from django.views.static import serve
+from auth import views as auth_views
 
 from core import views as core_views
 
@@ -37,10 +38,10 @@ urlpatterns = [
     path('api/wishlist/items/<int:product_id>/', core_views.wishlist_item_api, name='wishlist-item-api'),
     path('api/orders/', core_views.order_api, name='order-api'),
     path('api/orders/<str:order_number>/', core_views.order_detail_api, name='order-detail-api'),
-    path('api/auth/register/', core_views.register_api, name='auth-register-api'),
-    path('api/auth/login/', core_views.login_api, name='auth-login-api'),
-    path('api/auth/logout/', core_views.logout_api, name='auth-logout-api'),
-    path('api/auth/me/', core_views.current_user_api, name='auth-me-api'),
+    path('api/auth/register/', auth_views.register_api, name='auth-register-api'),
+    path('api/auth/login/', auth_views.login_api, name='auth-login-api'),
+    path('api/auth/logout/', auth_views.logout_api, name='auth-logout-api'),
+    path('api/auth/me/', auth_views.current_user_api, name='auth-me-api'),
 ]
 
 if settings.DEBUG:
