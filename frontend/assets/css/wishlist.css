@@ -393,6 +393,18 @@
     flex:1;
     border-radius:12px;
 }
+
+.btn-accent{
+    background:var(--accent);
+    border:1px solid var(--accent);
+    color:#fff;
+}
+
+.btn-accent:hover{
+    background:#b91c2d;
+    border-color:#b91c2d;
+    color:#fff;
+}
 /* ==========================================================
    EMPTY WISHLIST
 ========================================================== */
