@@ -61,6 +61,7 @@
   let discount = 0;
   let tax = 0;
   let submitButton;
+  let onlinePaymentDetails = null;
 
   const renderCheckout = (items) => {
     currentItems = items;
@@ -124,6 +125,7 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!currentItems.length) return;
+      const paymentMethod = form.elements.namedItem("payment")?.value || "cod";
       const fieldValue = (name) => String(form.elements.namedItem(name)?.value || "").trim();
       const customer = {
         name: fieldValue("name"),
@@ -152,6 +154,15 @@
       submitButton.disabled = true;
       submitButton.textContent = "Placing Order...";
       try {
+        if (paymentMethod === "online" && !onlinePaymentDetails) {
+          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ amount: total }) });
+          const paymentOrder = await paymentOrderResponse.json();
+          if (!paymentOrderResponse.ok) throw new Error(paymentOrder.detail || "Online payment is unavailable.");
+          if (!window.Razorpay) throw new Error("Online payment checkout could not be loaded.");
+          submitButton.disabled = false;
+          new window.Razorpay({ key: paymentOrder.key_id || "", amount: paymentOrder.amount, currency: paymentOrder.currency || "INR", order_id: paymentOrder.id, name: "Fashion Store", handler: (response) => { onlinePaymentDetails = response; form.requestSubmit(); }, modal: { ondismiss: () => { submitButton.disabled = false; submitButton.textContent = "Place Order"; } } }).open();
+          return;
+        }
         const response = await fetch(`${apiOrigin}/api/orders/`, {
           method: "POST",
           headers: {
@@ -168,7 +179,8 @@
             discount,
             shipping,
             tax,
-            payment_method: "cod",
+            payment_method: paymentMethod,
+            ...(paymentMethod === "online" ? onlinePaymentDetails : {}),
           }),
         });
         const order = await response.json();

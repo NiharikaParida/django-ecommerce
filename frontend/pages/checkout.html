@@ -16,12 +16,12 @@
       <form id="checkoutForm" class="checkout-form" novalidate>
         <section class="checkout-card"><h2>Customer Information</h2><div class="form-grid"><label>Full Name<input id="customerName" name="name" required autocomplete="name"></label><label>Email<input id="customerEmail" type="email" name="email" required autocomplete="email"></label><label>Phone Number<input id="customerPhone" name="phone" required inputmode="tel" autocomplete="tel"></label></div></section>
         <section class="checkout-card"><h2>Shipping Address</h2><div class="form-grid"><label class="full">Address<input id="customerAddress" name="address" required autocomplete="street-address"></label><label>City<input id="customerCity" name="city" required autocomplete="address-level2"></label><label>State<input id="customerState" name="state" required autocomplete="address-level1"></label><label>PIN/ZIP Code<input id="customerPostalCode" name="postal_code" required autocomplete="postal-code"></label></div></section>
-        <section class="checkout-card"><h2>Payment Method</h2><label class="payment-option"><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label><p class="muted">Online payment is not configured, so this order will use Cash on Delivery.</p></section>
+        <section class="checkout-card"><h2>Payment Method</h2><label class="payment-option"><input type="radio" name="payment" value="cod" checked> Cash on Delivery</label><label class="payment-option"><input type="radio" name="payment" value="online"> Online Payment (Razorpay)</label><p class="muted">Secure sandbox payment. Razorpay test credentials must be configured on the Django server.</p></section>
         <button class="place-order" type="submit">Place Order</button>
       </form>
       <aside class="checkout-summary checkout-card"><h2>Your Order</h2><div id="checkoutItems"></div><hr><p><span>Subtotal</span><b id="checkoutSubtotal">₹0</b></p><p><span>Discount</span><b id="checkoutDiscount">−₹0</b></p><p><span>Shipping</span><b id="checkoutShipping">₹0</b></p><p><span>Tax</span><b id="checkoutTax">₹0</b></p><hr><div class="total"><span>Total</span><strong id="checkoutTotal">₹0</strong></div></aside>
     </div>
   </main>
-  <script src="../assets/js/products.js"></script><script src="../assets/js/checkout-flow.js?v=order-status-1"></script><script src="../assets/js/components.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script><script src="../assets/js/products.js"></script><script src="../assets/js/checkout-flow.js?v=razorpay-1"></script><script src="../assets/js/components.js"></script>
 </body>
 </html>

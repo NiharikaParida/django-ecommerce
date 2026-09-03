@@ -276,7 +276,7 @@ def _order_item(item):
 
 
 def _order_data(order):
-    return {"id": order.order_number, "order_number": order.order_number, "status": order.status, "customer": {"name": order.name, "email": order.email, "phone": order.phone, "address": order.address, "city": order.city, "state": order.state, "postal_code": order.postal_code}, "payment_method": order.payment_method, "subtotal": float(order.subtotal), "discount": float(order.discount), "shipping": float(order.shipping), "tax": float(order.tax), "total": float(order.total), "created_at": order.created_at.isoformat(), "items": [_order_item(item) for item in order.items.all()]}
+    return {"id": order.order_number, "order_number": order.order_number, "status": order.status, "customer": {"name": order.name, "email": order.email, "phone": order.phone, "address": order.address, "city": order.city, "state": order.state, "postal_code": order.postal_code}, "payment_method": order.payment_method, "payment_status": order.payment_status, "payment_id": order.payment_id, "gateway_order_id": order.gateway_order_id, "subtotal": float(order.subtotal), "discount": float(order.discount), "shipping": float(order.shipping), "tax": float(order.tax), "total": float(order.total), "created_at": order.created_at.isoformat(), "items": [_order_item(item) for item in order.items.all()]}
 
 
 @csrf_exempt
