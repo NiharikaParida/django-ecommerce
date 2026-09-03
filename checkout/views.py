@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.conf import settings
+from django.middleware.csrf import get_token
 
 from core.models import Order, OrderItem, Product
 from core.views import _cart, _order_data, _product_by_id
@@ -59,6 +60,12 @@ def _cart_items(request):
     } for item in _cart(request).items.select_related("product")] 
 
 
+@require_http_methods(["GET"])
+def payment_csrf_api(request):
+	return JsonResponse({"csrf_token": get_token(request)})
+
+
+@require_http_methods(["POST"])
 def razorpay_order_api(request):
 	if not getattr(settings, "RAZORPAY_KEY_ID", "") or not getattr(settings, "RAZORPAY_KEY_SECRET", ""):
 		return JsonResponse({"detail": "Online payment is not configured. Add Razorpay test credentials to the server environment."}, status=503)

@@ -39,6 +39,7 @@ urlpatterns = [
     path('api/wishlist/items/<int:product_id>/', core_views.wishlist_item_api, name='wishlist-item-api'),
     path('api/orders/', checkout_views.order_api, name='order-api'),
     path('api/payments/razorpay/order/', checkout_views.razorpay_order_api, name='razorpay-order-api'),
+    path('api/payments/csrf/', checkout_views.payment_csrf_api, name='payment-csrf-api'),
     path('api/payments/razorpay/verify/', checkout_views.razorpay_verify_api, name='razorpay-verify-api'),
     path('api/orders/<str:order_number>/', core_views.order_detail_api, name='order-detail-api'),
     path('api/auth/register/', auth_views.register_api, name='auth-register-api'),

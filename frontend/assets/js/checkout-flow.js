@@ -155,7 +155,9 @@
       submitButton.textContent = "Placing Order...";
       try {
         if (paymentMethod === "online" && !onlinePaymentDetails) {
-          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ amount: total }) });
+          const csrfResponse = await fetch("/api/payments/csrf/", { credentials: "same-origin" });
+          const csrfData = await csrfResponse.json();
+          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json", "X-CSRFToken": csrfData.csrf_token }, body: JSON.stringify({ amount: total }) });
           const paymentOrder = await paymentOrderResponse.json();
           if (!paymentOrderResponse.ok) throw new Error(paymentOrder.detail || "Online payment is unavailable.");
           if (!window.Razorpay) throw new Error("Online payment checkout could not be loaded.");
