@@ -22,6 +22,7 @@ from django.views.static import serve
 from auth import views as auth_views
 
 from core import views as core_views
+from checkout import views as checkout_views
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/frontend/index.html', permanent=False), name='frontend-home'),
@@ -36,7 +37,7 @@ urlpatterns = [
     path('api/wishlist/', core_views.wishlist_api, name='wishlist-api'),
     path('api/wishlist/items/', core_views.wishlist_item_create_api, name='wishlist-item-create-api'),
     path('api/wishlist/items/<int:product_id>/', core_views.wishlist_item_api, name='wishlist-item-api'),
-    path('api/orders/', core_views.order_api, name='order-api'),
+    path('api/orders/', checkout_views.order_api, name='order-api'),
     path('api/orders/<str:order_number>/', core_views.order_detail_api, name='order-detail-api'),
     path('api/auth/register/', auth_views.register_api, name='auth-register-api'),
     path('api/auth/login/', auth_views.login_api, name='auth-login-api'),
