@@ -58,8 +58,11 @@
     const cart = readCart();
     const entry = cart.find((item) => Number(item.id) === id && (item.size || "") === (size || ""));
     if (button.dataset.action === "remove" || button.dataset.action === "save") {
-      writeCart(cart.filter((item) => !(Number(item.id) === id && (item.size || "") === (size || ""))));
+      const remaining = cart.filter((item) => !(Number(item.id) === id && (item.size || "") === (size || "")));
+      writeCart(remaining);
       if (button.dataset.action === "save") { const saved = JSON.parse(localStorage.getItem("fashionSavedForLater") || "[]"); if (!saved.includes(id)) saved.push(id); localStorage.setItem("fashionSavedForLater", JSON.stringify(saved)); }
+      render();
+      return;
     } else if (entry) entry.quantity = Math.max(1, Number(entry.quantity || 1) + (button.dataset.action === "plus" ? 1 : -1));
     writeCart(cart); render();
   });
