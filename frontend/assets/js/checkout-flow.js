@@ -124,10 +124,17 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!currentItems.length) return;
-      const formData = new FormData(form);
-      const customer = Object.fromEntries(formData.entries());
-      Object.keys(customer).forEach((field) => { customer[field] = String(customer[field] || "").trim(); });
-      const normalizedPhone = customer.phone.replace(/[\s()-]/g, "");
+      const fieldValue = (name) => String(form.elements.namedItem(name)?.value || "").trim();
+      const customer = {
+        name: fieldValue("name"),
+        email: fieldValue("email"),
+        phone: fieldValue("phone"),
+        address: fieldValue("address"),
+        city: fieldValue("city"),
+        state: fieldValue("state"),
+        postal_code: fieldValue("postal_code"),
+      };
+      const normalizedPhone = customer.phone.replace(/\D/g, "");
       if (
         !customer.name.trim() ||
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email) ||
