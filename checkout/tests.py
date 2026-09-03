@@ -36,6 +36,15 @@ class OrderCreationTests(TestCase):
 		self.assertEqual(Order.objects.count(), 1)
 		self.assertEqual(Order.objects.get().items.count(), 1)
 		self.assertFalse(Cart.objects.get().items.exists())
+		self.product.refresh_from_db()
+		self.assertEqual(self.product.stock_quantity, 3)
+
+	def test_order_is_rejected_when_quantity_exceeds_stock(self):
+		response = self.post_order({"customer": self.customer, "items": [{"product_id": 42, "quantity": 6}]})
+		self.assertEqual(response.status_code, 400)
+		self.assertEqual(Order.objects.count(), 0)
+		self.product.refresh_from_db()
+		self.assertEqual(self.product.stock_quantity, 5)
 
 	def test_invalid_items_do_not_create_order(self):
 		response = self.post_order({"customer": self.customer, "items": [{"product_id": 9999, "quantity": 1}]})

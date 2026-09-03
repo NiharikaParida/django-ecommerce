@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 
-from core.models import Order, OrderItem
+from core.models import Order, OrderItem, Product
 from core.views import _cart, _order_data, _product_by_id
 
 
@@ -86,13 +86,14 @@ def order_api(request):
 			product = None
 		if product is None:
 			return JsonResponse({"detail": "One or more products were not found."}, status=404)
+		product = Product.objects.select_for_update().get(pk=product.pk)
 		try:
 			quantity = int(raw_item.get("quantity", 1))
 		except (TypeError, ValueError):
 			return JsonResponse({"detail": "Quantity must be a positive integer."}, status=400)
 		if quantity < 1:
 			return JsonResponse({"detail": "Quantity must be a positive integer."}, status=400)
-		if product.stock_quantity and quantity > product.stock_quantity:
+		if quantity > product.stock_quantity:
 			return JsonResponse({"detail": f"Requested quantity exceeds stock for {product.name}."}, status=400)
 		subtotal += product.price * quantity
 		order_lines.append((product, quantity, str(raw_item.get("size", "")), str(raw_item.get("color", ""))))
@@ -123,5 +124,7 @@ def order_api(request):
 				name=product.name, image=product.image or (images[0] if images else ""),
 				quantity=quantity, price=product.price, size=size, color=color,
 			)
+			product.stock_quantity -= quantity
+			product.save(update_fields=["stock_quantity"])
 		_cart(request).items.all().delete()
 	return JsonResponse(_order_data(order), status=201)

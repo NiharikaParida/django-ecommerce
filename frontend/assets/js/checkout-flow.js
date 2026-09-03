@@ -56,8 +56,15 @@
       })
       .filter(Boolean);
   };
-  loadProducts().then((items) => {
-    const shipping = Number(localStorage.getItem("fashionShipping") || 0);
+  let currentItems = [];
+  let shipping = 0;
+  let discount = 0;
+  let tax = 0;
+  let submitButton;
+
+  const renderCheckout = (items) => {
+    currentItems = items;
+    shipping = Number(localStorage.getItem("fashionShipping") || 0);
     const discountRate = Number(
       localStorage.getItem("fashionDiscountRate") || 0,
     );
@@ -65,13 +72,13 @@
       (sum, item) => sum + item.price * item.quantity,
       0,
     );
-    const discount = subtotal * discountRate;
-    const tax = (subtotal - discount) * 0.06;
+    discount = subtotal * discountRate;
+    tax = (subtotal - discount) * 0.06;
     const total = subtotal - discount + shipping + tax;
     document.getElementById("checkoutItems").innerHTML = items
       .map(
         (item) =>
-          `<div class="checkout-item"><span>${item.name}<small>Size: ${item.selectedSize} · ${item.quantity} × ${money.format(item.price)}</small></span><b>${money.format(item.price * item.quantity)}</b></div>`,
+          `<div class="checkout-item" data-id="${item.id}" data-size="${item.selectedSize}"><span>${item.name}<small>Size: ${item.selectedSize} · ${item.quantity} × ${money.format(item.price)}</small><span class="checkout-item-actions"><button type="button" data-action="save">Save for Later</button><button type="button" data-action="remove">Remove Item</button></span></span><b>${money.format(item.price * item.quantity)}</b></div>`,
       )
       .join("");
     document.getElementById("checkoutSubtotal").textContent =
@@ -83,22 +90,48 @@
     document.getElementById("checkoutTax").textContent = money.format(tax);
     document.getElementById("checkoutTotal").textContent = money.format(total);
     const form = document.getElementById("checkoutForm");
-    const submitButton = form.querySelector("button[type=submit]");
+    submitButton = form.querySelector("button[type=submit]");
     if (!items.length) {
       message.textContent =
         "Your cart is empty. Please add a product before checkout.";
       message.classList.add("show");
       submitButton.disabled = true;
     }
+  };
+
+  const updateCheckoutCart = async (itemId, selectedSize, saveForLater) => {
+    cart = cart.filter((entry) => !(Number(entry.id) === itemId && (entry.size || "") === (selectedSize || "")));
+    localStorage.setItem("fashionCart", JSON.stringify(cart));
+    if (saveForLater) {
+      let saved = [];
+      try { saved = JSON.parse(localStorage.getItem("fashionSavedForLater") || "[]"); } catch { saved = []; }
+      if (!saved.includes(itemId)) saved.push(itemId);
+      localStorage.setItem("fashionSavedForLater", JSON.stringify(saved));
+    }
+    renderCheckout(await loadProducts());
+  };
+
+  document.getElementById("checkoutItems").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-action]");
+    const item = button?.closest(".checkout-item");
+    if (!item) return;
+    updateCheckoutCart(Number(item.dataset.id), item.dataset.size, button.dataset.action === "save");
+  });
+
+  loadProducts().then((items) => {
+    renderCheckout(items);
+    const form = document.getElementById("checkoutForm");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!items.length) return;
+      if (!currentItems.length) return;
       const formData = new FormData(form);
       const customer = Object.fromEntries(formData.entries());
+      Object.keys(customer).forEach((field) => { customer[field] = String(customer[field] || "").trim(); });
+      const normalizedPhone = customer.phone.replace(/[\s()-]/g, "");
       if (
         !customer.name.trim() ||
-        !customer.email.includes("@") ||
-        !/^\d{10,15}$/.test(customer.phone) ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email) ||
+        !/^\+?\d{10,15}$/.test(normalizedPhone) ||
         !customer.address.trim() ||
         !customer.city.trim() ||
         !customer.state.trim() ||
@@ -120,7 +153,7 @@
           },
           body: JSON.stringify({
             customer,
-            items: items.map((item) => ({
+            items: currentItems.map((item) => ({
               product_id: item.id,
               quantity: item.quantity,
               size: item.selectedSize,
