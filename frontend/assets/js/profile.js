@@ -3,6 +3,31 @@ const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
 const navLinks = document.querySelectorAll(".nav-links a");
 
+async function loadProfileActivity() {
+  const statCards = document.querySelectorAll(".user_stats .stat_card .stat_count");
+  if (statCards.length < 2) return;
+  let summary = null;
+  try {
+    const response = await fetch("/api/profile/summary/", { credentials: "include", headers: { Accept: "application/json" } });
+    if (response.ok) summary = await response.json();
+  } catch { /* Local fallback keeps the existing frontend cart/wishlist usable. */ }
+  if (!summary?.authenticated) {
+    try {
+      const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
+      const wishlist = JSON.parse(localStorage.getItem("fashionWishlist") || "[]");
+      summary = { order_count: 0, cart_count: cart.reduce((total, item) => total + Math.max(1, Number(item.quantity) || 1), 0), wishlist_count: wishlist.length };
+    } catch { summary = { order_count: 0, cart_count: 0, wishlist_count: 0 }; }
+  }
+  statCards[0].textContent = String(summary.order_count ?? 0);
+  statCards[1].textContent = String(summary.wishlist_count ?? 0);
+  const ordersLink = document.querySelector('.user_stats .stat_card:nth-child(1) a');
+  if (ordersLink) ordersLink.textContent = `Cart items: ${summary.cart_count ?? 0}`;
+}
+
+loadProfileActivity();
+window.addEventListener("pageshow", loadProfileActivity);
+window.addEventListener("storage", loadProfileActivity);
+
 // Toggle menu when hamburger is clicked
 menuBtn.addEventListener("click", () => {
   nav.classList.toggle("active");

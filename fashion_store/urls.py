@@ -43,6 +43,7 @@ urlpatterns = [
     path('api/auth/login/', auth_views.login_api, name='auth-login-api'),
     path('api/auth/logout/', auth_views.logout_api, name='auth-logout-api'),
     path('api/auth/me/', auth_views.current_user_api, name='auth-me-api'),
+    path('api/profile/summary/', core_views.profile_summary_api, name='profile-summary-api'),
 ]
 
 if settings.DEBUG:

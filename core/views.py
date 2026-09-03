@@ -234,6 +234,22 @@ def wishlist_api(request):
     return JsonResponse({"detail": "Method not allowed."}, status=405)
 
 
+def profile_summary_api(request):
+    """Return activity counts for the currently authenticated user only."""
+    if not request.user.is_authenticated:
+        return JsonResponse({"authenticated": False}, status=401)
+    cart = _cart(request)
+    wishlist = _wishlist(request)
+    orders = Order.objects.filter(user=request.user)
+    return JsonResponse({
+        "authenticated": True,
+        "cart_count": sum(item.quantity for item in cart.items.all()),
+        "wishlist_count": wishlist.items.count(),
+        "order_count": orders.count(),
+        "payment_statuses": list(orders.values("order_number", "payment_method", "status")),
+    })
+
+
 @csrf_exempt
 @require_http_methods(["POST"])
 def wishlist_item_create_api(request):
