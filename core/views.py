@@ -51,6 +51,64 @@ def product_list_api(request):
     if request.method != "GET":
         return JsonResponse({"detail": "Method not allowed."}, status=405)
     products = Product.objects.select_related("category", "brand").all()
+
+    # Keep the response shape backward-compatible while allowing the catalog
+    # page (or another client) to search, filter, and sort server-side.
+    search = (request.GET.get("search") or request.GET.get("q") or "").strip()
+    if search:
+        from django.db.models import Q
+
+        products = products.filter(
+            Q(name__icontains=search)
+            | Q(description__icontains=search)
+            | Q(brand__name__icontains=search)
+            | Q(category__name__icontains=search)
+        )
+
+    category = (request.GET.get("category") or "").strip()
+    if category:
+        products = products.filter(category__name__iexact=category)
+
+    brand = (request.GET.get("brand") or "").strip()
+    if brand:
+        products = products.filter(brand__name__iexact=brand)
+
+    for parameter, lookup in (("min_price", "price__gte"), ("max_price", "price__lte"), ("min_rating", "rating__gte")):
+        value = request.GET.get(parameter)
+        if value not in (None, ""):
+            try:
+                products = products.filter(**{lookup: Decimal(value)})
+            except (InvalidOperation, TypeError, ValueError):
+                return JsonResponse({"detail": f"{parameter} must be a number."}, status=400)
+
+    in_stock = (request.GET.get("in_stock") or "").strip().lower()
+    if in_stock in {"1", "true", "yes"}:
+        products = products.filter(stock_quantity__gt=0)
+    elif in_stock in {"0", "false", "no"}:
+        products = products.filter(stock_quantity=0)
+
+    sort = (request.GET.get("sort") or request.GET.get("ordering") or "").strip().lower()
+    sort_fields = {
+        "price_asc": "price",
+        "price_desc": "-price",
+        "name_asc": "name",
+        "name_desc": "-name",
+        "rating_asc": "rating",
+        "rating_desc": "-rating",
+        "newest": "-pk",
+        "oldest": "pk",
+        "price": "price",
+        "-price": "-price",
+        "name": "name",
+        "-name": "-name",
+        "rating": "rating",
+        "-rating": "-rating",
+        "id": "pk",
+        "-id": "-pk",
+    }
+    if sort in sort_fields:
+        products = products.order_by(sort_fields[sort])
+
     return JsonResponse([_serialize_product(product) for product in products], safe=False)
 
 
