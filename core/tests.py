@@ -45,6 +45,53 @@ class ProductApiTests(TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {"detail": "Product not found."})
 
+    def test_product_list_supports_search_filters_and_sorting(self):
+        women = Category.objects.create(name="Women")
+        women_brand = Brand.objects.create(name="Other Brand")
+        Product.objects.create(
+            frontend_id=58,
+            name="Affordable Shirt",
+            category=women,
+            brand=women_brand,
+            price=199,
+            stock_quantity=0,
+            description="A cotton shirt",
+            rating=3.5,
+        )
+        Product.objects.create(
+            frontend_id=59,
+            name="Test Premium Shirt",
+            category=women,
+            brand=women_brand,
+            price=499,
+            stock_quantity=2,
+            description="A premium shirt",
+            rating=4.8,
+        )
+        Product.objects.create(
+            frontend_id=60,
+            name="Test Standard Shirt",
+            category=women,
+            brand=women_brand,
+            price=399,
+            stock_quantity=2,
+            description="A standard shirt",
+            rating=4.2,
+        )
+
+        response = self.client.get("/api/products/?search=Test&category=Women&in_stock=true&sort=price_desc")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["id"] for item in response.json()], [59, 60])
+
+        response = self.client.get("/api/products/?min_price=300&max_price=300&min_rating=4")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual([item["id"] for item in response.json()], [57])
+
+    def test_product_list_rejects_invalid_numeric_filters(self):
+        response = self.client.get("/api/products/?min_price=not-a-number")
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json(), {"detail": "min_price must be a number."})
+
 
 class BackendWorkflowTests(TestCase):
     def setUp(self):
