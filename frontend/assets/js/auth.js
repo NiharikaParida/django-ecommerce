@@ -9,7 +9,7 @@ if (menuBtn && navLinks) {
 
 const ACCOUNT_KEY = 'fashionAccount';
 const SESSION_KEY = 'fashionUser';
-const AUTH_API_ORIGIN = window.location.port === '5501' ? 'http://127.0.0.1:8000' : '';
+const AUTH_API_ORIGIN = '';
 
 async function authRequest(path, data) {
     const response = await fetch(`${AUTH_API_ORIGIN}/api/auth/${path}/`, {
