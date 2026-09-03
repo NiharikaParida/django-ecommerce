@@ -56,6 +56,7 @@
     const description = specified(product.description);
     setText("detailDescription", description); setText("detailTabDescription", description);
     setText("detailSpecBrand", product.brand);
+    setText("detailSpecProductId", product.id);
     setText("detailSpecMaterial", product.material ?? product.fabric);
     setText("detailSpecFit", product.fit);
     setText("detailSpecPattern", product.pattern);
