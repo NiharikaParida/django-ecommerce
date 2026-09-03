@@ -57,23 +57,86 @@ const searchInput = document.querySelector(".search-box input");
 
 const searchBtn = document.querySelector(".search-box button");
 
+const searchResultsSection = document.getElementById("searchResultsSection");
+
+const searchResultsGrid = document.getElementById("searchResultsGrid");
+
+const searchResultsTitle = document.getElementById("searchResultsTitle");
+
+const searchResultsMessage = document.getElementById("searchResultsMessage");
+
+const money = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+});
+
+const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '\"': "&quot;",
+    "'": "&#39;"
+}[character]));
+
+function renderSearchResults(products, keyword) {
+    if (!searchResultsSection || !searchResultsGrid || !searchResultsMessage || !searchResultsTitle) return;
+
+    searchResultsSection.hidden = false;
+    searchResultsTitle.textContent = `Search results for “${keyword}”`;
+
+    if (!products.length) {
+        searchResultsMessage.textContent = "No products found";
+        searchResultsGrid.innerHTML = "";
+        return;
+    }
+
+    searchResultsMessage.textContent = `${products.length} product${products.length === 1 ? "" : "s"} found`;
+    searchResultsGrid.innerHTML = products.map((product) => {
+        const image = product.images?.[0] || "";
+        const oldPrice = Number(product.old_price) > Number(product.price)
+            ? `<del>${money.format(product.old_price)}</del><span>(${escapeHtml(product.discount)}% OFF)</span>`
+            : "";
+        return `<div class="col-lg-3 col-md-6">
+            <a class="product-card d-block" href="product-details.html?id=${encodeURIComponent(product.id)}" data-product-id="${escapeHtml(product.id)}">
+                <img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}">
+                <div class="rating">${escapeHtml(product.rating)} ★</div>
+                <h4>${escapeHtml(product.brand)}</h4>
+                <p>${escapeHtml(product.name)}</p>
+                <div class="price"><strong>${money.format(product.price)}</strong>${oldPrice}</div>
+            </a>
+        </div>`;
+    }).join("");
+}
+
+async function searchProducts() {
+    const keyword = searchInput?.value.trim() || "";
+    if (!keyword) {
+        if (searchResultsSection) searchResultsSection.hidden = true;
+        if (searchResultsGrid) searchResultsGrid.innerHTML = "";
+        return;
+    }
+
+    if (searchResultsSection) searchResultsSection.hidden = false;
+    if (searchResultsMessage) searchResultsMessage.textContent = "Searching…";
+    if (searchResultsGrid) searchResultsGrid.innerHTML = "";
+
+    try {
+        const response = await fetch(`/api/products/?search=${encodeURIComponent(keyword)}`, {
+            headers: { Accept: "application/json" }
+        });
+        if (!response.ok) throw new Error("Search request failed");
+        renderSearchResults(await response.json(), keyword);
+    } catch (error) {
+        if (searchResultsSection) searchResultsSection.hidden = false;
+        if (searchResultsMessage) searchResultsMessage.textContent = "Unable to load products. Please try again.";
+        if (searchResultsGrid) searchResultsGrid.innerHTML = "";
+    }
+}
+
 if (searchBtn) {
 
-    searchBtn.addEventListener("click", () => {
-
-        const keyword = searchInput.value.trim();
-
-        if (keyword === "") {
-
-            alert("Please enter a product name.");
-
-            return;
-
-        }
-
-        alert("Searching for: " + keyword);
-
-    });
+    searchBtn.addEventListener("click", searchProducts);
 
 }
 
@@ -85,7 +148,7 @@ if (searchInput) {
 
             e.preventDefault();
 
-            searchBtn.click();
+            searchProducts();
 
         }
 
