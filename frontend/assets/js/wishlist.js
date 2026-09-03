@@ -227,6 +227,7 @@ function initAddToCartButtons(scope) {
                 else cart.push({ id: Number(catalogProduct.id), size, quantity: 1 });
                 localStorage.setItem("fashionCart", JSON.stringify(cart));
                 showToast(`Added ${name} to cart.`);
+                window.location.href = "cart.html";
                 return;
             }
             showToast("Unable to add this product to cart.");

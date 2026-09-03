@@ -57,10 +57,21 @@
     const size = card.dataset.size;
     const cart = readCart();
     const entry = cart.find((item) => Number(item.id) === id && (item.size || "") === (size || ""));
+    const product = getItems().find((item) => item.id === id && (item.selectedSize || "") === (size || ""));
     if (button.dataset.action === "remove" || button.dataset.action === "save") {
       const remaining = cart.filter((item) => !(Number(item.id) === id && (item.size || "") === (size || "")));
       writeCart(remaining);
-      if (button.dataset.action === "save") { const saved = JSON.parse(localStorage.getItem("fashionSavedForLater") || "[]"); if (!saved.includes(id)) saved.push(id); localStorage.setItem("fashionSavedForLater", JSON.stringify(saved)); }
+      if (button.dataset.action === "save") {
+        const saved = JSON.parse(localStorage.getItem("fashionWishlist") || "[]");
+        const savedItem = product ? {
+          id: product.id, name: product.name, brand: product.brand, price: product.price,
+          oldPrice: product.oldPrice, image: product.images[0], color: product.color || ""
+        } : entry;
+        if (savedItem && !saved.some((item) => Number(item.id) === id)) saved.push(savedItem);
+        localStorage.setItem("fashionWishlist", JSON.stringify(saved));
+        window.location.href = "wishlist.html";
+        return;
+      }
       render();
       return;
     } else if (entry) entry.quantity = Math.max(1, Number(entry.quantity || 1) + (button.dataset.action === "plus" ? 1 : -1));
