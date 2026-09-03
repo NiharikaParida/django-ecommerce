@@ -20,8 +20,8 @@ async function loadProfileActivity() {
   }
   statCards[0].textContent = String(summary.order_count ?? 0);
   statCards[1].textContent = String(summary.wishlist_count ?? 0);
-  const ordersLink = document.querySelector('.user_stats .stat_card:nth-child(1) a');
-  if (ordersLink) ordersLink.textContent = `Cart items: ${summary.cart_count ?? 0}`;
+  const cartCount = statCards[2];
+  if (cartCount) cartCount.textContent = String(summary.cart_count ?? 0);
 }
 
 loadProfileActivity();
