@@ -39,6 +39,7 @@ def _serialize_product(product):
         "old_price": float(product.old_price) if product.old_price is not None else None,
         "discount": product.discount,
         "description": product.description,
+        "image": main_image,
         "images": image_list,
         "sizes": product.sizes if isinstance(product.sizes, list) else [],
         "stock_quantity": product.stock_quantity,
