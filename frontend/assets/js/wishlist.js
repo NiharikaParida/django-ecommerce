@@ -26,7 +26,7 @@ function saveWishlist(items) {
 }
 
 function isInWishlist(id) {
-    return loadWishlist().some((item) => item.id === id);
+    return loadWishlist().some((item) => String(item.id) === String(id));
 }
 
 function addToWishlist(product) {
@@ -38,7 +38,7 @@ function addToWishlist(product) {
 }
 
 function removeFromWishlist(id) {
-    saveWishlist(loadWishlist().filter((item) => item.id !== id));
+    saveWishlist(loadWishlist().filter((item) => String(item.id) !== String(id)));
 }
 
 function toggleWishlistItem(product) {
@@ -207,20 +207,29 @@ function initAddToCartButtons(scope) {
         if (btn.dataset.cartBound) return;
         btn.dataset.cartBound = "true";
 
-        btn.addEventListener("click", (e) => {
+        btn.addEventListener("click", async (e) => {
             e.preventDefault();
             e.stopPropagation();
             const name = btn.closest(".product-card").querySelector("h3").textContent.trim();
             const productId = Number(btn.dataset.productId) || Number(btn.closest(".product-card")?.dataset.id);
-            const catalogProduct = (window.FASHION_PRODUCTS || []).find((item) => item.id === productId) || (window.FASHION_PRODUCTS || []).find((item) => item.name === name);
+            let catalogProduct = (window.FASHION_PRODUCTS || []).find((item) => item.id === productId) || (window.FASHION_PRODUCTS || []).find((item) => item.name === name);
+            if (!catalogProduct && Number.isInteger(productId)) {
+                try {
+                    const response = await fetch(`/api/products/${productId}/`, { headers: { Accept: "application/json" } });
+                    if (response.ok) catalogProduct = await response.json();
+                } catch { /* The local catalog remains available when Django is offline. */ }
+            }
             if (catalogProduct) {
                 const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
-                const existing = cart.find((item) => Number(item.id) === catalogProduct.id && (item.size || "") === "");
+                const size = Array.isArray(catalogProduct.sizes) ? catalogProduct.sizes[0] || "" : "";
+                const existing = cart.find((item) => Number(item.id) === Number(catalogProduct.id) && (item.size || "") === size);
                 if (existing) existing.quantity = (Number(existing.quantity) || 1) + 1;
-                else cart.push({ id: catalogProduct.id, size: catalogProduct.sizes[0], quantity: 1 });
+                else cart.push({ id: Number(catalogProduct.id), size, quantity: 1 });
                 localStorage.setItem("fashionCart", JSON.stringify(cart));
+                showToast(`Added ${name} to cart.`);
+                return;
             }
-            showToast(`Added ${name} to cart.`);
+            showToast("Unable to add this product to cart.");
         });
     });
 }
