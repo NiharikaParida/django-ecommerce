@@ -41,13 +41,21 @@ class WishlistItemAdmin(admin.ModelAdmin):
     list_display = ["wishlist", "product", "created_at"]
 
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    fields = ["name", "size", "color", "quantity", "price"]
+    extra = 0
+    can_delete = False
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ["order_number", "email", "status", "total", "created_at"]
     list_filter = ["status", "payment_method"]
     search_fields = ["order_number", "email", "name"]
+    inlines = [OrderItemInline]
 
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = ["order", "product_id_snapshot", "name", "quantity", "price"]
+    list_display = ["order", "product_id_snapshot", "name", "size", "quantity", "price"]
