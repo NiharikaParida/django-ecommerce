@@ -9,7 +9,11 @@ if (menuBtn && navLinks) {
 
 const ACCOUNT_KEY = 'fashionAccount';
 const SESSION_KEY = 'fashionUser';
-const AUTH_API_ORIGIN = '';
+// Keep the frontend on Live Server (5501) while authentication requests go to Django.
+// When Django serves the frontend itself, same-origin requests remain supported.
+const AUTH_API_ORIGIN = window.location.port === '5501'
+    ? 'http://127.0.0.1:8765'
+    : '';
 
 async function authRequest(path, data) {
     const response = await fetch(`${AUTH_API_ORIGIN}/api/auth/${path}/`, {
