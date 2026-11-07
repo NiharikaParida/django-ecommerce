@@ -66,15 +66,16 @@
   const renderCheckout = (items) => {
     currentItems = items;
     shipping = Number(localStorage.getItem("fashionShipping") || 0);
-    const discountRate = Number(
-      localStorage.getItem("fashionDiscountRate") || 0,
-    );
+    const couponCode = String(localStorage.getItem("fashionCouponCode") || "")
+      .trim()
+      .toUpperCase();
+    const discountRate = couponCode === "FASHION20" ? 0.2 : 0;
     const subtotal = items.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0,
     );
-    discount = subtotal * discountRate;
-    tax = (subtotal - discount) * 0.06;
+    discount = Math.round(subtotal * discountRate * 100) / 100;
+    tax = Math.round((subtotal - discount) * 0.06 * 100) / 100;
     const total = subtotal - discount + shipping + tax;
     document.getElementById("checkoutItems").innerHTML = items
       .map(
@@ -155,10 +156,9 @@
       submitButton.textContent = "Placing Order...";
       try {
         if (paymentMethod === "online" && !onlinePaymentDetails) {
-          const paymentTotal = currentItems.reduce((sum, item) => sum + item.price * item.quantity, 0) - discount + shipping + tax;
           const csrfResponse = await fetch("/api/payments/csrf/", { credentials: "same-origin" });
           const csrfData = await csrfResponse.json();
-          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json", "X-CSRFToken": csrfData.csrf_token }, body: JSON.stringify({ amount: paymentTotal }) });
+          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json", "X-CSRFToken": csrfData.csrf_token }, body: JSON.stringify({ items: currentItems.map((item) => ({ product_id: item.id, quantity: item.quantity })), coupon_code: localStorage.getItem("fashionCouponCode") || "", shipping }) });
           const paymentOrder = await paymentOrderResponse.json();
           if (!paymentOrderResponse.ok) throw new Error(paymentOrder.detail || "Online payment is unavailable.");
           if (!window.Razorpay) throw new Error("Online payment checkout could not be loaded.");
@@ -179,9 +179,8 @@
               quantity: item.quantity,
               size: item.selectedSize,
             })),
-            discount,
+            coupon_code: localStorage.getItem("fashionCouponCode") || "",
             shipping,
-            tax,
             payment_method: paymentMethod,
             ...(paymentMethod === "online" ? onlinePaymentDetails : {}),
           }),
@@ -193,6 +192,7 @@
         localStorage.removeItem("fashionCart");
         localStorage.removeItem("fashionShipping");
         localStorage.removeItem("fashionDiscountRate");
+        localStorage.removeItem("fashionCouponCode");
         window.location.href = "order-success.html?placed=1";
       } catch (error) {
         message.textContent =

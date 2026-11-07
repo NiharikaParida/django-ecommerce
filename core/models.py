@@ -121,6 +121,13 @@ class Order(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["payment_id"],
+                condition=~models.Q(payment_id=""),
+                name="unique_order_payment_id",
+            ),
+        ]
 
 
 class OrderItem(models.Model):

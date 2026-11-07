@@ -83,7 +83,7 @@ class ProductApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual([item["id"] for item in response.json()], [59, 60])
 
-        response = self.client.get("/api/products/?min_price=300&max_price=300&min_rating=4")
+        response = self.client.get("/api/products/?min_price=299&max_price=299&min_rating=4")
         self.assertEqual(response.status_code, 200)
         self.assertEqual([item["id"] for item in response.json()], [57])
 
@@ -126,6 +126,18 @@ class BackendWorkflowTests(TestCase):
         self.assertEqual(Order.objects.count(), 1)
         self.assertEqual(len(self.client.get("/api/orders/").json()), 1)
         self.assertEqual(self.client.post("/api/auth/logout/").status_code, 200)
+
+    def test_profile_summary_requires_login_and_reports_cart_count(self):
+        response = self.client.get("/api/profile/summary/")
+        self.assertEqual(response.status_code, 401)
+
+        self.post_json("/api/auth/register/", {"name": "Test Shopper", "email": "profile@example.com", "password": "StrongPass123!"})
+        self.post_json("/api/cart/items/", {"product_id": 1, "quantity": 2})
+
+        response = self.client.get("/api/profile/summary/")
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json()["authenticated"])
+        self.assertEqual(response.json()["cart_count"], 2)
 
     @patch("core.management.commands.import_public_products.fetch_products")
     def test_public_import_is_additive_and_idempotent(self, fetch_products):

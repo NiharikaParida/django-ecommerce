@@ -5,7 +5,8 @@
   if (!wrap) return;
   const money = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 });
   let shipping = 0;
-  let discountRate = 0;
+  let couponCode = String(localStorage.getItem("fashionCouponCode") || "").trim().toUpperCase();
+  let discountRate = couponCode === "FASHION20" ? 0.2 : 0;
   const readCart = () => { try { return JSON.parse(localStorage.getItem("fashionCart") || "[]"); } catch { return []; } };
   const writeCart = (cart) => localStorage.setItem("fashionCart", JSON.stringify(cart));
   const normalizeProduct = (product) => ({
@@ -78,7 +79,7 @@
     writeCart(cart); render();
   });
   document.querySelectorAll(".ship-option").forEach((option) => option.addEventListener("click", () => { document.querySelectorAll(".ship-option").forEach((item) => item.classList.remove("active")); option.classList.add("active"); shipping = Number(option.dataset.cost); localStorage.setItem("fashionShipping", String(shipping)); render(); }));
-  document.getElementById("applyCouponBtn").addEventListener("click", () => { const code = document.getElementById("couponInput").value.trim().toUpperCase(); const message = document.getElementById("couponMsg"); discountRate = code === "FASHION20" || code === "ASHION20" ? .2 : 0; localStorage.setItem("fashionDiscountRate", String(discountRate)); message.textContent = discountRate ? "Coupon applied successfully." : "Enter a valid coupon code."; render(); });
-  document.getElementById("checkoutBtn").addEventListener("click", () => { if (!getItems().length) return alert("Your cart is empty."); localStorage.setItem("fashionShipping", String(shipping)); localStorage.setItem("fashionDiscountRate", String(discountRate)); window.location.href = "checkout.html?checkout=1"; });
+  document.getElementById("applyCouponBtn").addEventListener("click", () => { const code = document.getElementById("couponInput").value.trim().toUpperCase(); const message = document.getElementById("couponMsg"); couponCode = code === "FASHION20" ? code : ""; discountRate = couponCode ? .2 : 0; localStorage.setItem("fashionCouponCode", couponCode); localStorage.setItem("fashionDiscountRate", String(discountRate)); message.textContent = discountRate ? "Coupon applied successfully." : "Enter a valid coupon code."; render(); });
+  document.getElementById("checkoutBtn").addEventListener("click", () => { if (!getItems().length) return alert("Your cart is empty."); localStorage.setItem("fashionShipping", String(shipping)); localStorage.setItem("fashionDiscountRate", String(discountRate)); localStorage.setItem("fashionCouponCode", couponCode); window.location.href = "checkout.html?checkout=1"; });
   loadCatalog().then(render);
 })();
