@@ -48,3 +48,19 @@ button, a { touch-action: manipulation; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 16px 10px !important; }
   .sort-dropdown { min-width: 0 !important; max-width: 55%; }
 }
+
+/* Shared navigation behavior for every page after components.js renders it. */
+@media (max-width: 900px) {
+  header.site-header { padding: 14px 5%; min-height: 68px; }
+  header.site-header .logo, header.site-header .logo a { min-width: 0; flex-basis: auto; font-size: 27px !important; }
+  header.site-header nav { position: static; }
+  header.site-header .nav-links { z-index: 1200; max-height: calc(100vh - 68px); overflow-y: auto; }
+  header.site-header .nav-icons { gap: 14px; }
+  header.site-header .menu-btn { margin-left: 12px; padding: 4px 8px; }
+}
+@media (max-width: 520px) {
+  header.site-header .nav-icons { gap: 9px; font-size: 17px; }
+  header.site-header .nav-icons a:nth-child(4) { display: none; }
+  header.site-header .menu-btn { font-size: 25px; margin-left: 6px; }
+  header.site-header .nav-links { padding: 10px 6%; }
+}

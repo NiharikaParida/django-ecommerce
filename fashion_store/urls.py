@@ -38,11 +38,15 @@ urlpatterns = [
     path('api/wishlist/items/', core_views.wishlist_item_create_api, name='wishlist-item-create-api'),
     path('api/wishlist/items/<int:product_id>/', core_views.wishlist_item_api, name='wishlist-item-api'),
     path('api/orders/', checkout_views.order_api, name='order-api'),
+    path('api/payments/razorpay/order/', checkout_views.razorpay_order_api, name='razorpay-order-api'),
+    path('api/payments/csrf/', checkout_views.payment_csrf_api, name='payment-csrf-api'),
+    path('api/payments/razorpay/verify/', checkout_views.razorpay_verify_api, name='razorpay-verify-api'),
     path('api/orders/<str:order_number>/', core_views.order_detail_api, name='order-detail-api'),
     path('api/auth/register/', auth_views.register_api, name='auth-register-api'),
     path('api/auth/login/', auth_views.login_api, name='auth-login-api'),
     path('api/auth/logout/', auth_views.logout_api, name='auth-logout-api'),
     path('api/auth/me/', auth_views.current_user_api, name='auth-me-api'),
+    path('api/profile/summary/', core_views.profile_summary_api, name='profile-summary-api'),
 ]
 
 if settings.DEBUG:

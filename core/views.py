@@ -39,6 +39,7 @@ def _serialize_product(product):
         "old_price": float(product.old_price) if product.old_price is not None else None,
         "discount": product.discount,
         "description": product.description,
+        "image": main_image,
         "images": image_list,
         "sizes": product.sizes if isinstance(product.sizes, list) else [],
         "stock_quantity": product.stock_quantity,
@@ -233,6 +234,22 @@ def wishlist_api(request):
     return JsonResponse({"detail": "Method not allowed."}, status=405)
 
 
+def profile_summary_api(request):
+    """Return activity counts for the currently authenticated user only."""
+    if not request.user.is_authenticated:
+        return JsonResponse({"authenticated": False}, status=401)
+    cart = _cart(request)
+    wishlist = _wishlist(request)
+    orders = Order.objects.filter(user=request.user)
+    return JsonResponse({
+        "authenticated": True,
+        "cart_count": sum(item.quantity for item in cart.items.all()),
+        "wishlist_count": wishlist.items.count(),
+        "order_count": orders.count(),
+        "payment_statuses": list(orders.values("order_number", "payment_method", "status")),
+    })
+
+
 @csrf_exempt
 @require_http_methods(["POST"])
 def wishlist_item_create_api(request):
@@ -259,7 +276,7 @@ def _order_item(item):
 
 
 def _order_data(order):
-    return {"id": order.order_number, "order_number": order.order_number, "status": order.status, "customer": {"name": order.name, "email": order.email, "phone": order.phone, "address": order.address, "city": order.city, "state": order.state, "postal_code": order.postal_code}, "payment_method": order.payment_method, "subtotal": float(order.subtotal), "discount": float(order.discount), "shipping": float(order.shipping), "tax": float(order.tax), "total": float(order.total), "created_at": order.created_at.isoformat(), "items": [_order_item(item) for item in order.items.all()]}
+    return {"id": order.order_number, "order_number": order.order_number, "status": order.status, "customer": {"name": order.name, "email": order.email, "phone": order.phone, "address": order.address, "city": order.city, "state": order.state, "postal_code": order.postal_code}, "payment_method": order.payment_method, "payment_status": order.payment_status, "payment_id": order.payment_id, "gateway_order_id": order.gateway_order_id, "subtotal": float(order.subtotal), "discount": float(order.discount), "shipping": float(order.shipping), "tax": float(order.tax), "total": float(order.total), "created_at": order.created_at.isoformat(), "items": [_order_item(item) for item in order.items.all()]}
 
 
 @csrf_exempt

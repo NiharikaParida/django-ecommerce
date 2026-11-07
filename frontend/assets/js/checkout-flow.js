@@ -56,8 +56,16 @@
       })
       .filter(Boolean);
   };
-  loadProducts().then((items) => {
-    const shipping = Number(localStorage.getItem("fashionShipping") || 0);
+  let currentItems = [];
+  let shipping = 0;
+  let discount = 0;
+  let tax = 0;
+  let submitButton;
+  let onlinePaymentDetails = null;
+
+  const renderCheckout = (items) => {
+    currentItems = items;
+    shipping = Number(localStorage.getItem("fashionShipping") || 0);
     const discountRate = Number(
       localStorage.getItem("fashionDiscountRate") || 0,
     );
@@ -65,13 +73,13 @@
       (sum, item) => sum + item.price * item.quantity,
       0,
     );
-    const discount = subtotal * discountRate;
-    const tax = (subtotal - discount) * 0.06;
+    discount = subtotal * discountRate;
+    tax = (subtotal - discount) * 0.06;
     const total = subtotal - discount + shipping + tax;
     document.getElementById("checkoutItems").innerHTML = items
       .map(
         (item) =>
-          `<div class="checkout-item"><span>${item.name}<small>Size: ${item.selectedSize} · ${item.quantity} × ${money.format(item.price)}</small></span><b>${money.format(item.price * item.quantity)}</b></div>`,
+          `<div class="checkout-item" data-id="${item.id}" data-size="${item.selectedSize}"><span>${item.name}<small>Size: ${item.selectedSize} · ${item.quantity} × ${money.format(item.price)}</small><span class="checkout-item-actions"><button type="button" data-action="save">Save for Later</button><button type="button" data-action="remove">Remove Item</button></span></span><b>${money.format(item.price * item.quantity)}</b></div>`,
       )
       .join("");
     document.getElementById("checkoutSubtotal").textContent =
@@ -83,22 +91,56 @@
     document.getElementById("checkoutTax").textContent = money.format(tax);
     document.getElementById("checkoutTotal").textContent = money.format(total);
     const form = document.getElementById("checkoutForm");
-    const submitButton = form.querySelector("button[type=submit]");
+    submitButton = form.querySelector("button[type=submit]");
     if (!items.length) {
       message.textContent =
         "Your cart is empty. Please add a product before checkout.";
       message.classList.add("show");
       submitButton.disabled = true;
     }
+  };
+
+  const updateCheckoutCart = async (itemId, selectedSize, saveForLater) => {
+    cart = cart.filter((entry) => !(Number(entry.id) === itemId && (entry.size || "") === (selectedSize || "")));
+    localStorage.setItem("fashionCart", JSON.stringify(cart));
+    if (saveForLater) {
+      let saved = [];
+      try { saved = JSON.parse(localStorage.getItem("fashionSavedForLater") || "[]"); } catch { saved = []; }
+      if (!saved.includes(itemId)) saved.push(itemId);
+      localStorage.setItem("fashionSavedForLater", JSON.stringify(saved));
+    }
+    renderCheckout(await loadProducts());
+  };
+
+  document.getElementById("checkoutItems").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-action]");
+    const item = button?.closest(".checkout-item");
+    if (!item) return;
+    updateCheckoutCart(Number(item.dataset.id), item.dataset.size, button.dataset.action === "save");
+  });
+
+  loadProducts().then((items) => {
+    renderCheckout(items);
+    const form = document.getElementById("checkoutForm");
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      if (!items.length) return;
-      const formData = new FormData(form);
-      const customer = Object.fromEntries(formData.entries());
+      if (!currentItems.length) return;
+      const paymentMethod = form.elements.namedItem("payment")?.value || "cod";
+      const fieldValue = (name) => String(form.elements.namedItem(name)?.value || "").trim();
+      const customer = {
+        name: fieldValue("name"),
+        email: fieldValue("email"),
+        phone: fieldValue("phone"),
+        address: fieldValue("address"),
+        city: fieldValue("city"),
+        state: fieldValue("state"),
+        postal_code: fieldValue("postal_code"),
+      };
+      const normalizedPhone = customer.phone.replace(/\D/g, "");
       if (
         !customer.name.trim() ||
-        !customer.email.includes("@") ||
-        !/^\d{10,15}$/.test(customer.phone) ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email) ||
+        !/^\+?\d{10,15}$/.test(normalizedPhone) ||
         !customer.address.trim() ||
         !customer.city.trim() ||
         !customer.state.trim() ||
@@ -112,6 +154,18 @@
       submitButton.disabled = true;
       submitButton.textContent = "Placing Order...";
       try {
+        if (paymentMethod === "online" && !onlinePaymentDetails) {
+          const paymentTotal = currentItems.reduce((sum, item) => sum + item.price * item.quantity, 0) - discount + shipping + tax;
+          const csrfResponse = await fetch("/api/payments/csrf/", { credentials: "same-origin" });
+          const csrfData = await csrfResponse.json();
+          const paymentOrderResponse = await fetch("/api/payments/razorpay/order/", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json", "X-CSRFToken": csrfData.csrf_token }, body: JSON.stringify({ amount: paymentTotal }) });
+          const paymentOrder = await paymentOrderResponse.json();
+          if (!paymentOrderResponse.ok) throw new Error(paymentOrder.detail || "Online payment is unavailable.");
+          if (!window.Razorpay) throw new Error("Online payment checkout could not be loaded.");
+          submitButton.disabled = false;
+          new window.Razorpay({ key: paymentOrder.key_id || "", amount: paymentOrder.amount, currency: paymentOrder.currency || "INR", order_id: paymentOrder.id, name: "Fashion Store", handler: (response) => { onlinePaymentDetails = response; form.requestSubmit(); }, modal: { ondismiss: () => { submitButton.disabled = false; submitButton.textContent = "Place Order"; } } }).open();
+          return;
+        }
         const response = await fetch(`${apiOrigin}/api/orders/`, {
           method: "POST",
           headers: {
@@ -120,7 +174,7 @@
           },
           body: JSON.stringify({
             customer,
-            items: items.map((item) => ({
+            items: currentItems.map((item) => ({
               product_id: item.id,
               quantity: item.quantity,
               size: item.selectedSize,
@@ -128,7 +182,8 @@
             discount,
             shipping,
             tax,
-            payment_method: "cod",
+            payment_method: paymentMethod,
+            ...(paymentMethod === "online" ? onlinePaymentDetails : {}),
           }),
         });
         const order = await response.json();

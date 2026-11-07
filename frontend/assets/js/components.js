@@ -58,7 +58,7 @@
 
     const logoutButton = document.getElementById("logoutButton");
     if (logoutButton) logoutButton.addEventListener("click", async () => {
-      const apiOrigin = window.location.port === "5501" ? "http://127.0.0.1:8000" : "";
+      const apiOrigin = "";
       try {
         await fetch(`${apiOrigin}/api/auth/logout/`, {
           method: "POST",

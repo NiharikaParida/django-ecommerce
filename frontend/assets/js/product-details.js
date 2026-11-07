@@ -20,7 +20,12 @@
     reviewCount: Number(data.reviewCount ?? data.review_count) || 0,
     color: data.color || "",
     stockQuantity: Number(data.stockQuantity ?? data.stock_quantity) || 0,
-    images: Array.isArray(data.images) ? data.images.filter(Boolean) : [],
+    // Keep the selected product's primary image and its own gallery together.
+    // The API may provide the primary image separately from `images`.
+    images: [...new Set([
+      data.image,
+      ...(Array.isArray(data.images) ? data.images : [])
+    ].filter(Boolean))],
     sizes: Array.isArray(data.sizes) ? data.sizes.filter(Boolean) : [],
   });
 
@@ -56,6 +61,7 @@
     const description = specified(product.description);
     setText("detailDescription", description); setText("detailTabDescription", description);
     setText("detailSpecBrand", product.brand);
+    setText("detailSpecProductId", product.id);
     setText("detailSpecMaterial", product.material ?? product.fabric);
     setText("detailSpecFit", product.fit);
     setText("detailSpecPattern", product.pattern);
