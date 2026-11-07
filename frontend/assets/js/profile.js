@@ -3,14 +3,25 @@ const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
 const navLinks = document.querySelectorAll(".nav-links a");
 
+function hasProfileSession() {
+  try {
+    const session = JSON.parse(localStorage.getItem("fashionUser") || "null");
+    return Boolean(session && session.name);
+  } catch {
+    return false;
+  }
+}
+
 async function loadProfileActivity() {
   const statCards = document.querySelectorAll(".user_stats .stat_card .stat_count");
   if (statCards.length < 2) return;
   let summary = null;
-  try {
-    const response = await fetch("/api/profile/summary/", { credentials: "include", headers: { Accept: "application/json" } });
-    if (response.ok) summary = await response.json();
-  } catch { /* Local fallback keeps the existing frontend cart/wishlist usable. */ }
+  if (hasProfileSession()) {
+    try {
+      const response = await fetch("/api/profile/summary/", { credentials: "include", headers: { Accept: "application/json" } });
+      if (response.ok) summary = await response.json();
+    } catch { /* Local fallback keeps the existing frontend cart/wishlist usable. */ }
+  }
   if (!summary?.authenticated) {
     try {
       const cart = JSON.parse(localStorage.getItem("fashionCart") || "[]");
